@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "dmonsters:strengthened_stone"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}
