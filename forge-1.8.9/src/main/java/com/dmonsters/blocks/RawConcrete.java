@@ -10,14 +10,13 @@ import com.dmonsters.main.MainMod;
 import com.dmonsters.main.ModBlocks;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.properties.PropertyInteger;
-import net.minecraft.block.state.BlockStateContainer;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -28,14 +27,10 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -49,15 +44,14 @@ public class RawConcrete extends Block implements IMetaBlockName {
     public static final PropertyEnum<EnumDyeColor> COLOR = PropertyEnum.<EnumDyeColor>create("color", EnumDyeColor.class);
     
 	public RawConcrete() {
-		super(Material.SAND);
+		super(Material.sand);
         setUnlocalizedName(MainMod.MODID + ".rawConcrete");
         setRegistryName("rawConcrete");
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlockMeta(this), getRegistryName());
+        GameRegistry.registerBlock(this);
+        GameRegistry.registerItem(new ItemBlockMeta(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setTickRandomly(true);
         this.setDefaultState(this.blockState.getBaseState().withProperty(COLOR, EnumDyeColor.GRAY));
-        this.setSoundType(SoundType.SAND);
 	}
 	
     @SideOnly(Side.CLIENT)
@@ -83,20 +77,14 @@ public class RawConcrete extends Block implements IMetaBlockName {
     	if (!worldIn.isRemote) {
 	    	BlockPos blockUnderPos = new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ());
 	    	IBlockState blockUnder = worldIn.getBlockState(blockUnderPos);
-	    	if (blockUnder.getBlock() == Blocks.AIR || 
+	    	if (blockUnder.getBlock() == Blocks.air || 
 	    			blockUnder.getBlock() == ModBlocks.rawConcrete || 
-	    			blockUnder.getMaterial() == Material.WATER) {
-	    		if (placer instanceof EntityPlayer) {
-	    			Style red = new Style().setColor(TextFormatting.DARK_RED);
-	    			TextComponentTranslation test = new TextComponentTranslation("msg.dmonsters.rawConcrete.error");
-	    			test.setStyle(red);
-	    			placer.addChatMessage(test);
-	    		}
-	            return Blocks.AIR.getDefaultState();
+	    			blockUnder.getBlock().getMaterial() == Material.water) {
+	            return Blocks.air.getDefaultState();
 	    	}
 	        return this.getStateFromMeta(meta);
     	}
-    	return Blocks.AIR.getDefaultState();
+    	return Blocks.air.getDefaultState();
     }
 	
     public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos)
@@ -107,16 +95,16 @@ public class RawConcrete extends Block implements IMetaBlockName {
     @SideOnly(Side.CLIENT)
     public AxisAlignedBB getSelectedBoundingBox(IBlockState state, World worldIn, BlockPos pos)
     {
-        return RAW_CONCRETE_COLLISION_AABB.offset(pos);
+        return RAW_CONCRETE_COLLISION_AABB.offset(pos.getX(), pos.getY(), pos.getZ());
     }
     
     public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn)
     {
     	BlockPos blockUnderPos = new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ());
     	IBlockState blockUnder = worldIn.getBlockState(blockUnderPos);
-    	if (blockUnder.getBlock() == Blocks.AIR || 
+    	if (blockUnder.getBlock() == Blocks.air || 
     			blockUnder.getBlock() == ModBlocks.rawConcrete || 
-    			blockUnder.getMaterial() == Material.WATER) {
+    			blockUnder.getBlock().getMaterial() == Material.water) {
     		worldIn.setBlockState(pos, ModBlocks.fallingConcrete.getStateFromMeta(this.getMetaFromState(state)));
     	}
     }
@@ -153,9 +141,9 @@ public class RawConcrete extends Block implements IMetaBlockName {
         return ((EnumDyeColor)state.getValue(COLOR)).getMetadata();
     }
 
-    protected BlockStateContainer createBlockState()
+    protected BlockState createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {COLOR});
+        return new BlockState(this, new IProperty[] {COLOR});
     }
     
     @Override

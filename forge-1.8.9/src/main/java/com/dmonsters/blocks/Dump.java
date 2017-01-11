@@ -23,9 +23,9 @@ import net.minecraft.block.BlockSapling;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
-import net.minecraft.block.state.BlockStateContainer;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -35,19 +35,15 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenBigTree;
-import net.minecraft.world.gen.feature.WorldGenBirchTree;
 import net.minecraft.world.gen.feature.WorldGenCanopyTree;
+import net.minecraft.world.gen.feature.WorldGenForest;
 import net.minecraft.world.gen.feature.WorldGenMegaJungle;
 import net.minecraft.world.gen.feature.WorldGenMegaPineTree;
 import net.minecraft.world.gen.feature.WorldGenSavannaTree;
@@ -65,11 +61,11 @@ public class Dump extends Block implements IMetaBlockName {
     public static final PropertyInteger STACKS = PropertyInteger.create("stacks", 0, 15);
 	
 	public Dump() {
-		super(Material.CAKE);
+		super(Material.cake);
         setUnlocalizedName(MainMod.MODID + ".dump");
         setRegistryName("dump");
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlockMeta(this), getRegistryName());
+        GameRegistry.registerBlock(this);
+        GameRegistry.registerItem(new ItemBlockMeta(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(1);
         this.setResistance(1);
@@ -119,33 +115,33 @@ public class Dump extends Block implements IMetaBlockName {
         	if (checkSaplingBlock(worldIn, blockPos, pos)) {
         		meta++;
         		if (meta == 4) {
-        			return Blocks.AIR.getDefaultState();
+        			return Blocks.air.getDefaultState();
         		}
         	}
         	blockPos = new BlockPos(pos.getX() - 1, pos.getY(), pos.getZ());
         	if (checkSaplingBlock(worldIn, blockPos, pos)) {
         		meta++;
         		if (meta == 4) {
-        			return Blocks.AIR.getDefaultState();
+        			return Blocks.air.getDefaultState();
         		}
         	}
         	blockPos = new BlockPos(pos.getX(), pos.getY(), pos.getZ() + 1);
         	if (checkSaplingBlock(worldIn, blockPos, pos)) {
         		meta++;
         		if (meta == 4) {
-        			return Blocks.AIR.getDefaultState();
+        			return Blocks.air.getDefaultState();
         		}
         	}
         	blockPos = new BlockPos(pos.getX(), pos.getY(), pos.getZ() - 1);
         	if (checkSaplingBlock(worldIn, blockPos, pos)) {
         		meta++;
         		if (meta == 4) {
-        			return Blocks.AIR.getDefaultState();
+        			return Blocks.air.getDefaultState();
         		}
         	}
         	return ModBlocks.dump.getStateFromMeta(meta);
     	}
-    	return Blocks.AIR.getDefaultState();
+    	return Blocks.air.getDefaultState();
     }
     
     public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn)
@@ -169,7 +165,7 @@ public class Dump extends Block implements IMetaBlockName {
     	IBlockState blockNear = worldIn.getBlockState(pos);
     	if (blockNear.getBlock() instanceof BlockSapling) {
     		updateDumpState(worldIn, curretPos);
-    		BlockPlanks.EnumType test = (BlockPlanks.EnumType)blockNear.getActualState(worldIn, pos).getProperties().values().asList().get(1);
+    		BlockPlanks.EnumType test = (BlockPlanks.EnumType)blockNear.getBlock().getActualState(blockNear, worldIn, pos).getProperties().values().asList().get(1);
     		generateTree(worldIn, pos, blockNear, new Random(), test);
         	return true;
     	}
@@ -193,7 +189,7 @@ public class Dump extends Block implements IMetaBlockName {
     	if (stateValue < 4)
     		worldIn.setBlockState(curretPos, ModBlocks.dump.getStateFromMeta(stateValue));
     	else
-    		worldIn.setBlockState(curretPos, Blocks.AIR.getDefaultState());
+    		worldIn.setBlockState(curretPos, Blocks.air.getDefaultState());
     }
     
     public void generateTree(World worldIn, BlockPos pos, IBlockState state, Random rand, BlockPlanks.EnumType saplingType)
@@ -231,11 +227,11 @@ public class Dump extends Block implements IMetaBlockName {
 
                 break;
             case BIRCH:
-                worldgenerator = new WorldGenBirchTree(true, false);
+                worldgenerator = new WorldGenForest(true, false);
                 break;
             case JUNGLE:
-                IBlockState iblockstate = Blocks.LOG.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.JUNGLE);
-                IBlockState iblockstate1 = Blocks.LEAVES.getDefaultState().withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.JUNGLE).withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false));
+                IBlockState iblockstate = Blocks.log.getDefaultState().withProperty(BlockOldLog.VARIANT, BlockPlanks.EnumType.JUNGLE);
+                IBlockState iblockstate1 = Blocks.leaves.getDefaultState().withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.JUNGLE).withProperty(BlockLeaves.CHECK_DECAY, Boolean.valueOf(false));
                 worldgenerator = new WorldGenMegaJungle(true, 10, 20, iblockstate, iblockstate1);
                 break;
             case ACACIA:
@@ -265,7 +261,7 @@ public class Dump extends Block implements IMetaBlockName {
             case OAK:
         }
 
-        IBlockState iblockstate2 = Blocks.AIR.getDefaultState();
+        IBlockState iblockstate2 = Blocks.air.getDefaultState();
 
         if (flag)
         {
@@ -315,12 +311,6 @@ public class Dump extends Block implements IMetaBlockName {
         return false;
     }
     
-    @Nullable
-    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos)
-    {
-        return NULL_AABB;
-    }
-    
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
     	return AABB;
@@ -332,9 +322,9 @@ public class Dump extends Block implements IMetaBlockName {
         return 1;
     }
 	
-    protected BlockStateContainer createBlockState()
+    protected BlockState createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {STACKS});
+        return new BlockState(this, new IProperty[] {STACKS});
     }
     
     public int getMetaFromState(IBlockState state)

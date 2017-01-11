@@ -10,7 +10,7 @@ import com.dmonsters.main.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,13 +20,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -40,11 +36,11 @@ public class ChristmasTree extends Block {
     protected static final AxisAlignedBB BLOCK_COLLISION_AABB = new AxisAlignedBB(0.0625D, 0.0D, 0.0625D, 0.9375D, 1.0D, 0.9375D);
 
 	public ChristmasTree() {
-		super(Material.CACTUS);
+		super(Material.cactus);
         setUnlocalizedName(MainMod.MODID + ".christmas_tree");
         setRegistryName("christmas_tree");
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
+        GameRegistry.registerBlock(this);
+        GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setTickRandomly(true);
         this.setHardness(2);
@@ -70,22 +66,22 @@ public class ChristmasTree extends Block {
 		//UP
 		pos = new BlockPos(currPos.getX() + 1, currPos.getY(), currPos.getZ());
 		block = worldIn.getBlockState(pos).getBlock();
-		if (block == Blocks.AIR)
+		if (block == Blocks.air)
 			posList.add(pos);
 		//DOWN
 		pos = new BlockPos(currPos.getX() - 1, currPos.getY(), currPos.getZ());
 		block = worldIn.getBlockState(pos).getBlock();
-		if (block == Blocks.AIR)
+		if (block == Blocks.air)
 			posList.add(pos);
 		//RIGHT
 		pos = new BlockPos(currPos.getX(), currPos.getY(), currPos.getZ() + 1);
 		block = worldIn.getBlockState(pos).getBlock();
-		if (block == Blocks.AIR)
+		if (block == Blocks.air)
 			posList.add(pos);
 		//LEFT
 		pos = new BlockPos(currPos.getX(), currPos.getY(), currPos.getZ() - 1);
 		block = worldIn.getBlockState(pos).getBlock();
-		if (block == Blocks.AIR)
+		if (block == Blocks.air)
 			posList.add(pos);
 
 		if (posList.size() > 0) {
@@ -104,7 +100,7 @@ public class ChristmasTree extends Block {
     @SideOnly(Side.CLIENT)
     public AxisAlignedBB getSelectedBoundingBox(IBlockState state, World worldIn, BlockPos pos)
     {
-        return BLOCK_COLLISION_AABB.offset(pos);
+        return BLOCK_COLLISION_AABB.offset(pos.getX(), pos.getY(), pos.getZ());
     }
     
     public boolean isOpaqueCube(IBlockState state)
