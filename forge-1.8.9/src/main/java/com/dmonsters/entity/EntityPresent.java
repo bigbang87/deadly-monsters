@@ -24,18 +24,11 @@ import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
-import net.minecraft.network.datasync.DataParameter;
-import net.minecraft.network.datasync.DataSerializers;
-import net.minecraft.network.datasync.EntityDataManager;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.SoundEvent;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
@@ -43,11 +36,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraft.entity.ai.*;
 import net.minecraft.entity.item.EntityBoat;
 
-public class EntityPresent extends EntityMob {
-    private static final DataParameter<Boolean> ARMS_RAISED = EntityDataManager.createKey(EntityPresent.class, DataSerializers.BOOLEAN);
-    private static final DataParameter<Boolean> ATTACKING = EntityDataManager.createKey(EntityPresent.class, DataSerializers.BOOLEAN);
-    private PriorityQueue<BlockPos> freezedBlocks = new PriorityQueue(10); 
-    
+public class EntityPresent extends EntityMob {    
     public static final ResourceLocation LOOT = new ResourceLocation(MainMod.MODID, "present");
     
     private int cageTicks = 0;
@@ -56,19 +45,18 @@ public class EntityPresent extends EntityMob {
     public EntityPresent(World worldIn) {
         super(worldIn);
         setSize(0.9F, 1.5F);
+        initEntityAI();
     }
 
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(35.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.3D * ModConfig.speedMultiplier * ModConfig.entrailSpeedMultiplier);
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(1.0D * ModConfig.strengthMultiplier * ModConfig.entrailStrengthMultiplier);
-        this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(2.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(26.0D * ModConfig.healthMultiplier * ModConfig.entrailHealthMultiplier);
+        this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(35.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.3D * ModConfig.speedMultiplier * ModConfig.entrailSpeedMultiplier);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(1.0D * ModConfig.strengthMultiplier * ModConfig.entrailStrengthMultiplier);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(26.0D * ModConfig.healthMultiplier * ModConfig.entrailHealthMultiplier);
     }
 
-    @Override
     protected void initEntityAI() {
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAIPresent(this, 1.0D, true));
@@ -86,7 +74,7 @@ public class EntityPresent extends EntityMob {
     @Override
     public boolean attackEntityAsMob(Entity entityIn) {
         if (super.attackEntityAsMob(entityIn)) {
-        	this.playSound(ModSounds.PRESENT_ATTACK, 1, 1);
+        	this.playSound("dmonsters:mob.present.attack", 1, 1);
         	if (entityIn instanceof EntityPlayer) {
         		makeCage((EntityPlayer) entityIn);
         	}
@@ -132,7 +120,7 @@ public class EntityPresent extends EntityMob {
 	        		if (x == -hSize || x == hSize || z == -hSize || z == hSize) {
 		        		pos = new BlockPos(x + xPos, yPos + height + i, z + zPos);
 		        		block = this.worldObj.getBlockState(pos).getBlock();
-		        		if (block == Blocks.AIR) {
+		        		if (block == Blocks.air) {
 		        			if (x == hCenter ||
 		        				z == hCenter  )
 		        				this.worldObj.setBlockState(pos, ModBlocks.presentBlock.getStateFromMeta(1));
@@ -142,12 +130,12 @@ public class EntityPresent extends EntityMob {
 	        		} else if (i == 0 || i == vSize - 1) {
 	            		pos = new BlockPos(x + xPos, yPos + i + height, z + zPos);
 		        		block = this.worldObj.getBlockState(pos).getBlock();
-		        		if (block == Blocks.AIR) {
+		        		if (block == Blocks.air) {
 		        			xCent = hCenter;
 		        			zCent = hCenter;
 		        			if (x == xCent && z == zCent) {
 		        				BlockPos lightPos = new BlockPos(xCent + xPos, yPos + height + 1, zCent + zPos);
-			        			this.worldObj.setBlockState(lightPos, Blocks.TORCH.getDefaultState());
+			        			this.worldObj.setBlockState(lightPos, Blocks.torch.getDefaultState());
 			        			if (!this.worldObj.isRemote) {
 				                	Entity creeper = new EntityCreeper(this.worldObj);
 				                	creeper.setPosition(lightPos.getX(), lightPos.getY(), lightPos.getZ());
@@ -169,27 +157,21 @@ public class EntityPresent extends EntityMob {
     }
     
     @Override
-    protected SoundEvent getDeathSound()
+    protected String getDeathSound()
     {
-    	return ModSounds.PRESENT_DEATH;
+		return "dmonsters:mob.present.death";
     }
     
     @Override
-    protected SoundEvent getAmbientSound()
+    protected String getLivingSound()
     {
-    	return ModSounds.PRESENT_AMBIENT;
+    	return "dmonsters:mob.present.idle";
     }
 
     @Override
-    protected SoundEvent getHurtSound()
+    protected String getHurtSound()
     {
-    	return ModSounds.PRESENT_HURT;
-    }
-
-    @Override
-    @Nullable
-    protected ResourceLocation getLootTable() {
-        return LOOT;
+    	return "dmonsters:mob.present.hurt";
     }
 
     @Override

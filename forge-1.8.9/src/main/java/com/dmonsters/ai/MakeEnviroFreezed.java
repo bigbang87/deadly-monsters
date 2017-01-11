@@ -52,8 +52,6 @@ public class MakeEnviroFreezed extends EntityAIBase
     	float randomChance = 0;
     	Random random = new Random();
     	int freeingArea = 0;
-    	if (freezerEntity.getAttaking())
-    		freeingArea = 2;
     	
     	for (int dx = -freeingArea; dx <= freeingArea; ++dx) {
     		for (int dz = -freeingArea; dz <= freeingArea; ++dz) {

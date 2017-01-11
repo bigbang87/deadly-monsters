@@ -20,28 +20,16 @@ public class EntityAIBabyAttack extends EntityAIAttackOnCollide
     {
         super.startExecuting();
         this.raiseArmTicks = 0;
-        baby.setAttaking(true);
     }
 
     public void resetTask()
     {
         super.resetTask();
-        this.baby.setArmsRaised(false);
-        baby.setAttaking(false);
     }
 
     public void updateTask()
     {
         super.updateTask();
         ++this.raiseArmTicks;
-
-        if (this.raiseArmTicks >= 5 && this.raiseArmTicks < 10)
-        {
-            this.baby.setArmsRaised(true);
-        }
-        else
-        {
-            this.baby.setArmsRaised(false);
-        }
     }
 }
