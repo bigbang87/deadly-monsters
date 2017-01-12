@@ -15,10 +15,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
 public class EntityLuckyEgg extends EntityThrowable {
@@ -39,7 +39,7 @@ public class EntityLuckyEgg extends EntityThrowable {
     }
 
 	@Override
-	protected void onImpact(RayTraceResult result) {
+	protected void onImpact(MovingObjectPosition result) {
         if (result.entityHit != null)
         {
             result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 0.0F);
@@ -55,7 +55,7 @@ public class EntityLuckyEgg extends EntityThrowable {
 	        } else if (this.rand.nextInt(10) == 1) {
 	        	BlockPos blockPos = new BlockPos(this.posX, this.posY, this.posZ);
 	            EntityTNTPrimed entitytntprimed = new EntityTNTPrimed(worldObj, (double)((float)blockPos.getX() + 0.5F), (double)blockPos.getY(), (double)((float)blockPos.getZ() + 0.5F), this.getThrower());
-	            entitytntprimed.setFuse((short)(worldObj.rand.nextInt(entitytntprimed.getFuse() / 4) + entitytntprimed.getFuse() / 8));
+	            entitytntprimed.fuse = worldObj.rand.nextInt(entitytntprimed.fuse / 4) + entitytntprimed.fuse / 8;
 	            worldObj.spawnEntityInWorld(entitytntprimed); 
 	        } else {
 		        if (this.rand.nextInt(10) <= 4) {
@@ -75,7 +75,7 @@ public class EntityLuckyEgg extends EntityThrowable {
 
         for (int k = 0; k < 8; ++k)
         {
-            this.worldObj.spawnParticle(EnumParticleTypes.ITEM_CRACK, this.posX, this.posY, this.posZ, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, new int[] {Item.getIdFromItem(Items.EGG)});
+            this.worldObj.spawnParticle(EnumParticleTypes.ITEM_CRACK, this.posX, this.posY, this.posZ, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, new int[] {Item.getIdFromItem(Items.egg)});
         }
 
         if (!this.worldObj.isRemote)
@@ -105,45 +105,44 @@ public class EntityLuckyEgg extends EntityThrowable {
 	private Item spawnRandomItem() {    	
     	//TIER 00
     	List<Item> dropableItems_TIER_00 = new ArrayList<Item>();
-    	dropableItems_TIER_00.add(Items.WOODEN_SWORD);
-    	dropableItems_TIER_00.add(Items.LEATHER_BOOTS);
-    	dropableItems_TIER_00.add(Items.LEATHER_CHESTPLATE);
-    	dropableItems_TIER_00.add(Items.LEATHER_HELMET);
-    	dropableItems_TIER_00.add(Items.LEATHER_LEGGINGS);
+    	dropableItems_TIER_00.add(Items.wooden_sword);
+    	dropableItems_TIER_00.add(Items.leather_boots);
+    	dropableItems_TIER_00.add(Items.leather_chestplate);
+    	dropableItems_TIER_00.add(Items.leather_helmet);
+    	dropableItems_TIER_00.add(Items.leather_leggings);
 
     	//TIER 01
     	List<Item> dropableItems_TIER_01 = new ArrayList<Item>();
-    	dropableItems_TIER_01.add(Items.IRON_SWORD);
-    	dropableItems_TIER_01.add(Items.STONE_SWORD);
-    	dropableItems_TIER_01.add(Items.IRON_BOOTS);
-    	dropableItems_TIER_01.add(Items.IRON_CHESTPLATE);
-    	dropableItems_TIER_01.add(Items.IRON_HELMET);
-    	dropableItems_TIER_01.add(Items.IRON_LEGGINGS);
+    	dropableItems_TIER_01.add(Items.iron_sword);
+    	dropableItems_TIER_01.add(Items.stone_sword);
+    	dropableItems_TIER_01.add(Items.iron_boots);
+    	dropableItems_TIER_01.add(Items.iron_chestplate);
+    	dropableItems_TIER_01.add(Items.iron_helmet);
+    	dropableItems_TIER_01.add(Items.iron_leggings);
     	
     	//TIER 02
     	List<Item> dropableItems_TIER_02 = new ArrayList<Item>();
-    	dropableItems_TIER_02.add(Items.SHIELD);
-    	dropableItems_TIER_02.add(Items.BOW);
-    	dropableItems_TIER_02.add(Items.CHAINMAIL_BOOTS);
-    	dropableItems_TIER_02.add(Items.CHAINMAIL_CHESTPLATE);
-    	dropableItems_TIER_02.add(Items.CHAINMAIL_HELMET);
-    	dropableItems_TIER_02.add(Items.CHAINMAIL_LEGGINGS);
+    	dropableItems_TIER_02.add(Items.bow);
+    	dropableItems_TIER_02.add(Items.chainmail_boots);
+    	dropableItems_TIER_02.add(Items.chainmail_chestplate);
+    	dropableItems_TIER_02.add(Items.chainmail_helmet);
+    	dropableItems_TIER_02.add(Items.chainmail_leggings);
     	
     	//TIER 03
     	List<Item> dropableItems_TIER_03 = new ArrayList<Item>();
-    	dropableItems_TIER_03.add(Items.GOLDEN_SWORD);
-    	dropableItems_TIER_03.add(Items.GOLDEN_BOOTS);
-    	dropableItems_TIER_03.add(Items.GOLDEN_CHESTPLATE);
-    	dropableItems_TIER_03.add(Items.GOLDEN_HELMET);
-    	dropableItems_TIER_03.add(Items.GOLDEN_LEGGINGS);
+    	dropableItems_TIER_03.add(Items.golden_sword);
+    	dropableItems_TIER_03.add(Items.golden_boots);
+    	dropableItems_TIER_03.add(Items.golden_chestplate);
+    	dropableItems_TIER_03.add(Items.golden_helmet);
+    	dropableItems_TIER_03.add(Items.golden_leggings);
     	
     	//TIER 04
     	List<Item> dropableItems_TIER_04 = new ArrayList<Item>();
-    	dropableItems_TIER_04.add(Items.DIAMOND_SWORD);
-    	dropableItems_TIER_04.add(Items.DIAMOND_BOOTS);
-    	dropableItems_TIER_04.add(Items.DIAMOND_CHESTPLATE);
-    	dropableItems_TIER_04.add(Items.DIAMOND_HELMET);
-    	dropableItems_TIER_04.add(Items.DIAMOND_LEGGINGS);
+    	dropableItems_TIER_04.add(Items.diamond_sword);
+    	dropableItems_TIER_04.add(Items.diamond_boots);
+    	dropableItems_TIER_04.add(Items.diamond_chestplate);
+    	dropableItems_TIER_04.add(Items.diamond_helmet);
+    	dropableItems_TIER_04.add(Items.diamond_leggings);
     	
     	//choose tier
     	float rndTier = this.rand.nextFloat();
@@ -158,6 +157,6 @@ public class EntityLuckyEgg extends EntityThrowable {
     	} else if (rndTier > 0.9F && rndTier <= 1) {
     		return getRandomEntryFromList(dropableItems_TIER_04);
     	}
-		return Items.APPLE;
+		return Items.apple;
 	}
 }

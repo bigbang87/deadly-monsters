@@ -9,30 +9,22 @@ import com.dmonsters.network.PacketClientFXUpdate;
 import com.dmonsters.network.PacketHandler;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.MobEffects;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.stats.StatList;
-import net.minecraft.util.ActionResult;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumActionResult;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -44,7 +36,7 @@ public class PurgePill extends Item {
     public PurgePill() {
         setRegistryName("purgePill");
         setUnlocalizedName(MainMod.MODID + ".purgePill");
-        GameRegistry.register(this.setCreativeTab(MainMod.MOD_CREATIVETAB));
+        GameRegistry.registerItem(this.setCreativeTab(MainMod.MOD_CREATIVETAB));
     }
     
     @SideOnly(Side.CLIENT)
@@ -59,10 +51,6 @@ public class PurgePill extends Item {
         {
             EntityPlayer entityplayer = (EntityPlayer)entityLiving;
         	if (entityplayer.getFoodStats().getFoodLevel() < 20) {
-    			Style red = new Style().setColor(TextFormatting.DARK_RED);
-    			TextComponentTranslation errorMsg = new TextComponentTranslation("msg.dmonsters.purgePill.error");
-    			errorMsg.setStyle(red);
-    			entityplayer.addChatMessage(errorMsg);
     			if (entityplayer.getHealth() > 1)
     				entityplayer.setHealth(1);
     			else
@@ -86,23 +74,22 @@ public class PurgePill extends Item {
     {
         if (!worldIn.isRemote)
         {
-        	player.addPotionEffect(new PotionEffect(MobEffects.HUNGER, 100));
+        	player.addPotionEffect(new PotionEffect(Potion.hunger.id, 100));
             player.getFoodStats().setFoodLevel(2);
             player.getFoodStats().setFoodSaturationLevel(0);
         }
     }
     
     @Override
-    public ActionResult<ItemStack> onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn, EnumHand hand)
+    public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn)
     {
         if (playerIn.canEat(true))
         {
-            playerIn.setActiveHand(hand);
-            return new ActionResult(EnumActionResult.SUCCESS, itemStackIn);
+            return itemStackIn;
         }
         else
         {
-            return new ActionResult(EnumActionResult.FAIL, itemStackIn);
+            return itemStackIn;
         }
     }
     

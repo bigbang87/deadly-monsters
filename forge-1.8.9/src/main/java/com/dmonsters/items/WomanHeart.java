@@ -6,19 +6,15 @@ import com.dmonsters.network.PacketClientFXUpdate;
 import com.dmonsters.network.PacketHandler;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -30,7 +26,7 @@ public class WomanHeart extends Item {
     public WomanHeart() {
         setRegistryName("womanHeart");
         setUnlocalizedName(MainMod.MODID + ".womanHeart");
-        GameRegistry.register(this.setCreativeTab(MainMod.MOD_CREATIVETAB));
+        GameRegistry.registerItem(this.setCreativeTab(MainMod.MOD_CREATIVETAB));
         this.maxStackSize = 1;
         this.setMaxDamage(11);
     }
@@ -40,22 +36,22 @@ public class WomanHeart extends Item {
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
     
-    public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+    public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ) {
         if (!playerIn.canPlayerEdit(pos, facing, stack)) {
-            return EnumActionResult.FAIL;
+            return false;
         } else {
         	if (!worldIn.isRemote) {
 	        	Block blockIn = worldIn.getBlockState(pos).getBlock();
 	        	if (playerIn.isSneaking()) {
-		        	worldIn.setBlockState(pos, Blocks.WATER.getDefaultState());
+		        	worldIn.setBlockState(pos, Blocks.water.getDefaultState());
 	        	} else {
-	        		worldIn.setBlockState(pos, Blocks.LAVA.getDefaultState());
+	        		worldIn.setBlockState(pos, Blocks.lava.getDefaultState());
 	        	}
 	            PacketHandler.INSTANCE.sendToAll(new PacketClientFXUpdate(pos, PacketClientFXUpdate.Type.WOMAN_HEART));
 	        	stack.damageItem(1, playerIn);
-	            return EnumActionResult.SUCCESS;
+	            return true;
         	}
-            return EnumActionResult.SUCCESS;
+            return true;
         }
     }
 }

@@ -13,7 +13,7 @@ import com.dmonsters.main.MainMod;
 
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,11 +25,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.MobSpawnerBaseLogic;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityMobSpawner;
-import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -44,7 +42,7 @@ public class MobSpawnerItem extends Item
     {
         setRegistryName("mobSpawnerItem_" + name);
         setUnlocalizedName(MainMod.MODID + ".mobSpawnerItem_" + name);
-        GameRegistry.register(this.setCreativeTab(MainMod.MOD_CREATIVETAB));
+        GameRegistry.registerItem(this.setCreativeTab(MainMod.MOD_CREATIVETAB));
         mobName = name;
     }
     
@@ -54,15 +52,15 @@ public class MobSpawnerItem extends Item
         ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
     
-    public EnumActionResult onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
+    public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
         if (worldIn.isRemote)
         {
-            return EnumActionResult.SUCCESS;
+            return true;
         }
         else if (!playerIn.canPlayerEdit(pos.offset(facing), facing, stack))
         {
-            return EnumActionResult.FAIL;
+            return false;
         }
         else
         {
@@ -91,14 +89,14 @@ public class MobSpawnerItem extends Item
                 }
             }
 
-            return EnumActionResult.SUCCESS;
+            return true;
         }
     }
     
     private Entity spawnEntity(World worldIn, double x, double y, double z) {
     	Entity entity = getEntity(worldIn);
         EntityLiving entityliving = (EntityLiving)entity;
-        entity.setLocationAndAngles(x, y, z, MathHelper.wrapDegrees(worldIn.rand.nextFloat() * 360.0F), 0.0F);
+        entity.setLocationAndAngles(x, y, z, entityliving.rotationYaw, 0.0F);
         entityliving.rotationYawHead = entityliving.rotationYaw;
         entityliving.renderYawOffset = entityliving.rotationYaw;
         entityliving.onInitialSpawn(worldIn.getDifficultyForLocation(new BlockPos(entityliving)), (IEntityLivingData)null);
