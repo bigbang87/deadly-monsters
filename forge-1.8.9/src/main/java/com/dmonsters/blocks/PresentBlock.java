@@ -15,9 +15,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.state.BlockStateContainer;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -25,10 +25,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.IStringSerializable;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -40,11 +39,11 @@ public class PresentBlock extends Block implements IMetaBlockName {
 	public static final PropertyEnum COLOR = PropertyEnum.create("color", EnumMode.class);
 	
 	public PresentBlock() {
-		super(Material.IRON);
+		super(Material.iron);
         setUnlocalizedName(MainMod.MODID + ".presentblock");
         setRegistryName("presentblock");
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlockMeta(this), getRegistryName());
+        GameRegistry.registerBlock(this);
+        GameRegistry.registerItem(new ItemBlockMeta(this), getRegistryName());
         this.setHardness(3);
         this.setResistance(50);
         this.setTickRandomly(true);
@@ -77,9 +76,9 @@ public class PresentBlock extends Block implements IMetaBlockName {
         return ((EnumMode)state.getValue(COLOR)).getID();
     }
 
-    protected BlockStateContainer createBlockState()
+    protected BlockState createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {COLOR});
+        return new BlockState(this, new IProperty[] {COLOR});
     }
     
     @Override

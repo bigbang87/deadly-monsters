@@ -16,9 +16,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.state.BlockStateContainer;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -31,13 +31,12 @@ import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.IStringSerializable;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -49,11 +48,11 @@ public class SoulEye extends Block {
 	public static final PropertyEnum MODE = PropertyEnum.create("mode", EnumMode.class);
 	
 	public SoulEye() {
-		super(Material.IRON);
+		super(Material.iron);
         setUnlocalizedName(MainMod.MODID + ".souleye");
         setRegistryName("souleye");
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
+        GameRegistry.registerBlock(this);
+        GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(3);
         this.setResistance(3);
@@ -148,12 +147,12 @@ public class SoulEye extends Block {
     
     private List<Item> createDropTable() {
     	List<Item> items = new ArrayList<Item>();
-    	items.add(Items.EMERALD);
-    	items.add(Items.GOLD_NUGGET);
-    	items.add(Items.GUNPOWDER);
-    	items.add(Items.REDSTONE);
-    	items.add(Items.IRON_INGOT);
-    	items.add(Items.QUARTZ);
+    	items.add(Items.emerald);
+    	items.add(Items.gold_nugget);
+    	items.add(Items.gunpowder);
+    	items.add(Items.redstone);
+    	items.add(Items.iron_ingot);
+    	items.add(Items.quartz);
     	return items;
     }
     
@@ -184,9 +183,9 @@ public class SoulEye extends Block {
         return ((EnumMode)state.getValue(MODE)).getID();
     }
 
-    protected BlockStateContainer createBlockState()
+    protected BlockState createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {MODE});
+        return new BlockState(this, new IProperty[] {MODE});
     }
 	
 	@Override

@@ -11,7 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,9 +20,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -31,11 +30,11 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class StrengthenedCobblestone extends Block {
 	public StrengthenedCobblestone() {
-		super(Material.IRON);
+		super(Material.iron);
         setUnlocalizedName(MainMod.MODID + ".strengthenedCobblestone");
         setRegistryName("strengthenedCobblestone");
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
+        GameRegistry.registerBlock(this);
+        GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(10);
         this.setResistance(25);
@@ -52,10 +51,10 @@ public class StrengthenedCobblestone extends Block {
 		return this;
 	}
 	
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
     	if (playerIn.isSneaking()) {
         	if (!worldIn.isRemote) {
-	        	worldIn.setBlockState(pos, Blocks.COBBLESTONE.getDefaultState());
+	        	worldIn.setBlockState(pos, Blocks.cobblestone.getDefaultState());
 	        	/*
 	        	ItemStack newItem = new ItemStack(ModItems.rebar, 1);
 	        	EntityItem item = new EntityItem(worldIn, playerIn.posX, playerIn.posY, playerIn.posZ, newItem);
@@ -65,7 +64,7 @@ public class StrengthenedCobblestone extends Block {
             return true;
         }
         else {
-            return super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
+            return super.onBlockActivated(worldIn, pos, state, playerIn, side, hitX, hitY, hitZ);
         }
     }
     

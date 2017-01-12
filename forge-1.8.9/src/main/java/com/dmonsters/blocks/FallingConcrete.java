@@ -9,19 +9,18 @@ import com.dmonsters.main.ItemBlockMeta;
 import com.dmonsters.main.MainMod;
 
 import net.minecraft.block.BlockFalling;
-import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
-import net.minecraft.block.state.BlockStateContainer;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -33,13 +32,11 @@ public class FallingConcrete extends BlockFalling implements IMetaBlockName {
 	public static final PropertyEnum<EnumDyeColor> COLOR = PropertyEnum.<EnumDyeColor>create("color", EnumDyeColor.class);
 	
 	public FallingConcrete() {
-		super(Material.SAND);
+		super(Material.sand);
         setUnlocalizedName(MainMod.MODID + ".fallingConcrete");
         setRegistryName("fallingConcrete");
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlockMeta(this), getRegistryName());
-        setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
-        this.setSoundType(SoundType.SAND);
+        GameRegistry.registerBlock(this);
+        GameRegistry.registerItem(new ItemBlockMeta(this), getRegistryName());
         this.setDefaultState(this.blockState.getBaseState().withProperty(COLOR, EnumDyeColor.GRAY));
 	}
 	
@@ -91,9 +88,9 @@ public class FallingConcrete extends BlockFalling implements IMetaBlockName {
         return ((EnumDyeColor)state.getValue(COLOR)).getMetadata();
     }
 
-    protected BlockStateContainer createBlockState()
+    protected BlockState createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {COLOR});
+        return new BlockState(this, new IProperty[] {COLOR});
     }
     
     @Override

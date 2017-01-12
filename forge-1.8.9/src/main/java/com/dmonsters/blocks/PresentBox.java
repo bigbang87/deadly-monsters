@@ -15,7 +15,7 @@ import com.dmonsters.main.ModSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -34,17 +34,11 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.text.Style;
-import net.minecraft.util.text.TextComponentTranslation;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -55,18 +49,18 @@ public class PresentBox extends Block {
     protected static final AxisAlignedBB AABB = new AxisAlignedBB(0.13, 0.0D, 0.13, 0.87, 0.75, 0.87);
 
 	public PresentBox() {
-		super(Material.CACTUS);
+		super(Material.cactus);
         setUnlocalizedName(MainMod.MODID + ".present_box");
         setRegistryName("present_box");
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
+        GameRegistry.registerBlock(this);
+        GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(1);
         this.setResistance(50);
 	}
 	
 	@Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, @Nullable ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
     	if (!worldIn.isRemote) {
     		Random rand = new Random();
     		float rndNum = rand.nextFloat();
@@ -93,16 +87,16 @@ public class PresentBox extends Block {
 	
 	private Item spawnRandomItem() {
 		List<Item> itemsList = new ArrayList<Item>();
-		itemsList.add(Items.APPLE);
-		itemsList.add(Items.GOLD_NUGGET);
-		itemsList.add(Items.LEATHER_HELMET);
-		itemsList.add(Items.FISH);
-		itemsList.add(Items.REDSTONE);
+		itemsList.add(Items.apple);
+		itemsList.add(Items.gold_nugget);
+		itemsList.add(Items.leather_helmet);
+		itemsList.add(Items.fish);
+		itemsList.add(Items.redstone);
 		itemsList.add(ModItems.mobSpawnerItem_present);
-		itemsList.add(Items.GUNPOWDER);
-		itemsList.add(Items.REDSTONE);
-		itemsList.add(Items.IRON_INGOT);
-		itemsList.add(Items.IRON_SWORD);
+		itemsList.add(Items.gunpowder);
+		itemsList.add(Items.redstone);
+		itemsList.add(Items.iron_ingot);
+		itemsList.add(Items.iron_sword);
 		Random rand = new Random();
 		int rndNum = rand.nextInt(itemsList.size());
 		return itemsList.get(rndNum);
@@ -121,13 +115,7 @@ public class PresentBox extends Block {
 		int rndNum = rand.nextInt(monstersList.size());
 		return monstersList.get(rndNum);
 	}
-
-    @Nullable
-    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, World worldIn, BlockPos pos)
-    {
-        return NULL_AABB;
-    }
-    
+	
     public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
     {
     	return AABB;

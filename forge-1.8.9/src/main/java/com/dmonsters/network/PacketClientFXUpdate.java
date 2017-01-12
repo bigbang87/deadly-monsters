@@ -9,12 +9,8 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.SoundCategory;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -92,7 +88,7 @@ public class PacketClientFXUpdate implements IMessage {
         private void SoulEye(PacketClientFXUpdate message, MessageContext ctx) {
         	World world = Minecraft.getMinecraft().theWorld;
         	BlockPos pos = message.blockPos;
-        	world.playSound(pos.getX(), pos.getY(), pos.getZ(), ModSounds.BLOCK_SOULEYE_KILL, SoundCategory.BLOCKS, 1, 1, false);
+        	world.playSound(pos.getX(), pos.getY(), pos.getZ(), "dmonsters:block.souleye.kill", 1, 1, false);
         	Random rnd = new Random();
         	for (int i = 0; i < 15; i++) {
 				double motionX = rnd.nextGaussian() * 0.001D;
@@ -115,13 +111,13 @@ public class PacketClientFXUpdate implements IMessage {
         private void Dump(PacketClientFXUpdate message, MessageContext ctx) {
         	World world = Minecraft.getMinecraft().theWorld;
         	BlockPos pos = message.blockPos;
-        	world.playSound(pos.getX(), pos.getY(), pos.getZ(), ModSounds.DUMP_MAKE, SoundCategory.BLOCKS, 1, 1, false);
+        	world.playSound(pos.getX(), pos.getY(), pos.getZ(), "dmonsters:block.dump.make", 1, 1, false);
         }
         
         private void WomanHeart(PacketClientFXUpdate message, MessageContext ctx) {
         	World world = Minecraft.getMinecraft().theWorld;
         	BlockPos pos = message.blockPos;
-        	world.playSound(pos.getX(), pos.getY(), pos.getZ(), ModSounds.MAIDEN_ATTACK, SoundCategory.BLOCKS, 0.25F, 1, false);
+        	world.playSound(pos.getX(), pos.getY(), pos.getZ(), "mob.maiden.attack", 0.25F, 1, false);
         	Random rnd = new Random();
         	for (int i = 0; i < 8; i++) {
 				double motionX = rnd.nextGaussian() * 0.001D;

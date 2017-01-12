@@ -11,21 +11,22 @@ import com.dmonsters.main.ModBlocks;
 import com.dmonsters.main.ModItems;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFence;
+import net.minecraft.block.BlockFenceGate;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
-import net.minecraft.block.state.BlockStateContainer;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
-import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.AxisAlignedBB;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -39,20 +40,13 @@ public class MeshFencePole extends Block {
     public static final PropertyBool EAST = PropertyBool.create("east");
     public static final PropertyBool SOUTH = PropertyBool.create("south");
     public static final PropertyBool WEST = PropertyBool.create("west");
-    
-    protected static final AxisAlignedBB[] BOUNDING_BOXES = new AxisAlignedBB[] {new AxisAlignedBB(0.375D, 0.0D, 0.375D, 0.625D, 1.0D, 0.625D), new AxisAlignedBB(0.375D, 0.0D, 0.375D, 0.625D, 1.0D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.375D, 0.625D, 1.0D, 0.625D), new AxisAlignedBB(0.0D, 0.0D, 0.375D, 0.625D, 1.0D, 1.0D), new AxisAlignedBB(0.375D, 0.0D, 0.0D, 0.625D, 1.0D, 0.625D), new AxisAlignedBB(0.375D, 0.0D, 0.0D, 0.625D, 1.0D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.625D, 1.0D, 0.625D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 0.625D, 1.0D, 1.0D), new AxisAlignedBB(0.375D, 0.0D, 0.375D, 1.0D, 1.0D, 0.625D), new AxisAlignedBB(0.375D, 0.0D, 0.375D, 1.0D, 1.0D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.375D, 1.0D, 1.0D, 0.625D), new AxisAlignedBB(0.0D, 0.0D, 0.375D, 1.0D, 1.0D, 1.0D), new AxisAlignedBB(0.375D, 0.0D, 0.0D, 1.0D, 1.0D, 0.625D), new AxisAlignedBB(0.375D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 0.625D), new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 1.0D, 1.0D)};
-    public static final AxisAlignedBB PILLAR_AABB = new AxisAlignedBB(0.375D, 0.0D, 0.375D, 0.625D, 1.5D, 0.625D);
-    public static final AxisAlignedBB SOUTH_AABB = new AxisAlignedBB(0.375D, 0.0D, 0.625D, 0.625D, 1.5D, 1.0D);
-    public static final AxisAlignedBB WEST_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.375D, 0.375D, 1.5D, 0.625D);
-    public static final AxisAlignedBB NORTH_AABB = new AxisAlignedBB(0.375D, 0.0D, 0.0D, 0.625D, 1.5D, 0.375D);
-    public static final AxisAlignedBB EAST_AABB = new AxisAlignedBB(0.625D, 0.0D, 0.375D, 1.0D, 1.5D, 0.625D);
 
 	public MeshFencePole() {
-		super(Material.ROCK);
+		super(Material.rock);
         setUnlocalizedName(MainMod.MODID + ".meshFencePole");
         setRegistryName("meshFencePole");
-        GameRegistry.register(this);
-        GameRegistry.register(new ItemBlock(this), getRegistryName());
+        GameRegistry.registerBlock(this);
+        GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(5);
         this.setResistance(5);
@@ -64,63 +58,106 @@ public class MeshFencePole extends Block {
         ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
     
-    public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn)
+    public void addCollisionBoxesToList(World worldIn, BlockPos pos, IBlockState state, AxisAlignedBB mask, List<AxisAlignedBB> list, Entity collidingEntity)
     {
-        state = state.getActualState(worldIn, pos);
-        addCollisionBoxToList(pos, entityBox, collidingBoxes, PILLAR_AABB);
+        boolean flag = this.canConnectTo(worldIn, pos.north());
+        boolean flag1 = this.canConnectTo(worldIn, pos.south());
+        boolean flag2 = this.canConnectTo(worldIn, pos.west());
+        boolean flag3 = this.canConnectTo(worldIn, pos.east());
+        float f = 0.375F;
+        float f1 = 0.625F;
+        float f2 = 0.375F;
+        float f3 = 0.625F;
 
-        if (((Boolean)state.getValue(NORTH)).booleanValue())
+        if (flag)
         {
-            addCollisionBoxToList(pos, entityBox, collidingBoxes, NORTH_AABB);
+            f2 = 0.0F;
         }
 
-        if (((Boolean)state.getValue(EAST)).booleanValue())
+        if (flag1)
         {
-            addCollisionBoxToList(pos, entityBox, collidingBoxes, EAST_AABB);
+            f3 = 1.0F;
         }
 
-        if (((Boolean)state.getValue(SOUTH)).booleanValue())
+        if (flag || flag1)
         {
-            addCollisionBoxToList(pos, entityBox, collidingBoxes, SOUTH_AABB);
+            this.setBlockBounds(f, 0.0F, f2, f1, 1.5F, f3);
+            super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
         }
 
-        if (((Boolean)state.getValue(WEST)).booleanValue())
+        f2 = 0.375F;
+        f3 = 0.625F;
+
+        if (flag2)
         {
-            addCollisionBoxToList(pos, entityBox, collidingBoxes, WEST_AABB);
+            f = 0.0F;
         }
+
+        if (flag3)
+        {
+            f1 = 1.0F;
+        }
+
+        if (flag2 || flag3 || !flag && !flag1)
+        {
+            this.setBlockBounds(f, 0.0F, f2, f1, 1.5F, f3);
+            super.addCollisionBoxesToList(worldIn, pos, state, mask, list, collidingEntity);
+        }
+
+        if (flag)
+        {
+            f2 = 0.0F;
+        }
+
+        if (flag1)
+        {
+            f3 = 1.0F;
+        }
+
+        this.setBlockBounds(f, 0.0F, f2, f1, 1.0F, f3);
     }
 
-    public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos)
+    public void setBlockBoundsBasedOnState(IBlockAccess worldIn, BlockPos pos)
     {
-        state = this.getActualState(state, source, pos);
-        return BOUNDING_BOXES[getBoundingBoxIdx(state)];
+        boolean flag = this.canConnectTo(worldIn, pos.north());
+        boolean flag1 = this.canConnectTo(worldIn, pos.south());
+        boolean flag2 = this.canConnectTo(worldIn, pos.west());
+        boolean flag3 = this.canConnectTo(worldIn, pos.east());
+        float f = 0.375F;
+        float f1 = 0.625F;
+        float f2 = 0.375F;
+        float f3 = 0.625F;
+
+        if (flag)
+        {
+            f2 = 0.0F;
+        }
+
+        if (flag1)
+        {
+            f3 = 1.0F;
+        }
+
+        if (flag2)
+        {
+            f = 0.0F;
+        }
+
+        if (flag3)
+        {
+            f1 = 1.0F;
+        }
+
+        this.setBlockBounds(f, 0.0F, f2, f1, 1.0F, f3);
     }
-
-    private static int getBoundingBoxIdx(IBlockState state)
+    
+    public boolean canConnectTo(IBlockAccess worldIn, BlockPos pos)
     {
-        int i = 0;
-
-        if (((Boolean)state.getValue(NORTH)).booleanValue())
-        {
-            i |= 1 << EnumFacing.NORTH.getHorizontalIndex();
+        Block block = worldIn.getBlockState(pos).getBlock();
+        if (block instanceof MeshFence || block instanceof MeshFencePole) {
+        	return true;
         }
-
-        if (((Boolean)state.getValue(EAST)).booleanValue())
-        {
-            i |= 1 << EnumFacing.EAST.getHorizontalIndex();
-        }
-
-        if (((Boolean)state.getValue(SOUTH)).booleanValue())
-        {
-            i |= 1 << EnumFacing.SOUTH.getHorizontalIndex();
-        }
-
-        if (((Boolean)state.getValue(WEST)).booleanValue())
-        {
-            i |= 1 << EnumFacing.WEST.getHorizontalIndex();
-        }
-
-        return i;
+        return false;
     }
     
     public boolean isOpaqueCube(IBlockState state)
@@ -163,9 +200,9 @@ public class MeshFencePole extends Block {
     	return state.withProperty(NORTH, north).withProperty(EAST, east).withProperty(WEST, west).withProperty(SOUTH, south);
     }
     
-    protected BlockStateContainer createBlockState()
+    protected BlockState createBlockState()
     {
-        return new BlockStateContainer(this, new IProperty[] {NORTH, EAST, WEST, SOUTH});
+        return new BlockState(this, new IProperty[] {NORTH, EAST, WEST, SOUTH});
     }
     
     public int getMetaFromState(IBlockState state)
