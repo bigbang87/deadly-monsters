@@ -3,7 +3,6 @@
         "particle": "dmonsters:blocks/dump",
         "0": "dmonsters:blocks/dump"
     },
-	"parent": "dmonsters:block/dump_all",
     "elements": [
         {
             "name": "Cube",

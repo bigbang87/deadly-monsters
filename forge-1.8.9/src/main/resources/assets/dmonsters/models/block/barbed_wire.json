@@ -3,7 +3,6 @@
         "0": "dmonsters:blocks/barbedWire",
 		"particle": "dmonsters:blocks/barbedWire"
     },
-	"parent": "block/block",
     "elements": [
         {
             "name": "Part_00",

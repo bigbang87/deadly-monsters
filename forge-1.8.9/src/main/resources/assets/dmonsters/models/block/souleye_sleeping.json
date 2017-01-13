@@ -3,7 +3,6 @@
         "0": "dmonsters:blocks/souleye_sleeping",
 		"particle": "dmonsters:blocks/souleye_sleeping"
     },
-	"parent": "block/block",
     "elements": [
         {
             "name": "found",

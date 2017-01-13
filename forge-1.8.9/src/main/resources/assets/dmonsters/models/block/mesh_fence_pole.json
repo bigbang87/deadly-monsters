@@ -3,7 +3,6 @@
         "0": "dmonsters:blocks/meshFencePole",
 		"particle": "dmonsters:blocks/meshFencePole"		
     },
-	"parent": "block/block",
     "elements": [
         {
             "name": "Element",
