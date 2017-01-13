@@ -10,8 +10,6 @@ import com.dmonsters.entity.EntityZombieChicken;
 import com.dmonsters.main.MainMod;
 import com.dmonsters.main.ModBlocks;
 import com.dmonsters.main.ModItems;
-import com.dmonsters.main.ModSounds;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -53,7 +51,7 @@ public class PresentBox extends Block {
         setUnlocalizedName(MainMod.MODID + ".present_box");
         setRegistryName("present_box");
         GameRegistry.registerBlock(this);
-        GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
+        //GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(1);
         this.setResistance(50);

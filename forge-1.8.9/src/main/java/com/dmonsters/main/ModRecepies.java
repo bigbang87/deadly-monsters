@@ -21,7 +21,7 @@ public class ModRecepies {
 		GameRegistry.addRecipe(item, new Object[] {
 				"IRI",
 				"IRI",
-				'I', Items.IRON_INGOT,
+				'I', Items.iron_ingot,
 				'R', ModItems.rebar
 		});
 		//mesh fence pole
@@ -30,7 +30,7 @@ public class ModRecepies {
 				"IRI",
 				"IRI",
 				"IRI",
-				'I', Items.IRON_INGOT,
+				'I', Items.iron_ingot,
 				'R', ModItems.rebar
 		});	
 	}
@@ -42,7 +42,7 @@ public class ModRecepies {
 		GameRegistry.addRecipe(item, new Object[] {
 				"I",
 				"I",
-				'I', Items.IRON_INGOT
+				'I', Items.iron_ingot
 		});		
 		//purge pill
 		item = new ItemStack(ModItems.purgePill, 1);
@@ -50,9 +50,9 @@ public class ModRecepies {
 				"W",
 				"C",
 				"P",
-				'W', Items.WHEAT,
-				'C', new ItemStack(Items.DYE ,1 ,2),
-				'P', Items.PAPER,
+				'W', Items.wheat,
+				'C', new ItemStack(Items.dye ,1 ,2),
+				'P', Items.paper,
 		});
 		//souleye
 		item = new ItemStack(ModBlocks.souleye, 1);
@@ -74,13 +74,13 @@ public class ModRecepies {
 				" F ",
 				" I ",
 				" F ",
-				'I', Blocks.IRON_BARS,
-				'F', Items.FLINT
+				'I', Blocks.iron_bars,
+				'F', Items.flint
 		});
 		GameRegistry.addRecipe(barbedWire, new Object[] {
 				"FIF",
-				'I', Blocks.IRON_BARS,
-				'F', Items.FLINT
+				'I', Blocks.iron_bars,
+				'F', Items.flint
 		});
 	}
 	
@@ -92,9 +92,9 @@ public class ModRecepies {
 				"SSS",
 				"WLW",
 				"SSS",
-				'S', Blocks.SAND,
-				'L', Items.SLIME_BALL,
-				'W', Items.WATER_BUCKET
+				'S', Blocks.sand,
+				'L', Items.slime_ball,
+				'W', Items.water_bucket
 		});
 		//default alt
 		rawConcrete = new ItemStack(ModBlocks.rawConcrete, 64, 7);
@@ -102,9 +102,9 @@ public class ModRecepies {
 				"SWS",
 				"SLS",
 				"SWS",
-				'S', Blocks.SAND,
-				'L', Items.SLIME_BALL,
-				'W', Items.WATER_BUCKET
+				'S', Blocks.sand,
+				'L', Items.slime_ball,
+				'W', Items.water_bucket
 		});
 		//white
 		rawConcrete = new ItemStack(ModBlocks.rawConcrete, 8, 0);
@@ -112,7 +112,7 @@ public class ModRecepies {
 				"CCC",
 				"CDC",
 				"CCC",
-				'D', new ItemStack(Items.DYE ,1 ,15),
+				'D', new ItemStack(Items.dye ,1 ,15),
 				'C', ModBlocks.rawConcrete
 		});
 		//orange
@@ -121,7 +121,7 @@ public class ModRecepies {
 				"CCC",
 				"CDC",
 				"CCC",
-				'D', new ItemStack(Items.DYE ,1 ,14),
+				'D', new ItemStack(Items.dye ,1 ,14),
 				'C', ModBlocks.rawConcrete
 		});
 		//magenta
@@ -130,7 +130,7 @@ public class ModRecepies {
 				"CCC",
 				"CDC",
 				"CCC",
-				'D', new ItemStack(Items.DYE ,1 ,13),
+				'D', new ItemStack(Items.dye ,1 ,13),
 				'C', ModBlocks.rawConcrete
 		});
 		//light blue
@@ -139,7 +139,7 @@ public class ModRecepies {
 				"CCC",
 				"CDC",
 				"CCC",
-				'D', new ItemStack(Items.DYE ,1 ,12),
+				'D', new ItemStack(Items.dye ,1 ,12),
 				'C', ModBlocks.rawConcrete
 		});
 		//yellow
@@ -148,7 +148,7 @@ public class ModRecepies {
 				"CCC",
 				"CDC",
 				"CCC",
-				'D', new ItemStack(Items.DYE ,1 ,11),
+				'D', new ItemStack(Items.dye ,1 ,11),
 				'C', ModBlocks.rawConcrete
 		});
 		//lime
@@ -157,7 +157,7 @@ public class ModRecepies {
 				"CCC",
 				"CDC",
 				"CCC",
-				'D', new ItemStack(Items.DYE ,1 ,10),
+				'D', new ItemStack(Items.dye ,1 ,10),
 				'C', ModBlocks.rawConcrete
 		});
 		//pink
@@ -166,7 +166,7 @@ public class ModRecepies {
 				"CCC",
 				"CDC",
 				"CCC",
-				'D', new ItemStack(Items.DYE ,1 ,9),
+				'D', new ItemStack(Items.dye ,1 ,9),
 				'C', ModBlocks.rawConcrete
 		});
 		//gray
@@ -175,7 +175,7 @@ public class ModRecepies {
 				"CCC",
 				"CDC",
 				"CCC",
-				'D', new ItemStack(Items.DYE ,1 ,8),
+				'D', new ItemStack(Items.dye ,1 ,8),
 				'C', ModBlocks.rawConcrete
 		});
 		//silver
@@ -184,7 +184,7 @@ public class ModRecepies {
 				"CCC",
 				"CDC",
 				"CCC",
-				'D', new ItemStack(Items.DYE ,1 ,7),
+				'D', new ItemStack(Items.dye ,1 ,7),
 				'C', ModBlocks.rawConcrete
 		});
 		//cyan
@@ -193,7 +193,7 @@ public class ModRecepies {
 				"CCC",
 				"CDC",
 				"CCC",
-				'D', new ItemStack(Items.DYE ,1 ,6),
+				'D', new ItemStack(Items.dye ,1 ,6),
 				'C', ModBlocks.rawConcrete
 		});
 		//purple
@@ -202,7 +202,7 @@ public class ModRecepies {
 				"CCC",
 				"CDC",
 				"CCC",
-				'D', new ItemStack(Items.DYE ,1 ,5),
+				'D', new ItemStack(Items.dye ,1 ,5),
 				'C', ModBlocks.rawConcrete
 		});
 		//blue
@@ -211,7 +211,7 @@ public class ModRecepies {
 				"CCC",
 				"CDC",
 				"CCC",
-				'D', new ItemStack(Items.DYE ,1 ,4),
+				'D', new ItemStack(Items.dye ,1 ,4),
 				'C', ModBlocks.rawConcrete
 		});
 		//brown
@@ -220,7 +220,7 @@ public class ModRecepies {
 				"CCC",
 				"CDC",
 				"CCC",
-				'D', new ItemStack(Items.DYE ,1 ,3),
+				'D', new ItemStack(Items.dye ,1 ,3),
 				'C', ModBlocks.rawConcrete
 		});
 		//green
@@ -229,7 +229,7 @@ public class ModRecepies {
 				"CCC",
 				"CDC",
 				"CCC",
-				'D', new ItemStack(Items.DYE ,1 ,2),
+				'D', new ItemStack(Items.dye ,1 ,2),
 				'C', ModBlocks.rawConcrete
 		});
 		//red
@@ -238,7 +238,7 @@ public class ModRecepies {
 				"CCC",
 				"CDC",
 				"CCC",
-				'D', new ItemStack(Items.DYE ,1 ,1),
+				'D', new ItemStack(Items.dye ,1 ,1),
 				'C', ModBlocks.rawConcrete
 		});
 		//black
@@ -247,7 +247,7 @@ public class ModRecepies {
 				"CCC",
 				"CDC",
 				"CCC",
-				'D', new ItemStack(Items.DYE ,1 ,0),
+				'D', new ItemStack(Items.dye ,1 ,0),
 				'C', ModBlocks.rawConcrete
 		});
 	}

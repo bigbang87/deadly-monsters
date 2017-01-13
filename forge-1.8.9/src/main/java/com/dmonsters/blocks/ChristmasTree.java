@@ -40,7 +40,7 @@ public class ChristmasTree extends Block {
         setUnlocalizedName(MainMod.MODID + ".christmas_tree");
         setRegistryName("christmas_tree");
         GameRegistry.registerBlock(this);
-        GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
+        //GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setTickRandomly(true);
         this.setHardness(2);

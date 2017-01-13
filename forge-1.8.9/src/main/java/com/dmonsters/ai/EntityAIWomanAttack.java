@@ -1,8 +1,6 @@
 package com.dmonsters.ai;
 
 import com.dmonsters.entity.EntityWoman;
-import com.dmonsters.main.ModSounds;
-
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 
 public class EntityAIWomanAttack extends EntityAIAttackOnCollide

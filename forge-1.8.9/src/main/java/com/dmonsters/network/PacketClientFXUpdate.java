@@ -3,8 +3,6 @@ package com.dmonsters.network;
 
 import java.util.Random;
 
-import com.dmonsters.main.ModSounds;
-
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;

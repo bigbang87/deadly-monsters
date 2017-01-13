@@ -7,7 +7,7 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.MathHelper;
 
 public class ModelFreezer extends ModelBase
 {
@@ -108,11 +108,11 @@ public class ModelFreezer extends ModelBase
   
   public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
   {   
-	  boolean isAttaking = entityIn instanceof EntityFreezer && ((EntityFreezer)entityIn).getAttaking();
+	  boolean isAttaking = entityIn instanceof EntityFreezer;
       float bottomRotSpeed = -.005F;
 	  if (isAttaking) {
 		  super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
-		  boolean flag = entityIn instanceof EntityFreezer && ((EntityFreezer)entityIn).isArmsRaised();
+		  boolean flag = entityIn instanceof EntityFreezer;
 
 	      this.head.rotateAngleY = netHeadYaw * 0.017453292F;
 	      this.head.rotateAngleX = headPitch * 0.017453292F;

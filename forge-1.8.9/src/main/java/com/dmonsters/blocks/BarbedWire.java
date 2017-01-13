@@ -39,7 +39,7 @@ public class BarbedWire extends Block {
         setUnlocalizedName(MainMod.MODID + ".barbedWire");
         setRegistryName("barbedWire");
         GameRegistry.registerBlock(this);
-        GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
+        //GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(1);
         this.setResistance(1);

@@ -46,7 +46,7 @@ public class MeshFence extends Block {
         setUnlocalizedName(MainMod.MODID + ".meshFence");
         setRegistryName("meshFence");
         GameRegistry.registerBlock(this);
-        GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
+        //GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(5);
         this.setResistance(5);

@@ -32,7 +32,7 @@ public class StrengthenedStone extends Block {
         setUnlocalizedName(MainMod.MODID + ".strengthenedStone");
         setRegistryName("strengthenedStone");
         GameRegistry.registerBlock(this);
-        GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
+        //GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(10);
         this.setResistance(25);

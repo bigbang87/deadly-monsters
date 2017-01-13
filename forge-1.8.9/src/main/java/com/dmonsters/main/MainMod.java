@@ -32,7 +32,6 @@ public class MainMod {
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         logger = event.getModLog();
-        ModSounds.init();
         proxy.preInit(event);
     }
 

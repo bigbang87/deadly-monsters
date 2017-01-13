@@ -12,8 +12,6 @@ import com.dmonsters.ai.EntityAIPresent;
 import com.dmonsters.main.MainMod;
 import com.dmonsters.main.ModBlocks;
 import com.dmonsters.main.ModConfig;
-import com.dmonsters.main.ModSounds;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;

@@ -52,7 +52,7 @@ public class SoulEye extends Block {
         setUnlocalizedName(MainMod.MODID + ".souleye");
         setRegistryName("souleye");
         GameRegistry.registerBlock(this);
-        GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
+        //GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(3);
         this.setResistance(3);

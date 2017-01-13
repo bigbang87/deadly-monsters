@@ -3,9 +3,9 @@ package com.dmonsters.render;
 import com.dmonsters.main.MainMod;
 
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.client.renderer.RenderItem;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.Entity;
@@ -40,21 +40,9 @@ public class RenderLuckyEgg<T extends Entity> extends Render<T>
         GlStateManager.rotate(-this.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
         GlStateManager.rotate((float)(this.renderManager.options.thirdPersonView == 2 ? -1 : 1) * this.renderManager.playerViewX, 1.0F, 0.0F, 0.0F);
         GlStateManager.rotate(180.0F, 0.0F, 1.0F, 0.0F);
-        this.bindTexture(TextureMap.LOCATION_BLOCKS_TEXTURE);
-
-        if (this.renderOutlines)
-        {
-            GlStateManager.enableColorMaterial();
-            GlStateManager.enableOutlineMode(this.getTeamColor(entity));
-        }
+        this.bindTexture(TextureMap.locationBlocksTexture);
 
         this.itemRenderer.renderItem(this.getStackToRender(entity), ItemCameraTransforms.TransformType.GROUND);
-
-        if (this.renderOutlines)
-        {
-            GlStateManager.disableOutlineMode();
-            GlStateManager.disableColorMaterial();
-        }
 
         GlStateManager.disableRescaleNormal();
         GlStateManager.popMatrix();

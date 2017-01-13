@@ -36,7 +36,7 @@ public class FallingConcrete extends BlockFalling implements IMetaBlockName {
         setUnlocalizedName(MainMod.MODID + ".fallingConcrete");
         setRegistryName("fallingConcrete");
         GameRegistry.registerBlock(this);
-        GameRegistry.registerItem(new ItemBlockMeta(this), getRegistryName());
+        //GameRegistry.registerItem(new ItemBlockMeta(this), getRegistryName());
         this.setDefaultState(this.blockState.getBaseState().withProperty(COLOR, EnumDyeColor.GRAY));
 	}
 	

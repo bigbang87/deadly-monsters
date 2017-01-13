@@ -35,7 +35,7 @@ public class Concrete extends Block implements IMetaBlockName {
         setUnlocalizedName(MainMod.MODID + ".concrete");
         setRegistryName("concrete");
         GameRegistry.registerBlock(this);
-        GameRegistry.registerItem(new ItemBlockMeta(this), getRegistryName());
+       // GameRegistry.registerItem(new ItemBlockMeta(this), getRegistryName());
         this.setHardness(5);
         this.setResistance(50);
         this.setDefaultState(this.blockState.getBaseState().withProperty(COLOR, EnumDyeColor.GRAY));

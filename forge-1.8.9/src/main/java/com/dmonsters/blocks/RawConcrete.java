@@ -48,7 +48,7 @@ public class RawConcrete extends Block implements IMetaBlockName {
         setUnlocalizedName(MainMod.MODID + ".rawConcrete");
         setRegistryName("rawConcrete");
         GameRegistry.registerBlock(this);
-        GameRegistry.registerItem(new ItemBlockMeta(this), getRegistryName());
+        //GameRegistry.registerItem(new ItemBlockMeta(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setTickRandomly(true);
         this.setDefaultState(this.blockState.getBaseState().withProperty(COLOR, EnumDyeColor.GRAY));

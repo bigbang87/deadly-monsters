@@ -3,8 +3,6 @@ package com.dmonsters.ai;
 import java.util.Random;
 
 import com.dmonsters.entity.EntityMutantSteve;
-import com.dmonsters.main.ModSounds;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;

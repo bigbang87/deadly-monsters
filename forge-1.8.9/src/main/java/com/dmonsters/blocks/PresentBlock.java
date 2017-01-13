@@ -43,7 +43,7 @@ public class PresentBlock extends Block implements IMetaBlockName {
         setUnlocalizedName(MainMod.MODID + ".presentblock");
         setRegistryName("presentblock");
         GameRegistry.registerBlock(this);
-        GameRegistry.registerItem(new ItemBlockMeta(this), getRegistryName());
+        //GameRegistry.registerItem(new ItemBlockMeta(this), getRegistryName());
         this.setHardness(3);
         this.setResistance(50);
         this.setTickRandomly(true);

@@ -32,8 +32,8 @@ public class RenderFreezer extends RenderLiving<EntityFreezer> {
     @Override
     @Nonnull
     protected ResourceLocation getEntityTexture(@Nonnull EntityFreezer entity) {
-    	if (entity.getAttaking())
-    		return mobTextureAttaking;
+    	//if (entity.getAttaking())
+    	//	return mobTextureAttaking;
         return mobTexture;
     }
 
