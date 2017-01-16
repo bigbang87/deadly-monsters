@@ -1,17 +1,20 @@
 {
-    "multipart": [
-	    {   "apply": { "model": "dmonsters:mesh_fence_pole" }},
-        {   "when": { "north": "true" },
-            "apply": { "model": "dmonsters:mesh_fence", "uvlock": false }
-        },
-        {   "when": { "east": "true" },
-            "apply": { "model": "dmonsters:mesh_fence", "y": 90, "uvlock": false }
-        },
-        {   "when": { "south": "true" },
-            "apply": { "model": "dmonsters:mesh_fence", "y": 180, "uvlock": false }
-        },
-        {   "when": { "west": "true" },
-            "apply": { "model": "dmonsters:mesh_fence", "y": 270, "uvlock": false }
-        }
-    ]
+    "variants": {
+        "east=false,north=false,south=false,west=false": { "model": "dmonsters:fence_pole" },
+        "east=false,north=true,south=false,west=false": { "model": "dmonsters:fence_pole" },
+        "east=true,north=false,south=false,west=false": { "model": "dmonsters:fence_pole" },
+        "east=false,north=false,south=true,west=false": { "model": "dmonsters:fence_pole" },
+        "east=false,north=false,south=false,west=true": { "model": "dmonsters:fence_pole" },
+        "east=true,north=true,south=false,west=false": { "model": "dmonsters:fence_pole" },
+        "east=true,north=false,south=true,west=false": { "model": "dmonsters:fence_pole" },
+        "east=false,north=false,south=true,west=true": { "model": "dmonsters:fence_pole" },
+        "east=false,north=true,south=false,west=true": { "model": "dmonsters:fence_pole" },
+        "east=false,north=true,south=true,west=false": { "model": "dmonsters:fence_pole" },
+        "east=true,north=false,south=false,west=true": { "model": "dmonsters:fence_pole" },
+        "east=true,north=true,south=true,west=false": { "model": "dmonsters:fence_pole" },
+        "east=true,north=false,south=true,west=true": { "model": "dmonsters:fence_pole" },
+        "east=false,north=true,south=true,west=true": { "model": "dmonsters:fence_pole" },
+        "east=true,north=true,south=false,west=true": { "model": "dmonsters:fence_pole" },
+        "east=true,north=true,south=true,west=true": { "model": "dmonsters:fence_pole" }
+    }
 }

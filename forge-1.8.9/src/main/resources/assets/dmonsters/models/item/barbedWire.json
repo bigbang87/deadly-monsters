@@ -6,11 +6,6 @@
             "translation": [ 0, 1.5, -2.75 ],
             "scale": [ 0.375, 0.375, 0.375 ]
         },
-        "gui": {
-            "rotation": [ 45, 30, 0 ],
-            "translation": [ 0, 0, 0],
-            "scale":[ 0.6, 0.6, 0.6 ]
-        },
         "fixed": {
             "rotation": [ 0, 90, 0 ],
             "translation": [ 0, 0, 0],
