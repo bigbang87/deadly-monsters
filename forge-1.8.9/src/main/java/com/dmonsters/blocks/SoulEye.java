@@ -163,12 +163,14 @@ public class SoulEye extends Block {
     	return items.get(randomItem);
     }
 	
-    public boolean isOpaqueCube(IBlockState state)
+    @Override
+    public boolean isOpaqueCube()
     {
         return false;
     }
 
-    public boolean isFullCube(IBlockState state)
+    @Override
+    public boolean isFullCube()
     {
         return false;
     }

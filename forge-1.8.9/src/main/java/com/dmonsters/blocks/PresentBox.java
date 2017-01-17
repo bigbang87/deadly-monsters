@@ -51,7 +51,6 @@ public class PresentBox extends Block {
         setUnlocalizedName(MainMod.MODID + ".present_box");
         setRegistryName("present_box");
         GameRegistry.registerBlock(this);
-        //GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(1);
         this.setResistance(50);
@@ -119,12 +118,14 @@ public class PresentBox extends Block {
     	return AABB;
     }
     
-    public boolean isOpaqueCube(IBlockState state)
+    @Override
+    public boolean isOpaqueCube()
     {
         return false;
     }
 
-    public boolean isFullCube(IBlockState state)
+    @Override
+    public boolean isFullCube()
     {
         return true;
     }

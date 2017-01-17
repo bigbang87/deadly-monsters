@@ -298,13 +298,15 @@ public class Dump extends Block implements IMetaBlockName {
         IBlockState iblockstate = worldIn.getBlockState(pos);
         return iblockstate.getBlock() == this && saplingType == type;
     }
-	
-    public boolean isOpaqueCube(IBlockState state)
+    
+    @Override
+    public boolean isOpaqueCube()
     {
         return false;
     }
-
-    public boolean isFullCube(IBlockState state)
+    
+    @Override
+    public boolean isFullCube()
     {
         return false;
     }

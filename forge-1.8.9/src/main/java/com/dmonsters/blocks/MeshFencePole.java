@@ -46,7 +46,6 @@ public class MeshFencePole extends Block {
         setUnlocalizedName(MainMod.MODID + ".meshFencePole");
         setRegistryName("meshFencePole");
         GameRegistry.registerBlock(this);
-        //GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(5);
         this.setResistance(5);
@@ -160,12 +159,14 @@ public class MeshFencePole extends Block {
         return false;
     }
     
-    public boolean isOpaqueCube(IBlockState state)
+    @Override
+    public boolean isOpaqueCube()
     {
         return false;
     }
 
-    public boolean isFullCube(IBlockState state)
+    @Override
+    public boolean isFullCube()
     {
         return false;
     }
