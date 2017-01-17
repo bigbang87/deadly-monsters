@@ -108,6 +108,7 @@ public class RawConcrete extends Block implements IMetaBlockName {
     	}
     }
 	
+    @Override
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
     	Random random = new Random();
     	float rndNum = random.nextFloat();
@@ -116,7 +117,8 @@ public class RawConcrete extends Block implements IMetaBlockName {
     	}
     }
     
-    public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, IBlockState state, Entity entityIn)
+    @Override
+    public void onEntityCollidedWithBlock(World worldIn, BlockPos pos, Entity entityIn)
     {
     	worldIn.destroyBlock(pos, false);
     }

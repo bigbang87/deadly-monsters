@@ -87,8 +87,9 @@ public class Dump extends Block implements IMetaBlockName {
 		return this;
 	}
 	
+	@Override
     @SideOnly(Side.CLIENT)
-    public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
+    public void randomDisplayTick(World worldIn, BlockPos pos, IBlockState stateIn, Random rand) {
 		for (int i = 0; i < 1; i++) {
 			double motionY = Math.abs(rand.nextGaussian() * 0.02D);
 			float randX = rand.nextFloat();

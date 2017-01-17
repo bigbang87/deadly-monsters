@@ -78,6 +78,7 @@ public class EntityClimber extends EntityMob
     protected void entityInit()
     {
         super.entityInit();
+        this.dataWatcher.addObject(16, new Byte((byte)0));
     }
 
     /**
@@ -184,6 +185,7 @@ public class EntityClimber extends EntityMob
      */
     public boolean isBesideClimbableBlock()
     {
+    	System.out.println(this.dataWatcher.getWatchableObjectByte(16));
         return (this.dataWatcher.getWatchableObjectByte(16) & 1) != 0;
     }
 

@@ -52,7 +52,6 @@ public class SoulEye extends Block {
         setUnlocalizedName(MainMod.MODID + ".souleye");
         setRegistryName("souleye");
         GameRegistry.registerBlock(this);
-        //GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(3);
         this.setResistance(3);
@@ -71,9 +70,10 @@ public class SoulEye extends Block {
 		return this;
 	}
 	
+	@Override
     @SideOnly(Side.CLIENT)
-    public void randomDisplayTick(IBlockState stateIn, World worldIn, BlockPos pos, Random rand) {
-    	int meta = ((EnumMode)stateIn.getValue(MODE)).getID();
+    public void randomDisplayTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+    	int meta = ((EnumMode)state.getValue(MODE)).getID();
     	EnumMode mode = EnumMode.getStateFromMeta(meta);
     	if (mode != EnumMode.AWAKE)
     		return;
@@ -99,6 +99,7 @@ public class SoulEye extends Block {
     	}
     }
 	
+    @Override
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
     	if (!(state.getBlock() instanceof SoulEye))
     		return;
