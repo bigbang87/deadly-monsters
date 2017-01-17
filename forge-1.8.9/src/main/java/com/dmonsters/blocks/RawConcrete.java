@@ -47,8 +47,6 @@ public class RawConcrete extends Block implements IMetaBlockName {
 		super(Material.sand);
         setUnlocalizedName(MainMod.MODID + ".rawConcrete");
         setRegistryName("rawConcrete");
-        GameRegistry.registerBlock(this);
-        //GameRegistry.registerItem(new ItemBlockMeta(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setTickRandomly(true);
         this.setDefaultState(this.blockState.getBaseState().withProperty(COLOR, EnumDyeColor.GRAY));
@@ -56,7 +54,6 @@ public class RawConcrete extends Block implements IMetaBlockName {
 	
     @SideOnly(Side.CLIENT)
     public void initModel() {
-        //ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     	Item blockItem = Item.getItemFromBlock(this);
     	List<ItemStack> subItems = new ArrayList<ItemStack>();
     	this.getSubBlocks(blockItem, null, subItems);
@@ -72,6 +69,7 @@ public class RawConcrete extends Block implements IMetaBlockName {
 		return this;
 	}
 	
+	@Override
     public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer)
     {
     	if (!worldIn.isRemote) {
@@ -98,7 +96,8 @@ public class RawConcrete extends Block implements IMetaBlockName {
         return RAW_CONCRETE_COLLISION_AABB.offset(pos.getX(), pos.getY(), pos.getZ());
     }
     
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn)
+    @Override
+    public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock)
     {
     	BlockPos blockUnderPos = new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ());
     	IBlockState blockUnder = worldIn.getBlockState(blockUnderPos);

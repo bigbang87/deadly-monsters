@@ -67,7 +67,8 @@ public class BarbedWire extends Block {
     	return Blocks.air.getDefaultState();
     }
     
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn)
+    @Override
+    public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock)
     {
     	BlockPos blockUnderPos = new BlockPos(pos.getX(), pos.getY() - 1, pos.getZ());
     	IBlockState blockUnder = worldIn.getBlockState(blockUnderPos);

@@ -27,6 +27,7 @@ import net.minecraft.item.ItemBlock;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
@@ -46,7 +47,6 @@ public class MeshFence extends Block {
         setUnlocalizedName(MainMod.MODID + ".meshFence");
         setRegistryName("meshFence");
         GameRegistry.registerBlock(this);
-        //GameRegistry.registerItem(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(5);
         this.setResistance(5);
@@ -109,7 +109,8 @@ public class MeshFence extends Block {
     	return Blocks.air.getDefaultState();
     }
     
-    public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
+    @Override
+    public void onNeighborBlockChange(World worldIn, BlockPos pos, IBlockState state, Block neighborBlock) {
     	BlockPos neighborPos;
     	Block neigbourBlock;
     	//north
@@ -224,19 +225,28 @@ public class MeshFence extends Block {
         this.setBlockBounds(f, 0.0F, f2, f1, 1.0F, f3);
     }
     
-    public boolean isOpaqueCube(IBlockState state)
+    @Override
+    public boolean isOpaqueCube()
+    {
+        return false;
+    }
+    
+    @Override
+    public boolean isFullCube()
     {
         return false;
     }
 
-    public boolean isFullCube(IBlockState state)
-    {
-        return false;
-    }
-
+    @Override
     public boolean isPassable(IBlockAccess worldIn, BlockPos pos)
     {
         return false;
+    }
+    
+    @SideOnly(Side.CLIENT)
+    public EnumWorldBlockLayer getBlockLayer()
+    {
+        return EnumWorldBlockLayer.CUTOUT;
     }
     
     public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos)

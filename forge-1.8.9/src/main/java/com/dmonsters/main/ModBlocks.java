@@ -14,6 +14,7 @@ import com.dmonsters.blocks.SoulEye;
 import com.dmonsters.blocks.StrengthenedCobblestone;
 import com.dmonsters.blocks.StrengthenedStone;
 
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -35,19 +36,27 @@ public class ModBlocks {
 
     public static void init() {
     	concrete = new Concrete();
-    	rawConcrete = new RawConcrete();
-    	fallingConcrete = new FallingConcrete();
     	strengthenedStone = new StrengthenedStone();
     	strengthenedCobblestone = new StrengthenedCobblestone();
     	barbedWire = new BarbedWire();
     	meshFence = new MeshFence();
     	meshFencePole = new MeshFencePole();
-    	dump = new Dump();
     	souleye = new SoulEye();
     	presentBlock = new PresentBlock();
     	christmasTree = new ChristmasTree();
     	presentBox = new PresentBox();
-    	
+    	registerMetaBlocks();
+    }
+    
+    private static void registerMetaBlocks() {
+    	concrete = new Concrete();
+    	GameRegistry.registerBlock(concrete, ItemBlockMeta.class, "concrete");
+    	rawConcrete = new RawConcrete();
+    	GameRegistry.registerBlock(rawConcrete, ItemBlockMeta.class, "rawConcrete");
+    	fallingConcrete = new FallingConcrete();
+    	GameRegistry.registerBlock(fallingConcrete, ItemBlockMeta.class, "fallingConcrete");
+    	dump = new Dump();
+    	GameRegistry.registerBlock(dump, ItemBlockMeta.class, "dump");
     }
     
     @SideOnly(Side.CLIENT)

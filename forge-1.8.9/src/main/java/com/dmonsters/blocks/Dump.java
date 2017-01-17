@@ -64,8 +64,6 @@ public class Dump extends Block implements IMetaBlockName {
 		super(Material.cake);
         setUnlocalizedName(MainMod.MODID + ".dump");
         setRegistryName("dump");
-        GameRegistry.registerBlock(this);
-        //GameRegistry.registerItem(new ItemBlockMeta(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(1);
         this.setResistance(1);
