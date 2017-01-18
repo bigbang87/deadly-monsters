@@ -145,7 +145,7 @@ public class EntityWoman extends EntityMob {
     @Override
     protected void dropFewItems(boolean unknowBool, int num) {
     	int quantity = this.rand.nextInt(2) + 1;
-	    this.dropItem(Items.dye, quantity);
+	    this.dropItem(Items.bread, quantity);
 	    
 	    if (this.rand.nextFloat() < 0.5f)
 	    	return;
