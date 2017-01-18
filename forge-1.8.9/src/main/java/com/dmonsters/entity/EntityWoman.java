@@ -21,6 +21,7 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
@@ -139,5 +140,23 @@ public class EntityWoman extends EntityMob {
     public boolean getCanSpawnHere()
     {
         return super.getCanSpawnHere() && this.posY < 40;
+    }
+    
+    @Override
+    protected void dropFewItems(boolean unknowBool, int num) {
+    	int quantity = this.rand.nextInt(2) + 1;
+	    this.dropItem(Items.dye, quantity);
+	    
+	    if (this.rand.nextFloat() < 0.5f)
+	    	return;
+		
+		float rndNum = this.rand.nextFloat();
+		if (rndNum < 0.5f) { //high
+		    this.dropItem(Items.nether_wart, 1);
+		} else if (rndNum >= 0.5f && rndNum < 0.85f) { //medium
+		    this.dropItem(Items.emerald, 1);
+		} else { //low
+		    this.dropItem(Items.melon_seeds, 1);
+		}
     }
 }

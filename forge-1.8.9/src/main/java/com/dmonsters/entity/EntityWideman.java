@@ -8,7 +8,10 @@ import javax.annotation.Nullable;
 
 import com.dmonsters.ai.EntityAIWidemanAttack;
 import com.dmonsters.main.MainMod;
+import com.dmonsters.main.ModBlocks;
 import com.dmonsters.main.ModConfig;
+import com.dmonsters.main.ModItems;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -20,6 +23,9 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
@@ -126,5 +132,20 @@ public class EntityWideman extends EntityMob {
     public boolean getCanSpawnHere()
     {
         return super.getCanSpawnHere() && this.posY < 50;
+    }
+    
+    @Override
+    protected void dropFewItems(boolean unknowBool, int num) {
+    	if (this.rand.nextFloat() < 0.5f)
+	    	return;
+		
+		float rndNum = this.rand.nextFloat();
+		if (rndNum < 0.5f) { //high
+		    this.dropItem(new ItemStack(Blocks.rail).getItem(), 2);
+		} else if (rndNum >= 0.5f && rndNum < 0.85f) { //medium
+		    this.dropItem(new ItemStack(Blocks.iron_bars).getItem(), 1);
+		} else { //low
+		    this.dropItem(ModItems.widemanSpine, 1);
+		}
     }
 }

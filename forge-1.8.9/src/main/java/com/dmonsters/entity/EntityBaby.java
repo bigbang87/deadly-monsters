@@ -8,7 +8,10 @@ import javax.annotation.Nullable;
 
 import com.dmonsters.ai.EntityAIBabyAttack;
 import com.dmonsters.main.MainMod;
+import com.dmonsters.main.ModBlocks;
 import com.dmonsters.main.ModConfig;
+import com.dmonsters.main.ModItems;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -20,6 +23,9 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
@@ -34,7 +40,6 @@ import net.minecraft.entity.item.EntityBoat;
 
 public class EntityBaby extends EntityMob {
     
-    public static final ResourceLocation LOOT = new ResourceLocation(MainMod.MODID, "baby");
     private int blindRefreshTick = 0;
     
 
@@ -134,5 +139,23 @@ public class EntityBaby extends EntityMob {
     public boolean getCanSpawnHere()
     {
         return super.getCanSpawnHere() && this.posY < 20;
+    }
+    
+    @Override
+    protected void dropFewItems(boolean unknowBool, int num) {
+    	int quantity = this.rand.nextInt(2) + 1;
+	    this.dropItem(new ItemStack(ModBlocks.dump).getItem(), quantity);
+	   
+	    if (this.rand.nextFloat() < 0.5f)
+	    	return;
+		
+		float rndNum = this.rand.nextFloat();
+		if (rndNum < 0.5f) { //high
+		    this.dropItem(Items.coal, this.rand.nextInt(3) + 1);
+		} else if (rndNum >= 0.5f && rndNum < 0.85f) { //medium
+		    this.dropItem(ModItems.babyEye, 1);
+		} else { //low
+		    this.dropItem(Items.pumpkin_seeds, 1);
+		}
     }
 }

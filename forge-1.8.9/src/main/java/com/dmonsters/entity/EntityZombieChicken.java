@@ -6,6 +6,8 @@ import javax.annotation.Nullable;
 import com.dmonsters.ai.EntityAIChickenAttack;
 import com.dmonsters.main.MainMod;
 import com.dmonsters.main.ModConfig;
+import com.dmonsters.main.ModItems;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -29,6 +31,7 @@ import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.pathfinding.PathNavigateClimber;
@@ -115,5 +118,10 @@ public class EntityZombieChicken extends EntityMob
     @Override
     public int getMaxSpawnedInChunk() {
         return 1;
+    }
+    
+    @Override
+    protected void dropFewItems(boolean unknowBool, int num) {
+	    this.dropItem(ModItems.luckyEgg, 1);
     }
 }

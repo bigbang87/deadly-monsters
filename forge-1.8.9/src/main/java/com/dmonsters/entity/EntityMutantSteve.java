@@ -5,6 +5,7 @@ import javax.annotation.Nullable;
 import com.dmonsters.ai.EntityAIDrowning;
 import com.dmonsters.ai.EntityAIMutantSteveAttack;
 import com.dmonsters.main.MainMod;
+import com.dmonsters.main.ModBlocks;
 import com.dmonsters.main.ModConfig;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -16,6 +17,9 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ResourceLocation;
@@ -124,5 +128,23 @@ public class EntityMutantSteve extends EntityMob {
     @Override
     public int getMaxSpawnedInChunk() {
         return 2;
+    }
+    
+    @Override
+    protected void dropFewItems(boolean unknowBool, int num) {
+    	int quantity = this.rand.nextInt(3) + 1;
+	    this.dropItem(Items.leather, quantity);
+	    
+	    if (this.rand.nextFloat() < 0.5f)
+	    	return;
+		
+		float rndNum = this.rand.nextFloat();
+		if (rndNum < 0.5f) { //high
+		    this.dropItem(new ItemStack(Blocks.piston).getItem(), 1);
+		} else if (rndNum >= 0.5f && rndNum < 0.85f) { //medium
+		    this.dropItem(new ItemStack(Blocks.sticky_piston).getItem(), 1);
+		} else { //low
+
+		}
     }
 }

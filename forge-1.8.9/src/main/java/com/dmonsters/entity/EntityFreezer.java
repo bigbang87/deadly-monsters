@@ -11,6 +11,7 @@ import com.dmonsters.ai.EntityAIFreezerAttack;
 import com.dmonsters.ai.EntityAIMutantSteveAttack;
 import com.dmonsters.ai.MakeEnviroFreezed;
 import com.dmonsters.main.MainMod;
+import com.dmonsters.main.ModBlocks;
 import com.dmonsters.main.ModConfig;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -23,6 +24,9 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
@@ -166,5 +170,23 @@ public class EntityFreezer extends EntityMob {
     @Override
     public int getMaxSpawnedInChunk() {
         return 1;
+    }
+    
+    @Override
+    protected void dropFewItems(boolean unknowBool, int num) {
+    	int quantity = this.rand.nextInt(3) + 1;
+	    this.dropItem(new ItemStack(Blocks.stained_glass).getItem(), quantity);
+	    
+	    if (this.rand.nextFloat() < 0.5f)
+	    	return;
+		
+		float rndNum = this.rand.nextFloat();
+		if (rndNum < 0.5f) { //high
+		    this.dropItem(new ItemStack(Blocks.packed_ice).getItem(), this.rand.nextInt(2) + 1);
+		} else if (rndNum >= 0.5f && rndNum < 0.95f) { //medium
+		    this.dropItem(Items.arrow, 5);
+		} else { //low
+		    this.dropItem(Items.diamond_horse_armor, 1);
+		}
     }
 }

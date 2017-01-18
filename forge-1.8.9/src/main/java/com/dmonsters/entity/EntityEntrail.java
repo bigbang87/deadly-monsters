@@ -9,7 +9,10 @@ import javax.annotation.Nullable;
 import com.dmonsters.ai.EntityAIDrowning;
 import com.dmonsters.ai.EntityAIEntrailAttack;
 import com.dmonsters.main.MainMod;
+import com.dmonsters.main.ModBlocks;
 import com.dmonsters.main.ModConfig;
+import com.dmonsters.main.ModItems;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -22,6 +25,8 @@ import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
@@ -144,5 +149,22 @@ public class EntityEntrail extends EntityMob {
     public boolean getCanSpawnHere()
     {
         return super.getCanSpawnHere() && this.posY < 50;
+    }
+    
+    @Override
+    protected void dropFewItems(boolean unknowBool, int num) {
+	    this.dropItem(ModItems.entrailFlesh, 1);
+	   
+	    if (this.rand.nextFloat() < 0.5f)
+	    	return;
+		
+		float rndNum = this.rand.nextFloat();
+		if (rndNum < 0.5f) { //high
+		    this.dropItem(Items.leather, this.rand.nextInt(2) + 1);
+		} else if (rndNum >= 0.5f && rndNum < 0.85f) { //medium
+		    this.dropItem(Items.mushroom_stew, 1);
+		} else { //low
+		    this.dropItem(Items.redstone, 4);
+		}
     }
 }

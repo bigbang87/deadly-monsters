@@ -6,6 +6,8 @@ import javax.annotation.Nullable;
 import com.dmonsters.ai.EntityAIClimberAttack;
 import com.dmonsters.main.MainMod;
 import com.dmonsters.main.ModConfig;
+import com.dmonsters.main.ModItems;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -27,6 +29,8 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.EntitySkeleton;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.pathfinding.PathNavigateClimber;
 import net.minecraft.potion.Potion;
@@ -185,7 +189,6 @@ public class EntityClimber extends EntityMob
      */
     public boolean isBesideClimbableBlock()
     {
-    	System.out.println(this.dataWatcher.getWatchableObjectByte(16));
         return (this.dataWatcher.getWatchableObjectByte(16) & 1) != 0;
     }
 
@@ -322,5 +325,23 @@ public class EntityClimber extends EntityMob
                 this.potionEffectId = Potion.invisibility.id;
             }
         }
+    }
+    
+    @Override
+    protected void dropFewItems(boolean unknowBool, int num) {
+    	int quantity = this.rand.nextInt(2) + 1;
+	    this.dropItem(Items.bread, quantity);
+	    
+	    if (this.rand.nextFloat() < 0.5f)
+	    	return;
+		
+		float rndNum = this.rand.nextFloat();
+		if (rndNum < 0.5f) { //high
+		    this.dropItem(Items.bone, this.rand.nextInt(2) + 1);
+		} else if (rndNum >= 0.5f && rndNum < 0.85f) { //medium
+		    this.dropItem(ModItems.womanHeart, 1);
+		} else { //low
+		    this.dropItem(Items.diamond, 1);
+		}
     }
 }

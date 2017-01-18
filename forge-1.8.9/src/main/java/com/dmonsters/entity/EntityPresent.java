@@ -12,6 +12,8 @@ import com.dmonsters.ai.EntityAIPresent;
 import com.dmonsters.main.MainMod;
 import com.dmonsters.main.ModBlocks;
 import com.dmonsters.main.ModConfig;
+import com.dmonsters.main.ModItems;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
@@ -22,6 +24,8 @@ import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
@@ -177,5 +181,23 @@ public class EntityPresent extends EntityMob {
     {
     	BlockPos pos = this.getPosition();    	
         return super.getCanSpawnHere() && this.worldObj.canSeeSky(pos);
+    }
+    
+    @Override
+    protected void dropFewItems(boolean unknowBool, int num) {
+    	int quantity = this.rand.nextInt(2) + 1;
+	    this.dropItem(ModItems.mobSpawnerItem_present, quantity);
+	    
+	    if (this.rand.nextFloat() < 0.5f)
+	    	return;
+		
+		float rndNum = this.rand.nextFloat();
+		if (rndNum < 0.5f) { //high
+		    this.dropItem(Items.gunpowder, 2);
+		} else if (rndNum >= 0.5f && rndNum < 0.85f) { //medium
+		    this.dropItem(new ItemStack(Blocks.tnt).getItem(), 1);
+		} else { //low
+		    this.dropItem(Items.ender_pearl, 1);
+		}
     }
 }
