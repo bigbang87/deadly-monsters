@@ -1,0 +1,20 @@
+{
+    "variants": {
+        "east=false,north=false,south=false,west=false": { "model": "dmonsters:fence_pole" },
+        "east=false,north=true,south=false,west=false": { "model": "dmonsters:fence_pole" },
+        "east=true,north=false,south=false,west=false": { "model": "dmonsters:fence_pole" },
+        "east=false,north=false,south=true,west=false": { "model": "dmonsters:fence_pole" },
+        "east=false,north=false,south=false,west=true": { "model": "dmonsters:fence_pole" },
+        "east=true,north=true,south=false,west=false": { "model": "dmonsters:fence_pole" },
+        "east=true,north=false,south=true,west=false": { "model": "dmonsters:fence_pole" },
+        "east=false,north=false,south=true,west=true": { "model": "dmonsters:fence_pole" },
+        "east=false,north=true,south=false,west=true": { "model": "dmonsters:fence_pole" },
+        "east=false,north=true,south=true,west=false": { "model": "dmonsters:fence_pole" },
+        "east=true,north=false,south=false,west=true": { "model": "dmonsters:fence_pole" },
+        "east=true,north=true,south=true,west=false": { "model": "dmonsters:fence_pole" },
+        "east=true,north=false,south=true,west=true": { "model": "dmonsters:fence_pole" },
+        "east=false,north=true,south=true,west=true": { "model": "dmonsters:fence_pole" },
+        "east=true,north=true,south=false,west=true": { "model": "dmonsters:fence_pole" },
+        "east=true,north=true,south=true,west=true": { "model": "dmonsters:fence_pole" }
+    }
+}
