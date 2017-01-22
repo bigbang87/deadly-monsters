@@ -53,7 +53,6 @@ public class EntityMutantSteve extends EntityMob {
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        // Here we set various attributes for our mob. Like maximum health, armor, speed, ...
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(35.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.13D * ModConfig.speedMultiplier * ModConfig.mutantSteveSpeedMultiplier);
         this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(16.0D * ModConfig.strengthMultiplier * ModConfig.mutantSteveStrengthMultiplier);
@@ -72,7 +71,6 @@ public class EntityMutantSteve extends EntityMob {
 
     @Override
     protected void initEntityAI() {
-    	//this.tasks.addTask(0, new EntityAIDrowning(this));
     	this.tasks.addTask(1, new EntityAIMutantSteveAttack(this, 2.0D, false));
         this.tasks.addTask(7, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));

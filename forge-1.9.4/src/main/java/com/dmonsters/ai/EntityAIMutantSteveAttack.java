@@ -56,7 +56,6 @@ public class EntityAIMutantSteveAttack extends EntityAIAttackMelee {
     public void resetTask() {
         super.resetTask();
         this.mutantSteve.setArmsRaised(false);
-        System.out.println("Radek AI resetTask");
     }
 
     private int ticks;
@@ -74,17 +73,11 @@ public class EntityAIMutantSteveAttack extends EntityAIAttackMelee {
         ticks++;
         if (ticks == 20 && !this.mutantSteve.isInWater()) {
         	ticks = 0;
-        	/*
-        	long z_cent = MathHelper.floor_double_long(MathHelper.sin(this.attacker.rotationYaw) + this.attacker.posZ);
-        	long z_left = Math.round(MathHelper.sin(this.attacker.rotationYaw - 45F) + this.attacker.posZ);
-        	long z_right = Math.round(MathHelper.sin(this.attacker.rotationYaw + 45F) + this.attacker.posZ);
-        	long x_cent = MathHelper.floor_double_long(MathHelper.cos(this.attacker.rotationYaw) + this.attacker.posX) - 1;
-        	long x_left = Math.round(MathHelper.cos(this.attacker.rotationYaw - 45F) + this.attacker.posX);
-        	long x_right = Math.round(MathHelper.cos(this.attacker.rotationYaw + 45F) + this.attacker.posX);
-        	*/
-        	DestroyAroundMe(0, 0.25F);
-        	DestroyAroundMe(1, 0.5F);
-        	DestroyAroundMe(2, 0.75F);
+        	if (this.attacker.worldObj.getGameRules().getBoolean("mobGriefing")) {
+	        	DestroyAroundMe(0, 0.25F);
+	        	DestroyAroundMe(1, 0.5F);
+	        	DestroyAroundMe(2, 0.75F);
+        	}
         }
         //int d = MathHelper.floor_double((double) (this.attacker.rotationYaw * 4.0F / 360) + 0.50) & 3;
     }
