@@ -6,6 +6,7 @@ import com.dmonsters.entity.EntityEntrail;
 import com.dmonsters.entity.EntityFreezer;
 import com.dmonsters.entity.EntityMutantSteve;
 import com.dmonsters.entity.EntityPresent;
+import com.dmonsters.entity.EntityStranger;
 import com.dmonsters.entity.EntityWideman;
 import com.dmonsters.entity.EntityWoman;
 import com.dmonsters.entity.EntityZombieChicken;
@@ -140,6 +141,9 @@ public class MobSpawnerItem extends Item
     	case "present":
      		 entity = new EntityPresent(worldIn);
      	break;
+    	case "stranger":
+    		 entity = new EntityStranger(worldIn);
+    	break;
     	}
     	return entity;
     }

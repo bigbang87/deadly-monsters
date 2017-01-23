@@ -6,6 +6,7 @@ import com.dmonsters.entity.EntityEntrail;
 import com.dmonsters.entity.EntityFreezer;
 import com.dmonsters.entity.EntityMutantSteve;
 import com.dmonsters.entity.EntityPresent;
+import com.dmonsters.entity.EntityStranger;
 import com.dmonsters.entity.EntityWideman;
 import com.dmonsters.entity.EntityWoman;
 import com.dmonsters.entity.EntityZombieChicken;
@@ -16,6 +17,7 @@ import com.dmonsters.render.RenderEntrail;
 import com.dmonsters.render.RenderFreezer;
 import com.dmonsters.render.RenderMutantSteve;
 import com.dmonsters.render.RenderPresent;
+import com.dmonsters.render.RenderStranger;
 import com.dmonsters.render.RenderWideman;
 import com.dmonsters.render.RenderWoman;
 import com.dmonsters.render.RenderZombieChicken;
@@ -91,6 +93,12 @@ public class ModEntities {
 	        if (!ModConfig.presentDisabled)
 	        	EntityRegistry.addSpawn(EntityPresent.class, ModConfig.presentSawnRate, 2, 8, EnumCreatureType.MONSTER, BiomesProvider.getSnowBiomes());
 	        LootTableList.register(EntityPresent.LOOT);
+	        
+	        //Stranger
+	        EntityRegistry.registerModEntity(mobTexture, EntityStranger.class, "stranger", id++, MainMod.instance, 64, 3, true);
+	        if (!ModConfig.strangerDisabled)
+	        	EntityRegistry.addSpawn(EntityPresent.class, ModConfig.strangerSawnRate, 2, 8, EnumCreatureType.MONSTER, BiomesProvider.getBiomes());
+	        LootTableList.register(EntityStranger.LOOT);
     	}
         
         //Lucky Egg
@@ -108,6 +116,7 @@ public class ModEntities {
 		RenderingRegistry.registerEntityRenderingHandler(EntityWoman.class, RenderWoman.FACTORY);
 		RenderingRegistry.registerEntityRenderingHandler(EntityEntrail.class, RenderEntrail.FACTORY);
 		RenderingRegistry.registerEntityRenderingHandler(EntityPresent.class, RenderPresent.FACTORY);
+		RenderingRegistry.registerEntityRenderingHandler(EntityStranger.class, RenderStranger.FACTORY);
     }
     
     @SideOnly(Side.CLIENT)

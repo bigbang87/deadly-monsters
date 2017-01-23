@@ -48,7 +48,6 @@ public class EntityMutantSteve extends EntityMob {
     @Override
     protected void applyEntityAttributes() {
         super.applyEntityAttributes();
-        // Here we set various attributes for our mob. Like maximum health, armor, speed, ...
         this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(35.0D);
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.13D * ModConfig.speedMultiplier * ModConfig.mutantSteveSpeedMultiplier);
         this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(16.0D * ModConfig.strengthMultiplier * ModConfig.mutantSteveStrengthMultiplier);

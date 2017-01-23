@@ -21,6 +21,7 @@ public class ModConfig {
     private static final String CATEGORY_WOMAN = "Bloody_Maiden";
     private static final String CATEGORY_ZOMBIECHICKEN = "Zombie_Chicken";
     private static final String CATEGORY_PRESENT = "Present";
+    private static final String CATEGORY_STRANGER = "Stranger";
 
     //
     //GENERAL
@@ -84,12 +85,18 @@ public class ModConfig {
 	public static float zombieChickenSpeedMultiplier = 1;
 	public static int zombieChickenSawnRate = 12;
     public static boolean zombieChickenDisabled = false;
-	//woman
+	//present
 	public static float presentHealthMultiplier = 1;
 	public static float presentStrengthMultiplier = 1;
 	public static float presentSpeedMultiplier = 1;
 	public static int presentSawnRate = 20;
     public static boolean presentDisabled = false;
+	//stranger
+	public static float strangerHealthMultiplier = 1;
+	public static float strangerStrengthMultiplier = 1;
+	public static float strangerSpeedMultiplier = 1;
+	public static int strangerSawnRate = 20;
+    public static boolean strangerDisabled = false;
 
     public static void readConfig() {
         Configuration cfg = CommonProxy.config;
@@ -105,6 +112,7 @@ public class ModConfig {
             initWomanConfig(cfg);
             initZombieChickenConfig(cfg);
             initPresentConfig(cfg);
+            initStrangerConfig(cfg);
         } catch (Exception e1) {
         	MainMod.logger.log(Level.ERROR, "Problem loading config file!", e1);
         } finally {
@@ -208,10 +216,19 @@ public class ModConfig {
     
     private static void initPresentConfig(Configuration cfg) {
         cfg.addCustomCategoryComment(CATEGORY_PRESENT, "Present");
-        presentDisabled = cfg.getBoolean("presentDisabled", CATEGORY_PRESENT, presentDisabled, "Set to true if you want to disable Zombie Chicken");
-        presentHealthMultiplier = cfg.getFloat("presentHealthMultiplier", CATEGORY_PRESENT, 1, 0.01F, 999, "Zombie Chicken health multiplier");
-        presentStrengthMultiplier = cfg.getFloat("presentStrengthMultiplier", CATEGORY_PRESENT, 1, 0.01F, 999, "Zombie Chicken strenght multiplier");
-        presentSpeedMultiplier = cfg.getFloat("presentSpeedMultiplier", CATEGORY_PRESENT, 1, 0.01F, 999, "Zombie Chicken speed multiplier");
-        presentSawnRate = cfg.getInt("presentSawnRate", CATEGORY_PRESENT, presentSawnRate, 0, 999, "Zombie Chicken spawn rate. Default for Zombie is 8.");
+        presentDisabled = cfg.getBoolean("presentDisabled", CATEGORY_PRESENT, presentDisabled, "Set to true if you want to disable Present");
+        presentHealthMultiplier = cfg.getFloat("presentHealthMultiplier", CATEGORY_PRESENT, 1, 0.01F, 999, "Present health multiplier");
+        presentStrengthMultiplier = cfg.getFloat("presentStrengthMultiplier", CATEGORY_PRESENT, 1, 0.01F, 999, "Present strenght multiplier");
+        presentSpeedMultiplier = cfg.getFloat("presentSpeedMultiplier", CATEGORY_PRESENT, 1, 0.01F, 999, "Present speed multiplier");
+        presentSawnRate = cfg.getInt("presentSawnRate", CATEGORY_PRESENT, presentSawnRate, 0, 999, "Present spawn rate. Default for Zombie is 8.");
+    }
+    
+    private static void initStrangerConfig(Configuration cfg) {
+        cfg.addCustomCategoryComment(CATEGORY_STRANGER, "Stranger");
+        strangerDisabled = cfg.getBoolean("strangerDisabled", CATEGORY_STRANGER, strangerDisabled, "Set to true if you want to disable Stranger");
+        strangerHealthMultiplier = cfg.getFloat("strangerHealthMultiplier", CATEGORY_STRANGER, 1, 0.01F, 999, "Stranger health multiplier");
+        strangerStrengthMultiplier = cfg.getFloat("strangerStrengthMultiplier", CATEGORY_STRANGER, 1, 0.01F, 999, "Stranger strenght multiplier");
+        strangerSpeedMultiplier = cfg.getFloat("strangerSpeedMultiplier", CATEGORY_STRANGER, 1, 0.01F, 999, "Stranger speed multiplier");
+        strangerSawnRate = cfg.getInt("strangerSawnRate", CATEGORY_STRANGER, strangerSawnRate, 0, 999, "Stranger spawn rate. Default for Zombie is 8.");
     }
 }

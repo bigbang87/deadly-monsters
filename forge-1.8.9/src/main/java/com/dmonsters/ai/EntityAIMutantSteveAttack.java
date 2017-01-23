@@ -57,9 +57,11 @@ public class EntityAIMutantSteveAttack extends EntityAIAttackOnCollide {
         ticks++;
         if (ticks == 20 && !this.mutantSteve.isInWater()) {
         	ticks = 0;
-        	DestroyAroundMe(0, 0.25F);
-        	DestroyAroundMe(1, 0.5F);
-        	DestroyAroundMe(2, 0.75F);
+        	if (this.attacker.worldObj.getGameRules().getBoolean("mobGriefing")) {
+	        	DestroyAroundMe(0, 0.25F);
+	        	DestroyAroundMe(1, 0.5F);
+	        	DestroyAroundMe(2, 0.75F);
+        	}
         }
     }
     

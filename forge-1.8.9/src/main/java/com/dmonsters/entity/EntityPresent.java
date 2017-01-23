@@ -154,7 +154,6 @@ public class EntityPresent extends EntityMob {
 	    	}
     	}
     	
-    	player.setVelocity(0, 0, 0);
     	player.setPositionAndUpdate(xPos + hSize * 0.5F - 1, yPos + height + 1, zPos + hSize * 0.5F - 1);
     }
     
