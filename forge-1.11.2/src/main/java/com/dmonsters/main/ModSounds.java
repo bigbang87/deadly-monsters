@@ -37,8 +37,12 @@ public class ModSounds {
 	public static SoundEvent PRESENT_HURT;
 	public static SoundEvent PRESENT_AMBIENT;
 	public static SoundEvent PRESENT_ATTACK;
-	public static SoundEvent DUMP_MAKE;
+	public static SoundEvent STRANGER_DEATH;
+	public static SoundEvent STRANGER_HURT;
+	public static SoundEvent STRANGER_AMBIENT;
+	public static SoundEvent STRANGER_ATTACK;
 	
+	public static SoundEvent DUMP_MAKE;	
 	public static SoundEvent BLOCK_SOULEYE_KILL;
 	
 	public static void init() {
@@ -84,6 +88,11 @@ public class ModSounds {
 		PRESENT_HURT = registerSound("mob.present.hurt");
 		PRESENT_AMBIENT = registerSound("mob.present.idle");
 		PRESENT_ATTACK = registerSound("mob.present.attack");
+		
+		STRANGER_DEATH = registerSound("mob.stranger.death");
+		STRANGER_HURT = registerSound("mob.stranger.hurt");
+		STRANGER_AMBIENT = registerSound("mob.stranger.idle");
+		STRANGER_ATTACK = registerSound("mob.stranger.attack");
 	}
 	
 	private static SoundEvent registerSound(String id) {

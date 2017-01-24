@@ -30,43 +30,43 @@ public class ModelStranger extends ModelBase
     body.setTextureSize(64, 64);
     body.mirror = true;
     setRotation(body, 0F, 0F, 0F);
-    stomach = new ModelRenderer(this, 0, 0);
+    stomach = new ModelRenderer(this, 0, 31);
     stomach.addBox(0F, 0F, 0F, 10, 9, 4);
     stomach.setRotationPoint(-5F, 5F, -11F);
     stomach.setTextureSize(64, 64);
     stomach.mirror = true;
     setRotation(stomach, 0F, 0F, 0F);
-    leftleg = new ModelRenderer(this, 0, 0);
+    leftleg = new ModelRenderer(this, 0, 45);
     leftleg.addBox(-2F, 0F, -3F, 5, 7, 5);
     leftleg.setRotationPoint(3F, 17F, 0F);
     leftleg.setTextureSize(64, 64);
     leftleg.mirror = true;
     setRotation(leftleg, 0F, 0F, 0F);
-    rightleg = new ModelRenderer(this, 0, 0);
+    rightleg = new ModelRenderer(this, 0, 45);
     rightleg.addBox(-3F, 0F, -3F, 5, 7, 5);
     rightleg.setRotationPoint(-3F, 17F, 0F);
     rightleg.setTextureSize(64, 64);
     rightleg.mirror = true;
     setRotation(rightleg, 0F, 0F, 0F);
-    leftarm = new ModelRenderer(this, 0, 0);
+    leftarm = new ModelRenderer(this, 21, 45);
     leftarm.addBox(0F, 0F, -2F, 4, 9, 4);
     leftarm.setRotationPoint(7F, 3F, 0F);
     leftarm.setTextureSize(64, 64);
     leftarm.mirror = true;
     setRotation(leftarm, 0F, 0F, 0F);
-    rightarm = new ModelRenderer(this, 0, 0);
+    rightarm = new ModelRenderer(this, 21, 45);
     rightarm.addBox(-4F, 0F, -2F, 4, 9, 4);
     rightarm.setRotationPoint(-7F, 3F, 0F);
     rightarm.setTextureSize(64, 64);
     rightarm.mirror = true;
     setRotation(rightarm, 0F, 0F, 0F);
-    lefthead = new ModelRenderer(this, 0, 0);
+    lefthead = new ModelRenderer(this, 29, 31);
     lefthead.addBox(-3F, -7F, -3F, 6, 7, 6);
     lefthead.setRotationPoint(4F, 1F, 0F);
     lefthead.setTextureSize(64, 64);
     lefthead.mirror = true;
     setRotation(lefthead, 0F, 0F, 0F);
-    righthead = new ModelRenderer(this, 0, 0);
+    righthead = new ModelRenderer(this, 29, 31);
     righthead.addBox(-3F, -7F, -3F, 6, 7, 6);
     righthead.setRotationPoint(-4F, 1F, 0F);
     righthead.setTextureSize(64, 64);
@@ -79,20 +79,14 @@ public class ModelStranger extends ModelBase
 	  super.render(entityIn, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale);
       this.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scale, entityIn);
 
-      if (this.isChild)
-      {
-    	  
-      }
-      else
-      {
-          this.lefthead.render(scale);
-          this.righthead.render(scale);
-          this.body.render(scale);
-          this.rightarm.render(scale);
-          this.leftarm.render(scale);
-          this.rightleg.render(scale);
-          this.leftleg.render(scale);
-      }
+      this.lefthead.render(scale);
+      this.righthead.render(scale);
+      this.body.render(scale);
+      this.stomach.render(scale);
+      this.rightarm.render(scale);
+      this.leftarm.render(scale);
+      this.rightleg.render(scale);
+      this.leftleg.render(scale);
   }
   
   private void setRotation(ModelRenderer model, float x, float y, float z)

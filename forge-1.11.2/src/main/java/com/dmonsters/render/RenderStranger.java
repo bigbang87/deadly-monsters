@@ -16,7 +16,7 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 public class RenderStranger extends RenderLiving<EntityStranger> {
 
-    private ResourceLocation mobTexture = new ResourceLocation(MainMod.MODID + ":textures/entity/checker.png");
+    private ResourceLocation mobTexture = new ResourceLocation(MainMod.MODID + ":textures/entity/stranger.png");
 
     public static final Factory FACTORY = new Factory();
 

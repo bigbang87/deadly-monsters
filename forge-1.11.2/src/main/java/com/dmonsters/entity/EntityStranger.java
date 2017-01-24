@@ -14,6 +14,7 @@ import com.dmonsters.main.ModConfig;
 import com.dmonsters.main.ModSounds;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -50,7 +51,7 @@ public class EntityStranger extends EntityMob {
 
     public EntityStranger(World worldIn) {
         super(worldIn);
-        setSize(0.9F, 1.5F);
+        setSize(1.0F, 1.5F);
     }
 
     @Override
@@ -81,9 +82,11 @@ public class EntityStranger extends EntityMob {
     @Override
     public boolean attackEntityAsMob(Entity entityIn) {
         if (super.attackEntityAsMob(entityIn)) {
-        	this.playSound(ModSounds.PRESENT_ATTACK, 1, 1);
+        	this.playSound(ModSounds.STRANGER_ATTACK, 1, 1);
         	if (entityIn instanceof EntityPlayer) {
-
+        		boolean doubleDamage = pushInGround(entityIn);
+        		if (doubleDamage)
+        			entityIn.attackEntityFrom(DamageSource.GENERIC, 18);
         	}
             return true;
         } else {
@@ -103,22 +106,63 @@ public class EntityStranger extends EntityMob {
         super.onLivingUpdate();
     }
     
+    private boolean pushInGround(Entity entityIn) {
+    	BlockPos playerPos = entityIn.getPosition();
+    	boolean doubleDamage = false;
+    	BlockPos testingPos;
+    	float hardness;
+    	Block blockUnder;
+    	IBlockState blockUnderState;
+    	BlockPos lowestPos;
+    	
+    	// -1
+    	testingPos = new BlockPos(playerPos.getX(), playerPos.getY() - 1, playerPos.getZ());
+    	blockUnderState = entityIn.world.getBlockState(testingPos);
+    	blockUnder = blockUnderState.getBlock();
+    	hardness = blockUnder.getBlockHardness(null, entityIn.world, testingPos);
+    	if (hardness >= 3)
+    		doubleDamage = true;
+    	if (blockUnder != Blocks.BEDROCK && blockUnder != Blocks.OBSIDIAN) {
+    		entityIn.world.destroyBlock(testingPos, true);
+    		lowestPos = testingPos;
+    	} else {
+    		return doubleDamage;
+    	}
+    	// -2
+    	testingPos = new BlockPos(playerPos.getX(), playerPos.getY() - 2, playerPos.getZ());
+    	blockUnderState = entityIn.world.getBlockState(testingPos);
+    	blockUnder = blockUnderState.getBlock();
+    	hardness = blockUnder.getBlockHardness(null, entityIn.world, testingPos);
+    	if (hardness >= 3)
+    		doubleDamage = true;
+    	if (blockUnder != Blocks.BEDROCK && blockUnder != Blocks.OBSIDIAN) {
+    		entityIn.world.destroyBlock(testingPos, true);
+    		lowestPos = testingPos;
+    		//entityIn.setPositionAndUpdate(lowestPos.getX(), lowestPos.getY(), lowestPos.getZ());
+    	} else {
+    		//entityIn.setPositionAndUpdate(lowestPos.getX(), lowestPos.getY() + 1, lowestPos.getZ());
+    		return doubleDamage;
+    	}
+    	
+		return false;
+    }
+    
     @Override
     protected SoundEvent getDeathSound()
     {
-    	return ModSounds.PRESENT_DEATH;
+    	return ModSounds.STRANGER_DEATH;
     }
     
     @Override
     protected SoundEvent getAmbientSound()
     {
-    	return ModSounds.PRESENT_AMBIENT;
+    	return ModSounds.STRANGER_AMBIENT;
     }
 
     @Override
     protected SoundEvent getHurtSound()
     {
-    	return ModSounds.PRESENT_HURT;
+    	return ModSounds.STRANGER_HURT;
     }
 
     @Override
