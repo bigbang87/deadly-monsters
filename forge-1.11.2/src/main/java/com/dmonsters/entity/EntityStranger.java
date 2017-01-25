@@ -138,9 +138,10 @@ public class EntityStranger extends EntityMob {
     	if (blockUnder != Blocks.BEDROCK && blockUnder != Blocks.OBSIDIAN) {
     		entityIn.world.destroyBlock(testingPos, true);
     		lowestPos = testingPos;
-    		//entityIn.setPositionAndUpdate(lowestPos.getX(), lowestPos.getY(), lowestPos.getZ());
+    		entityIn.setPositionAndUpdate(lowestPos.getX(), lowestPos.getY(), lowestPos.getZ());
+    		entityIn.setVelocity(0, 0, 0);
     	} else {
-    		//entityIn.setPositionAndUpdate(lowestPos.getX(), lowestPos.getY() + 1, lowestPos.getZ());
+    		entityIn.setPositionAndUpdate(lowestPos.getX(), lowestPos.getY() + 1, lowestPos.getZ());
     		return doubleDamage;
     	}
     	

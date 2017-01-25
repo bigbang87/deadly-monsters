@@ -24,5 +24,6 @@ public class PacketHandler {
     @SideOnly(Side.CLIENT)
     public static void registerMessages() {
         INSTANCE.registerMessage(PacketClientFXUpdate.Handler.class, PacketClientFXUpdate.class, nextID(), Side.CLIENT);
+        INSTANCE.registerMessage(PacketClientSetVelocity.Handler.class, PacketClientSetVelocity.class, nextID(), Side.CLIENT);
     }
 }
