@@ -12,6 +12,8 @@ import com.dmonsters.main.MainMod;
 import com.dmonsters.main.ModBlocks;
 import com.dmonsters.main.ModConfig;
 import com.dmonsters.main.ModSounds;
+import com.dmonsters.network.PacketClientSetVelocity;
+import com.dmonsters.network.PacketHandler;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -48,7 +50,11 @@ public class EntityStranger extends EntityMob {
     private static final DataParameter<Boolean> ATTACKING = EntityDataManager.createKey(EntityStranger.class, DataSerializers.BOOLEAN);
     
     public static final ResourceLocation LOOT = new ResourceLocation(MainMod.MODID, "stranger");
-
+    private boolean delayedEffectTick;
+    private int delayedTickTimer = 0;
+    private Entity delayedTickEntity;
+    private BlockPos delayedTickPos;
+    
     public EntityStranger(World worldIn) {
         super(worldIn);
         setSize(1.0F, 1.5F);
@@ -96,6 +102,15 @@ public class EntityStranger extends EntityMob {
     
     @Override
     public void onLivingUpdate() {
+    	if (!world.isRemote && delayedEffectTick) {
+    		if (delayedTickTimer <= 2) {
+    			delayedTickTimer++;
+    		} else {
+    			delayedTickEntity.setPositionAndUpdate(delayedTickPos.getX(), delayedTickPos.getY(), delayedTickPos.getZ());
+    			delayedEffectTick = false;
+    			delayedTickTimer = 0;
+    		}
+    	}
         if (this.world.isDaytime() && !this.world.isRemote) {
             float f = this.getBrightness(1.0F);
             BlockPos blockpos = this.getRidingEntity() instanceof EntityBoat ? (new BlockPos(this.posX, (double)Math.round(this.posY), this.posZ)).up() : new BlockPos(this.posX, (double)Math.round(this.posY), this.posZ);
@@ -107,44 +122,38 @@ public class EntityStranger extends EntityMob {
     }
     
     private boolean pushInGround(Entity entityIn) {
+    	if (world.isRemote)
+    		return false;
     	BlockPos playerPos = entityIn.getPosition();
     	boolean doubleDamage = false;
-    	BlockPos testingPos;
+    	BlockPos testingPos = playerPos;
     	float hardness;
     	Block blockUnder;
     	IBlockState blockUnderState;
-    	BlockPos lowestPos;
+    	boolean hitHardBlock = false;
     	
-    	// -1
-    	testingPos = new BlockPos(playerPos.getX(), playerPos.getY() - 1, playerPos.getZ());
-    	blockUnderState = entityIn.world.getBlockState(testingPos);
-    	blockUnder = blockUnderState.getBlock();
-    	hardness = blockUnder.getBlockHardness(null, entityIn.world, testingPos);
-    	if (hardness >= 3)
-    		doubleDamage = true;
-    	if (blockUnder != Blocks.BEDROCK && blockUnder != Blocks.OBSIDIAN) {
-    		entityIn.world.destroyBlock(testingPos, true);
-    		lowestPos = testingPos;
-    	} else {
-    		return doubleDamage;
+    	int lowsetIndex = 0;
+    	for (int i = 0; i < 2; i++) {
+    		lowsetIndex--;
+        	testingPos = new BlockPos(playerPos.getX(), playerPos.getY() + lowsetIndex, playerPos.getZ());
+        	blockUnderState = entityIn.world.getBlockState(testingPos);
+        	blockUnder = blockUnderState.getBlock();
+        	hardness = blockUnder.getBlockHardness(null, entityIn.world, testingPos);
+        	if (hardness >= 3)
+        		doubleDamage = true;
+        	if (blockUnder != Blocks.BEDROCK && blockUnder != Blocks.OBSIDIAN) {
+        		entityIn.world.destroyBlock(testingPos, true);
+        	} else {
+        		hitHardBlock = true;
+        		break;
+        	}
     	}
-    	// -2
-    	testingPos = new BlockPos(playerPos.getX(), playerPos.getY() - 2, playerPos.getZ());
-    	blockUnderState = entityIn.world.getBlockState(testingPos);
-    	blockUnder = blockUnderState.getBlock();
-    	hardness = blockUnder.getBlockHardness(null, entityIn.world, testingPos);
-    	if (hardness >= 3)
-    		doubleDamage = true;
-    	if (blockUnder != Blocks.BEDROCK && blockUnder != Blocks.OBSIDIAN) {
-    		entityIn.world.destroyBlock(testingPos, true);
-    		lowestPos = testingPos;
-    		entityIn.setPositionAndUpdate(lowestPos.getX(), lowestPos.getY(), lowestPos.getZ());
-    		entityIn.setVelocity(0, 0, 0);
-    	} else {
-    		entityIn.setPositionAndUpdate(lowestPos.getX(), lowestPos.getY() + 1, lowestPos.getZ());
-    		return doubleDamage;
-    	}
-    	
+		delayedEffectTick = true;
+		delayedTickEntity = entityIn;
+		if (hitHardBlock)
+			delayedTickPos = new BlockPos(testingPos.getX(), testingPos.getY() + 1, testingPos.getZ());
+		else
+			delayedTickPos = testingPos;
 		return false;
     }
     
