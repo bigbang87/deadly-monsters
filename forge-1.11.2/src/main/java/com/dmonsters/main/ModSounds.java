@@ -41,6 +41,7 @@ public class ModSounds {
 	public static SoundEvent STRANGER_HURT;
 	public static SoundEvent STRANGER_AMBIENT;
 	public static SoundEvent STRANGER_ATTACK;
+	public static SoundEvent STRANGER_IMPACT;
 	
 	public static SoundEvent DUMP_MAKE;	
 	public static SoundEvent BLOCK_SOULEYE_KILL;
@@ -48,6 +49,7 @@ public class ModSounds {
 	public static void init() {
 		DUMP_MAKE = registerSound("block.dump.make");
 		BLOCK_SOULEYE_KILL = registerSound("block.souleye.kill");
+		STRANGER_IMPACT = registerSound("mob.stranger.impact");
 		
 		MUTANT_DEATH = registerSound("mob.mutant.death");
 		MUTANT_HURT = registerSound("mob.mutant.hurt");

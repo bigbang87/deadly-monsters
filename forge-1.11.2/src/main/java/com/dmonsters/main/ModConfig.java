@@ -43,6 +43,7 @@ public class ModConfig {
     public static float babySpeedMultiplier = 1;
     public static int babySawnRate = 20;
     public static boolean babyDisabled = false;
+    public static boolean babySpawnOnTheSurface = false;
 	//climber
 	public static float climberHealthMultiplier = 1;
 	public static float climberStrengthMultiplier = 1;
@@ -55,6 +56,7 @@ public class ModConfig {
 	public static float entrailSpeedMultiplier = 1;
 	public static int entrailSawnRate = 16;
     public static boolean entrailDisabled = false;
+    public static boolean entrailSpawnOnTheSurface = false;
 	//freezer
 	public static float freezerHealthMultiplier = 1;
 	public static float freezerStrengthMultiplier = 1;
@@ -73,13 +75,15 @@ public class ModConfig {
 	public static float fallenLeaderSpeedMultiplier = 1;
 	public static int fallenLeaderSawnRate = 16;
     public static boolean fallenLeaderDisabled = false;
+    public static boolean fallenLeaderSpawnOnTheSurface = false;
 	//woman
 	public static float bloodyMaidenHealthMultiplier = 1;
 	public static float bloodyMaidenStrengthMultiplier = 1;
 	public static float bloodyMaidenSpeedMultiplier = 1;
 	public static int bloodyMaidenSawnRate = 16;
     public static boolean bloodyMaidenDisabled = false;
-	//woman
+    public static boolean bloodyMaidenSpawnOnTheSurface = false;
+	//chicken
 	public static float zombieChickenHealthMultiplier = 1;
 	public static float zombieChickenStrengthMultiplier = 1;
 	public static float zombieChickenSpeedMultiplier = 1;
@@ -149,6 +153,7 @@ public class ModConfig {
         babyStrengthMultiplier = cfg.getFloat("babyStrengthMultiplier", CATEGORY_BABY, 1, 0.01F, 999, "Unborn Baby strenght multiplier");
         babySpeedMultiplier = cfg.getFloat("babySpeedMultiplier", CATEGORY_BABY, 1, 0.01F, 999, "Unborn Baby speed multiplier");
         babySawnRate = cfg.getInt("babySawnRate", CATEGORY_BABY, babySawnRate, 0, 999, "Unborn Baby spawn rate. Default for Zombie is 8.");
+        babySpawnOnTheSurface = cfg.getBoolean("babySpawnOnTheSurface", CATEGORY_BABY, babySpawnOnTheSurface, "when 'false' its spawns only deep underground, when 'true' its spawn also on the surface");
     }
     
     private static void initClimberConfig(Configuration cfg) {
@@ -167,6 +172,7 @@ public class ModConfig {
         entrailStrengthMultiplier = cfg.getFloat("entrailStrengthMultiplier", CATEGORY_ENTRAIL, 1, 0.01F, 999, "Entrail strenght multiplier");
         entrailSpeedMultiplier = cfg.getFloat("entrailSpeedMultiplier", CATEGORY_ENTRAIL, 1, 0.01F, 999, "Entrail speed multiplier");
         entrailSawnRate = cfg.getInt("entrailSawnRate", CATEGORY_ENTRAIL, entrailSawnRate, 0, 999, "Entrail spawn rate. Default for Zombie is 8.");
+        entrailSpawnOnTheSurface = cfg.getBoolean("entrailSpawnOnTheSurface", CATEGORY_ENTRAIL, entrailSpawnOnTheSurface, "when 'false' its spawns only deep underground, when 'true' its spawn also on the surface");
     }
     
     private static void initFreezerConfig(Configuration cfg) {
@@ -194,6 +200,7 @@ public class ModConfig {
         fallenLeaderStrengthMultiplier = cfg.getFloat("fallenLeaderStrengthMultiplier", CATEGORY_WIDEMAN, 1, 0.01F, 999, "Fallen Leader strenght multiplier");
         fallenLeaderSpeedMultiplier = cfg.getFloat("fallenLeaderSpeedMultiplier", CATEGORY_WIDEMAN, 1, 0.01F, 999, "Fallen Leader speed multiplier");
         fallenLeaderSawnRate = cfg.getInt("fallenLeaderSawnRate", CATEGORY_WIDEMAN, fallenLeaderSawnRate, 0, 999, "Fallen Leader spawn rate. Default for Zombie is 8.");
+        fallenLeaderSpawnOnTheSurface = cfg.getBoolean("fallenLeaderSpawnOnTheSurface", CATEGORY_WIDEMAN, fallenLeaderSpawnOnTheSurface, "when 'false' its spawns only deep underground, when 'true' its spawn also on the surface");
     }
     
     private static void initWomanConfig(Configuration cfg) {
@@ -203,6 +210,7 @@ public class ModConfig {
         bloodyMaidenStrengthMultiplier = cfg.getFloat("bloodyMaidenStrengthMultiplier", CATEGORY_WOMAN, 1, 0.01F, 999, "Bloody Maiden strenght multiplier");
         bloodyMaidenSpeedMultiplier = cfg.getFloat("bloodyMaidenSpeedMultiplier", CATEGORY_WOMAN, 1, 0.01F, 999, "Bloody Maiden speed multiplier");
         bloodyMaidenSawnRate = cfg.getInt("bloodyMaidenSawnRate", CATEGORY_WOMAN, bloodyMaidenSawnRate, 0, 999, "Bloody Maiden spawn rate. Default for Zombie is 8.");
+        bloodyMaidenSpawnOnTheSurface = cfg.getBoolean("bloodyMaidenSpawnOnTheSurface", CATEGORY_WOMAN, bloodyMaidenSpawnOnTheSurface, "when 'false' its spawns only deep underground, when 'true' its spawn also on the surface");
     }
     
     private static void initZombieChickenConfig(Configuration cfg) {

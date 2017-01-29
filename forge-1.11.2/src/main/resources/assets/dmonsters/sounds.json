@@ -17,6 +17,17 @@
         ]
     },
     
+    "mob.stranger.impact":
+    {
+        "category": "hostile",
+        "sounds":
+        [
+            "dmonsters:stranger_impact_01",
+            "dmonsters:stranger_impact_02",
+            "dmonsters:stranger_impact_03"
+        ]
+    },
+    
     "mob.stranger.death":
     {
         "category": "hostile",

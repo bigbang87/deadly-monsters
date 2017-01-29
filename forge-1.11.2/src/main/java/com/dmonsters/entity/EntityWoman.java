@@ -173,6 +173,8 @@ public class EntityWoman extends EntityMob {
     @Override
     public boolean getCanSpawnHere()
     {
+    	if (ModConfig.bloodyMaidenSpawnOnTheSurface)
+    		return super.getCanSpawnHere();
         return super.getCanSpawnHere() && this.posY < 40;
     }
 }

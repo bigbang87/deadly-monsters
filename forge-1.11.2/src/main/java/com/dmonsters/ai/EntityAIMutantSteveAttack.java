@@ -25,30 +25,12 @@ public class EntityAIMutantSteveAttack extends EntityAIAttackMelee {
     public EntityAIMutantSteveAttack(EntityMutantSteve zombieIn, double speedIn, boolean longMemoryIn) {
         super(zombieIn, speedIn, longMemoryIn);
         this.mutantSteve = zombieIn;
-        //System.out.println("Radek AI initialized");
         this.setMutexBits(7);
-    }
-    
-    @Override
-    public boolean shouldExecute() {
-    	boolean result = super.shouldExecute();
-    	if (result)
-    		System.out.println("Radek AI shouldExecute value: " + result);
-    	return result;
-    }
-    
-    @Override
-    public boolean continueExecuting() {
-    	boolean result = super.continueExecuting();
-    	if (!result)
-    		System.out.println("Radek AI continueExecuting value: " + result);
-    	return result;
     }
 
     @Override
     public void startExecuting() {
         super.startExecuting();
-        System.out.println("Radek AI: start at " + this.attacker.getAttackTarget().getPositionVector());
         this.raiseArmTicks = 0;
     }
 
@@ -56,7 +38,6 @@ public class EntityAIMutantSteveAttack extends EntityAIAttackMelee {
     public void resetTask() {
         super.resetTask();
         this.mutantSteve.setArmsRaised(false);
-        System.out.println("Radek AI resetTask");
     }
 
     private int ticks;

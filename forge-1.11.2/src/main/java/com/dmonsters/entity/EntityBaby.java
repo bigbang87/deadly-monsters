@@ -175,6 +175,8 @@ public class EntityBaby extends EntityMob {
     @Override
     public boolean getCanSpawnHere()
     {
+    	if (ModConfig.babySpawnOnTheSurface)
+    		return super.getCanSpawnHere();
         return super.getCanSpawnHere() && this.posY < 20;
     }
 }

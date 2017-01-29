@@ -172,6 +172,8 @@ public class EntityWideman extends EntityMob {
     @Override
     public boolean getCanSpawnHere()
     {
+    	if (ModConfig.fallenLeaderSpawnOnTheSurface)
+    		return super.getCanSpawnHere();
         return super.getCanSpawnHere() && this.posY < 50;
     }
 }

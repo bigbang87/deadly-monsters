@@ -165,6 +165,8 @@ public class EntityEntrail extends EntityMob {
     @Override
     public boolean getCanSpawnHere()
     {
+    	if (ModConfig.entrailSpawnOnTheSurface)
+    		return super.getCanSpawnHere();
         return super.getCanSpawnHere() && this.posY < 50;
     }
 }

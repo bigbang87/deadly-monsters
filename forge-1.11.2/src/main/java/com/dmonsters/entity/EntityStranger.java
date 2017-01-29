@@ -49,11 +49,14 @@ public class EntityStranger extends EntityMob {
     private static final DataParameter<Boolean> ARMS_RAISED = EntityDataManager.createKey(EntityStranger.class, DataSerializers.BOOLEAN);
     private static final DataParameter<Boolean> ATTACKING = EntityDataManager.createKey(EntityStranger.class, DataSerializers.BOOLEAN);
     
+    private final int pushCooldownConst = 40;
+    
     public static final ResourceLocation LOOT = new ResourceLocation(MainMod.MODID, "stranger");
     private boolean delayedEffectTick;
     private int delayedTickTimer = 0;
     private Entity delayedTickEntity;
     private BlockPos delayedTickPos;
+    private int pushCooldown = 0;
     
     public EntityStranger(World worldIn) {
         super(worldIn);
@@ -92,7 +95,7 @@ public class EntityStranger extends EntityMob {
         	if (entityIn instanceof EntityPlayer) {
         		boolean doubleDamage = pushInGround(entityIn);
         		if (doubleDamage)
-        			entityIn.attackEntityFrom(DamageSource.GENERIC, 18);
+        			entityIn.attackEntityFrom(DamageSource.GENERIC, 10);
         	}
             return true;
         } else {
@@ -102,13 +105,18 @@ public class EntityStranger extends EntityMob {
     
     @Override
     public void onLivingUpdate() {
-    	if (!world.isRemote && delayedEffectTick) {
-    		if (delayedTickTimer <= 2) {
-    			delayedTickTimer++;
-    		} else {
-    			delayedTickEntity.setPositionAndUpdate(delayedTickPos.getX(), delayedTickPos.getY(), delayedTickPos.getZ());
-    			delayedEffectTick = false;
-    			delayedTickTimer = 0;
+    	if (!world.isRemote) {
+    		if (delayedEffectTick) {
+	    		if (delayedTickTimer <= 2) {
+	    			delayedTickTimer++;
+	    		} else {
+	    			delayedTickEntity.setPositionAndUpdate(delayedTickPos.getX(), delayedTickPos.getY(), delayedTickPos.getZ());
+	    			delayedEffectTick = false;
+	    			delayedTickTimer = 0;
+	    		}
+    		}
+    		if (pushCooldown < pushCooldownConst) {
+    			pushCooldown++;
     		}
     	}
         if (this.world.isDaytime() && !this.world.isRemote) {
@@ -124,6 +132,10 @@ public class EntityStranger extends EntityMob {
     private boolean pushInGround(Entity entityIn) {
     	if (world.isRemote)
     		return false;
+    	if (pushCooldown != pushCooldownConst)
+    		return false;
+    	else
+    		pushCooldown = 0;
     	BlockPos playerPos = entityIn.getPosition();
     	boolean doubleDamage = false;
     	BlockPos testingPos = playerPos;
@@ -142,7 +154,8 @@ public class EntityStranger extends EntityMob {
         	if (hardness >= 3)
         		doubleDamage = true;
         	if (blockUnder != Blocks.BEDROCK && blockUnder != Blocks.OBSIDIAN) {
-        		entityIn.world.destroyBlock(testingPos, true);
+            	if (world.getGameRules().getBoolean("mobGriefing"))
+            		entityIn.world.destroyBlock(testingPos, true);
         	} else {
         		hitHardBlock = true;
         		break;
@@ -154,7 +167,8 @@ public class EntityStranger extends EntityMob {
 			delayedTickPos = new BlockPos(testingPos.getX(), testingPos.getY() + 1, testingPos.getZ());
 		else
 			delayedTickPos = testingPos;
-		return false;
+    	this.playSound(ModSounds.STRANGER_IMPACT, 1, 1);
+		return doubleDamage;
     }
     
     @Override
