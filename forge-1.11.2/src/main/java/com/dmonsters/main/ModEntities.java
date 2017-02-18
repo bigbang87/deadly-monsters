@@ -10,6 +10,7 @@ import com.dmonsters.entity.EntityStranger;
 import com.dmonsters.entity.EntityWideman;
 import com.dmonsters.entity.EntityWoman;
 import com.dmonsters.entity.EntityZombieChicken;
+import com.dmonsters.entityProjectile.EntityDagon;
 import com.dmonsters.entityProjectile.EntityLuckyEgg;
 import com.dmonsters.render.RenderBaby;
 import com.dmonsters.render.RenderClimber;
@@ -103,6 +104,8 @@ public class ModEntities {
         
         //Lucky Egg
         EntityRegistry.registerModEntity(mobTexture, EntityLuckyEgg.class, "luckyEgg", id++, MainMod.instance, 64, 3, true);
+        //Dagon
+        EntityRegistry.registerModEntity(mobTexture, EntityDagon.class, "dagon", id++, MainMod.instance, 64, 3, true);
     }
 
     @SideOnly(Side.CLIENT)
@@ -122,6 +125,6 @@ public class ModEntities {
     @SideOnly(Side.CLIENT)
     public static void initHackModels() {
         RenderingRegistry.registerEntityRenderingHandler(EntityLuckyEgg.class, new RenderSnowball<EntityLuckyEgg>(Minecraft.getMinecraft().getRenderManager(), ModItems.luckyEgg, Minecraft.getMinecraft().getRenderItem()));
-
+        RenderingRegistry.registerEntityRenderingHandler(EntityDagon.class, new RenderSnowball<EntityDagon>(Minecraft.getMinecraft().getRenderManager(), ModItems.dagon, Minecraft.getMinecraft().getRenderItem()));
     }
 }

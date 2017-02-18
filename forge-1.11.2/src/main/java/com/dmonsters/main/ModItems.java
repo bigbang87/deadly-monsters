@@ -1,6 +1,7 @@
 package com.dmonsters.main;
 
 import com.dmonsters.items.BabyEye;
+import com.dmonsters.items.Dagon;
 import com.dmonsters.items.EntrailFlesh;
 import com.dmonsters.items.LuckyEgg;
 import com.dmonsters.items.MobSpawnerItem;
@@ -22,6 +23,7 @@ public class ModItems {
     public static WidemanSpine widemanSpine;
     public static EntrailFlesh entrailFlesh;
     public static PurgePill purgePill;
+    public static Dagon dagon;
     public static ModItem modItem;
     public static MobSpawnerItem mobSpawnerItem_baby;
     public static MobSpawnerItem mobSpawnerItem_climber;
@@ -42,6 +44,7 @@ public class ModItems {
     	widemanSpine = new WidemanSpine();
     	entrailFlesh = new EntrailFlesh();
     	purgePill = new PurgePill();
+    	dagon = new Dagon();
     	modItem = new ModItem();
     	mobSpawnerItem_baby = new MobSpawnerItem("baby");
     	mobSpawnerItem_climber = new MobSpawnerItem("climber");
@@ -64,6 +67,7 @@ public class ModItems {
     	widemanSpine.initModel();
     	entrailFlesh.initModel();
     	purgePill.initModel();
+    	dagon.initModel();
     	modItem.initModel();
     	mobSpawnerItem_baby.initModel();
     	mobSpawnerItem_climber.initModel();
