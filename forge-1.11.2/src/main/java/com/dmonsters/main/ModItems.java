@@ -3,6 +3,7 @@ package com.dmonsters.main;
 import com.dmonsters.items.BabyEye;
 import com.dmonsters.items.Dagon;
 import com.dmonsters.items.EntrailFlesh;
+import com.dmonsters.items.FlyingDagon;
 import com.dmonsters.items.LuckyEgg;
 import com.dmonsters.items.MobSpawnerItem;
 import com.dmonsters.items.ModItem;
@@ -24,6 +25,7 @@ public class ModItems {
     public static EntrailFlesh entrailFlesh;
     public static PurgePill purgePill;
     public static Dagon dagon;
+    public static FlyingDagon flyingDagon;
     public static ModItem modItem;
     public static MobSpawnerItem mobSpawnerItem_baby;
     public static MobSpawnerItem mobSpawnerItem_climber;
@@ -45,6 +47,7 @@ public class ModItems {
     	entrailFlesh = new EntrailFlesh();
     	purgePill = new PurgePill();
     	dagon = new Dagon();
+    	flyingDagon = new FlyingDagon();
     	modItem = new ModItem();
     	mobSpawnerItem_baby = new MobSpawnerItem("baby");
     	mobSpawnerItem_climber = new MobSpawnerItem("climber");
@@ -68,6 +71,7 @@ public class ModItems {
     	entrailFlesh.initModel();
     	purgePill.initModel();
     	dagon.initModel();
+    	flyingDagon.initModel();
     	modItem.initModel();
     	mobSpawnerItem_baby.initModel();
     	mobSpawnerItem_climber.initModel();

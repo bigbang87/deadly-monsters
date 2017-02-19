@@ -46,7 +46,6 @@ public class EntityLuckyEgg extends EntityThrowable {
         }
         
         if (!this.world.isRemote) {
-        	world.setBlockState(new BlockPos(this.posX, this.posY, this.posZ), ModBlocks.meshFence.getDefaultState());
 	        if (this.rand.nextInt(10) == 0) {
 	        	Item spawnedItem = spawnRandomItem();
 	        	ItemStack newItem = new ItemStack(spawnedItem, 1);

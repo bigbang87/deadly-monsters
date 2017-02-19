@@ -11,6 +11,7 @@ public class ModRecepies {
 		rawConcreteRecepies();
 		barbedWireRecepies();
 		craftableItems();
+		dagon();
 		fencing();
 		christmasTree();
 	}
@@ -79,6 +80,38 @@ public class ModRecepies {
 				'H', ModItems.womanHeart
 		});	
 	}
+	
+	private static void dagon() {
+		ItemStack item;
+		item = new ItemStack(ModItems.dagon, 1);
+		GameRegistry.addRecipe(item, new Object[] {
+				" I ",
+				"IRI",
+				" B ",
+				'I', Items.IRON_INGOT,
+				'B', Items.BONE,
+				'R', Items.REDSTONE
+		});
+		item = new ItemStack(ModItems.dagon, 1);
+		GameRegistry.addRecipe(item, new Object[] {
+				" I ",
+				"BRI",
+				" I ",
+				'I', Items.IRON_INGOT,
+				'B', Items.BONE,
+				'R', Items.REDSTONE
+		});
+		item = new ItemStack(ModItems.dagon, 1);
+		GameRegistry.addRecipe(item, new Object[] {
+				" I ",
+				"IRB",
+				" I ",
+				'I', Items.IRON_INGOT,
+				'B', Items.BONE,
+				'R', Items.REDSTONE
+		});	
+	}
+	
 	
 	private static void barbedWireRecepies() {
 		ItemStack barbedWire;

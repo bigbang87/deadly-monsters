@@ -24,11 +24,11 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ModItem extends Item {
+public class FlyingDagon extends Item {
 	
-    public ModItem() {
-        setRegistryName("modItem");
-        setUnlocalizedName(MainMod.MODID + ".modItem");
+    public FlyingDagon() {
+        setRegistryName("flyingdagon");
+        setUnlocalizedName(MainMod.MODID + ".flyingdagon");
         GameRegistry.register(this);
     }
     

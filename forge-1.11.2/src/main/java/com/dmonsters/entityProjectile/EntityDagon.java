@@ -43,23 +43,20 @@ public class EntityDagon extends EntityThrowable {
 	protected void onImpact(RayTraceResult result) {
         if (result.entityHit != null)
         {
-            result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 0.0F);
+            result.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), 5.0F);
         }
         
         if (!this.world.isRemote) {
-        	world.setBlockState(new BlockPos(this.posX, this.posY, this.posZ), ModBlocks.meshFence.getDefaultState());
-	        if (this.rand.nextInt(10) == 0) {
-	        	ItemStack newItem = new ItemStack(ModItems.dagon, 1);
-	        	EntityItem item = new EntityItem(world, this.posX, this.posY, this.posZ, newItem);
-	        	world.spawnEntity(item);
-	        }
+        	ItemStack newItem = new ItemStack(ModItems.dagon, 1);
+        	EntityItem item = new EntityItem(world, this.posX, this.posY, this.posZ, newItem);
+        	world.spawnEntity(item);
         }
         
         double d0 = 0.08D;
 
         for (int k = 0; k < 8; ++k)
         {
-            this.world.spawnParticle(EnumParticleTypes.ITEM_CRACK, this.posX, this.posY, this.posZ, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, new int[] {Item.getIdFromItem(Items.EGG)});
+            this.world.spawnParticle(EnumParticleTypes.CRIT_MAGIC, this.posX, this.posY, this.posZ, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, ((double)this.rand.nextFloat() - 0.5D) * 0.08D, new int[] {Item.getIdFromItem(Items.EGG)});
         }
 
         if (!this.world.isRemote)

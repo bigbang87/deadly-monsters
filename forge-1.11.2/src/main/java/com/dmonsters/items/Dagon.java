@@ -1,5 +1,6 @@
 package com.dmonsters.items;
 
+import com.dmonsters.entityProjectile.EntityDagon;
 import com.dmonsters.entityProjectile.EntityLuckyEgg;
 import com.dmonsters.main.MainMod;
 
@@ -43,11 +44,11 @@ public class Dagon extends Item {
         	itemStackIn.shrink(1);
         }
 
-        worldIn.playSound((EntityPlayer)null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_EGG_THROW, SoundCategory.NEUTRAL, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
+        worldIn.playSound((EntityPlayer)null, playerIn.posX, playerIn.posY, playerIn.posZ, SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.NEUTRAL, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));
 
         if (!worldIn.isRemote)
         {
-        	EntityLuckyEgg entityegg = new EntityLuckyEgg(worldIn, playerIn);
+        	EntityDagon entityegg = new EntityDagon(worldIn, playerIn);
             entityegg.setHeadingFromThrower(playerIn, playerIn.rotationPitch, playerIn.rotationYaw, 0.0F, 1.5F, 1.0F);
             worldIn.spawnEntity(entityegg);
         }
