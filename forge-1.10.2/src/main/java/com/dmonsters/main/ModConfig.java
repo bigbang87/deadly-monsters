@@ -21,6 +21,7 @@ public class ModConfig {
     private static final String CATEGORY_WOMAN = "Bloody_Maiden";
     private static final String CATEGORY_ZOMBIECHICKEN = "Zombie_Chicken";
     private static final String CATEGORY_PRESENT = "Present";
+    private static final String CATEGORY_STRANGER = "Stranger";
 
     //
     //GENERAL
@@ -42,6 +43,7 @@ public class ModConfig {
     public static float babySpeedMultiplier = 1;
     public static int babySawnRate = 20;
     public static boolean babyDisabled = false;
+    public static boolean babySpawnOnTheSurface = false;
 	//climber
 	public static float climberHealthMultiplier = 1;
 	public static float climberStrengthMultiplier = 1;
@@ -54,6 +56,7 @@ public class ModConfig {
 	public static float entrailSpeedMultiplier = 1;
 	public static int entrailSawnRate = 16;
     public static boolean entrailDisabled = false;
+    public static boolean entrailSpawnOnTheSurface = false;
 	//freezer
 	public static float freezerHealthMultiplier = 1;
 	public static float freezerStrengthMultiplier = 1;
@@ -72,24 +75,32 @@ public class ModConfig {
 	public static float fallenLeaderSpeedMultiplier = 1;
 	public static int fallenLeaderSawnRate = 16;
     public static boolean fallenLeaderDisabled = false;
+    public static boolean fallenLeaderSpawnOnTheSurface = false;
 	//woman
 	public static float bloodyMaidenHealthMultiplier = 1;
 	public static float bloodyMaidenStrengthMultiplier = 1;
 	public static float bloodyMaidenSpeedMultiplier = 1;
 	public static int bloodyMaidenSawnRate = 16;
     public static boolean bloodyMaidenDisabled = false;
-	//woman
+    public static boolean bloodyMaidenSpawnOnTheSurface = false;
+	//chicken
 	public static float zombieChickenHealthMultiplier = 1;
 	public static float zombieChickenStrengthMultiplier = 1;
 	public static float zombieChickenSpeedMultiplier = 1;
 	public static int zombieChickenSawnRate = 12;
     public static boolean zombieChickenDisabled = false;
-	//woman
+	//present
 	public static float presentHealthMultiplier = 1;
 	public static float presentStrengthMultiplier = 1;
 	public static float presentSpeedMultiplier = 1;
 	public static int presentSawnRate = 20;
     public static boolean presentDisabled = false;
+	//stranger
+	public static float strangerHealthMultiplier = 1;
+	public static float strangerStrengthMultiplier = 1;
+	public static float strangerSpeedMultiplier = 1;
+	public static int strangerSawnRate = 20;
+    public static boolean strangerDisabled = false;
 
     public static void readConfig() {
         Configuration cfg = CommonProxy.config;
@@ -105,6 +116,7 @@ public class ModConfig {
             initWomanConfig(cfg);
             initZombieChickenConfig(cfg);
             initPresentConfig(cfg);
+            initStrangerConfig(cfg);
         } catch (Exception e1) {
         	MainMod.logger.log(Level.ERROR, "Problem loading config file!", e1);
         } finally {
@@ -141,6 +153,7 @@ public class ModConfig {
         babyStrengthMultiplier = cfg.getFloat("babyStrengthMultiplier", CATEGORY_BABY, 1, 0.01F, 999, "Unborn Baby strenght multiplier");
         babySpeedMultiplier = cfg.getFloat("babySpeedMultiplier", CATEGORY_BABY, 1, 0.01F, 999, "Unborn Baby speed multiplier");
         babySawnRate = cfg.getInt("babySawnRate", CATEGORY_BABY, babySawnRate, 0, 999, "Unborn Baby spawn rate. Default for Zombie is 8.");
+        babySpawnOnTheSurface = cfg.getBoolean("babySpawnOnTheSurface", CATEGORY_BABY, babySpawnOnTheSurface, "when 'false' its spawns only deep underground, when 'true' its spawn also on the surface");
     }
     
     private static void initClimberConfig(Configuration cfg) {
@@ -159,6 +172,7 @@ public class ModConfig {
         entrailStrengthMultiplier = cfg.getFloat("entrailStrengthMultiplier", CATEGORY_ENTRAIL, 1, 0.01F, 999, "Entrail strenght multiplier");
         entrailSpeedMultiplier = cfg.getFloat("entrailSpeedMultiplier", CATEGORY_ENTRAIL, 1, 0.01F, 999, "Entrail speed multiplier");
         entrailSawnRate = cfg.getInt("entrailSawnRate", CATEGORY_ENTRAIL, entrailSawnRate, 0, 999, "Entrail spawn rate. Default for Zombie is 8.");
+        entrailSpawnOnTheSurface = cfg.getBoolean("entrailSpawnOnTheSurface", CATEGORY_ENTRAIL, entrailSpawnOnTheSurface, "when 'false' its spawns only deep underground, when 'true' its spawn also on the surface");
     }
     
     private static void initFreezerConfig(Configuration cfg) {
@@ -186,6 +200,7 @@ public class ModConfig {
         fallenLeaderStrengthMultiplier = cfg.getFloat("fallenLeaderStrengthMultiplier", CATEGORY_WIDEMAN, 1, 0.01F, 999, "Fallen Leader strenght multiplier");
         fallenLeaderSpeedMultiplier = cfg.getFloat("fallenLeaderSpeedMultiplier", CATEGORY_WIDEMAN, 1, 0.01F, 999, "Fallen Leader speed multiplier");
         fallenLeaderSawnRate = cfg.getInt("fallenLeaderSawnRate", CATEGORY_WIDEMAN, fallenLeaderSawnRate, 0, 999, "Fallen Leader spawn rate. Default for Zombie is 8.");
+        fallenLeaderSpawnOnTheSurface = cfg.getBoolean("fallenLeaderSpawnOnTheSurface", CATEGORY_WIDEMAN, fallenLeaderSpawnOnTheSurface, "when 'false' its spawns only deep underground, when 'true' its spawn also on the surface");
     }
     
     private static void initWomanConfig(Configuration cfg) {
@@ -195,6 +210,7 @@ public class ModConfig {
         bloodyMaidenStrengthMultiplier = cfg.getFloat("bloodyMaidenStrengthMultiplier", CATEGORY_WOMAN, 1, 0.01F, 999, "Bloody Maiden strenght multiplier");
         bloodyMaidenSpeedMultiplier = cfg.getFloat("bloodyMaidenSpeedMultiplier", CATEGORY_WOMAN, 1, 0.01F, 999, "Bloody Maiden speed multiplier");
         bloodyMaidenSawnRate = cfg.getInt("bloodyMaidenSawnRate", CATEGORY_WOMAN, bloodyMaidenSawnRate, 0, 999, "Bloody Maiden spawn rate. Default for Zombie is 8.");
+        bloodyMaidenSpawnOnTheSurface = cfg.getBoolean("bloodyMaidenSpawnOnTheSurface", CATEGORY_WOMAN, bloodyMaidenSpawnOnTheSurface, "when 'false' its spawns only deep underground, when 'true' its spawn also on the surface");
     }
     
     private static void initZombieChickenConfig(Configuration cfg) {
@@ -208,10 +224,19 @@ public class ModConfig {
     
     private static void initPresentConfig(Configuration cfg) {
         cfg.addCustomCategoryComment(CATEGORY_PRESENT, "Present");
-        presentDisabled = cfg.getBoolean("presentDisabled", CATEGORY_PRESENT, presentDisabled, "Set to true if you want to disable Zombie Chicken");
-        presentHealthMultiplier = cfg.getFloat("presentHealthMultiplier", CATEGORY_PRESENT, 1, 0.01F, 999, "Zombie Chicken health multiplier");
-        presentStrengthMultiplier = cfg.getFloat("presentStrengthMultiplier", CATEGORY_PRESENT, 1, 0.01F, 999, "Zombie Chicken strenght multiplier");
-        presentSpeedMultiplier = cfg.getFloat("presentSpeedMultiplier", CATEGORY_PRESENT, 1, 0.01F, 999, "Zombie Chicken speed multiplier");
-        presentSawnRate = cfg.getInt("presentSawnRate", CATEGORY_PRESENT, presentSawnRate, 0, 999, "Zombie Chicken spawn rate. Default for Zombie is 8.");
+        presentDisabled = cfg.getBoolean("presentDisabled", CATEGORY_PRESENT, presentDisabled, "Set to true if you want to disable Present");
+        presentHealthMultiplier = cfg.getFloat("presentHealthMultiplier", CATEGORY_PRESENT, 1, 0.01F, 999, "Present health multiplier");
+        presentStrengthMultiplier = cfg.getFloat("presentStrengthMultiplier", CATEGORY_PRESENT, 1, 0.01F, 999, "Present strenght multiplier");
+        presentSpeedMultiplier = cfg.getFloat("presentSpeedMultiplier", CATEGORY_PRESENT, 1, 0.01F, 999, "Present speed multiplier");
+        presentSawnRate = cfg.getInt("presentSawnRate", CATEGORY_PRESENT, presentSawnRate, 0, 999, "Present spawn rate. Default for Zombie is 8.");
+    }
+    
+    private static void initStrangerConfig(Configuration cfg) {
+        cfg.addCustomCategoryComment(CATEGORY_STRANGER, "Stranger");
+        strangerDisabled = cfg.getBoolean("strangerDisabled", CATEGORY_STRANGER, strangerDisabled, "Set to true if you want to disable Stranger");
+        strangerHealthMultiplier = cfg.getFloat("strangerHealthMultiplier", CATEGORY_STRANGER, 1, 0.01F, 999, "Stranger health multiplier");
+        strangerStrengthMultiplier = cfg.getFloat("strangerStrengthMultiplier", CATEGORY_STRANGER, 1, 0.01F, 999, "Stranger strenght multiplier");
+        strangerSpeedMultiplier = cfg.getFloat("strangerSpeedMultiplier", CATEGORY_STRANGER, 1, 0.01F, 999, "Stranger speed multiplier");
+        strangerSawnRate = cfg.getInt("strangerSawnRate", CATEGORY_STRANGER, strangerSawnRate, 0, 999, "Stranger spawn rate. Default for Zombie is 8.");
     }
 }

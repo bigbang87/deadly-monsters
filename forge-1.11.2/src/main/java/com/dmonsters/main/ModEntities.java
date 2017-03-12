@@ -98,7 +98,7 @@ public class ModEntities {
 	        //Stranger
 	        EntityRegistry.registerModEntity(mobTexture, EntityStranger.class, "stranger", id++, MainMod.instance, 64, 3, true);
 	        if (!ModConfig.strangerDisabled)
-	        	EntityRegistry.addSpawn(EntityPresent.class, ModConfig.strangerSawnRate, 2, 8, EnumCreatureType.MONSTER, BiomesProvider.getBiomes());
+	        	EntityRegistry.addSpawn(EntityStranger.class, ModConfig.strangerSawnRate, 2, 8, EnumCreatureType.MONSTER, BiomesProvider.getBiomes());
 	        LootTableList.register(EntityStranger.LOOT);
     	}
         

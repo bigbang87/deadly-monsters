@@ -17,7 +17,7 @@ public class MainMod {
 	
 	public static final String MODID = "dmonsters";
 	public static final String MODNAME = "Deadly Monsters";
-	public static final String MODVERSION = "1.142";
+	public static final String MODVERSION = "1.15";
 	public static final ModCreativeTabs MOD_CREATIVETAB = new ModCreativeTabs("modTab");
 	
 

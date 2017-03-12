@@ -1,7 +1,9 @@
 package com.dmonsters.main;
 
 import com.dmonsters.items.BabyEye;
+import com.dmonsters.items.Dagon;
 import com.dmonsters.items.EntrailFlesh;
+import com.dmonsters.items.FlyingDagon;
 import com.dmonsters.items.LuckyEgg;
 import com.dmonsters.items.MobSpawnerItem;
 import com.dmonsters.items.ModItem;
@@ -22,6 +24,8 @@ public class ModItems {
     public static WidemanSpine widemanSpine;
     public static EntrailFlesh entrailFlesh;
     public static PurgePill purgePill;
+    public static Dagon dagon;
+    public static FlyingDagon flyingDagon;
     public static ModItem modItem;
     public static MobSpawnerItem mobSpawnerItem_baby;
     public static MobSpawnerItem mobSpawnerItem_climber;
@@ -32,6 +36,7 @@ public class ModItems {
     public static MobSpawnerItem mobSpawnerItem_woman;
     public static MobSpawnerItem mobSpawnerItem_zombieChicken;
     public static MobSpawnerItem mobSpawnerItem_present;
+    public static MobSpawnerItem mobSpawnerItem_stranger;
 
     public static void init() {
     	rebar = new Rebar();
@@ -41,6 +46,8 @@ public class ModItems {
     	widemanSpine = new WidemanSpine();
     	entrailFlesh = new EntrailFlesh();
     	purgePill = new PurgePill();
+    	dagon = new Dagon();
+    	flyingDagon = new FlyingDagon();
     	modItem = new ModItem();
     	mobSpawnerItem_baby = new MobSpawnerItem("baby");
     	mobSpawnerItem_climber = new MobSpawnerItem("climber");
@@ -51,6 +58,7 @@ public class ModItems {
     	mobSpawnerItem_woman = new MobSpawnerItem("woman");
     	mobSpawnerItem_zombieChicken = new MobSpawnerItem("zombieChicken");
     	mobSpawnerItem_present = new MobSpawnerItem("present");
+    	mobSpawnerItem_stranger = new MobSpawnerItem("stranger");
     }
     
     @SideOnly(Side.CLIENT)
@@ -62,6 +70,8 @@ public class ModItems {
     	widemanSpine.initModel();
     	entrailFlesh.initModel();
     	purgePill.initModel();
+    	dagon.initModel();
+    	flyingDagon.initModel();
     	modItem.initModel();
     	mobSpawnerItem_baby.initModel();
     	mobSpawnerItem_climber.initModel();
@@ -72,5 +82,6 @@ public class ModItems {
     	mobSpawnerItem_woman.initModel();
     	mobSpawnerItem_zombieChicken.initModel();
     	mobSpawnerItem_present.initModel();
+    	mobSpawnerItem_stranger.initModel();
     }
 }

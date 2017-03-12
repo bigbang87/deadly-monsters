@@ -7,13 +7,65 @@
             "dmonsters:DumpFromPill"
         ]
     },
-	
+    
     "block.souleye.kill":
     {
         "category": "hostile",
         "sounds":
         [
             "dmonsters:KillMob"
+        ]
+    },
+    
+    "mob.stranger.impact":
+    {
+        "category": "hostile",
+        "sounds":
+        [
+            "dmonsters:stranger_impact_01",
+            "dmonsters:stranger_impact_02",
+            "dmonsters:stranger_impact_03"
+        ]
+    },
+    
+    "mob.stranger.death":
+    {
+        "category": "hostile",
+        "sounds":
+        [
+            "dmonsters:stranger_death_01",
+            "dmonsters:stranger_death_02",
+            "dmonsters:stranger_death_03"
+        ]
+    },
+    "mob.stranger.hurt":
+    {
+        "category": "hostile",
+        "sounds":
+        [
+            "dmonsters:stranger_hurt_01",
+            "dmonsters:stranger_hurt_02",
+            "dmonsters:stranger_hurt_03"
+        ]
+    },
+    "mob.stranger.attack":
+    {
+        "category": "hostile",
+        "sounds":
+        [
+            "dmonsters:stranger_attack_01",
+            "dmonsters:stranger_attack_02",
+            "dmonsters:stranger_attack_03"
+        ]
+    },
+    "mob.stranger.idle":
+    {
+        "category": "hostile",
+        "sounds":
+        [
+            "dmonsters:stranger_idle_01",
+            "dmonsters:stranger_idle_02",
+            "dmonsters:stranger_idle_03"
         ]
     },
     

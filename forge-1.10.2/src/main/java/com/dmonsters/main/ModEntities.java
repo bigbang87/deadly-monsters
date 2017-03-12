@@ -6,9 +6,11 @@ import com.dmonsters.entity.EntityEntrail;
 import com.dmonsters.entity.EntityFreezer;
 import com.dmonsters.entity.EntityMutantSteve;
 import com.dmonsters.entity.EntityPresent;
+import com.dmonsters.entity.EntityStranger;
 import com.dmonsters.entity.EntityWideman;
 import com.dmonsters.entity.EntityWoman;
 import com.dmonsters.entity.EntityZombieChicken;
+import com.dmonsters.entityProjectile.EntityDagon;
 import com.dmonsters.entityProjectile.EntityLuckyEgg;
 import com.dmonsters.render.RenderBaby;
 import com.dmonsters.render.RenderClimber;
@@ -16,6 +18,7 @@ import com.dmonsters.render.RenderEntrail;
 import com.dmonsters.render.RenderFreezer;
 import com.dmonsters.render.RenderMutantSteve;
 import com.dmonsters.render.RenderPresent;
+import com.dmonsters.render.RenderStranger;
 import com.dmonsters.render.RenderWideman;
 import com.dmonsters.render.RenderWoman;
 import com.dmonsters.render.RenderZombieChicken;
@@ -25,6 +28,7 @@ import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
 import net.minecraft.init.Items;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -89,10 +93,18 @@ public class ModEntities {
 	        if (!ModConfig.presentDisabled)
 	        	EntityRegistry.addSpawn(EntityPresent.class, ModConfig.presentSawnRate, 2, 8, EnumCreatureType.MONSTER, BiomesProvider.getSnowBiomes());
 	        LootTableList.register(EntityPresent.LOOT);
+	        
+	        //Stranger
+	        EntityRegistry.registerModEntity(EntityStranger.class, "stranger", id++, MainMod.instance, 64, 3, true);
+	        if (!ModConfig.strangerDisabled)
+	        	EntityRegistry.addSpawn(EntityStranger.class, ModConfig.strangerSawnRate, 2, 8, EnumCreatureType.MONSTER, BiomesProvider.getBiomes());
+	        LootTableList.register(EntityStranger.LOOT);
     	}
         
         //Lucky Egg
         EntityRegistry.registerModEntity(EntityLuckyEgg.class, "luckyEgg", id++, MainMod.instance, 64, 3, true);
+        //Dagon
+        EntityRegistry.registerModEntity(EntityDagon.class, "dagon", id++, MainMod.instance, 64, 3, true);
     }
 
     @SideOnly(Side.CLIENT)
@@ -106,11 +118,12 @@ public class ModEntities {
 		RenderingRegistry.registerEntityRenderingHandler(EntityWoman.class, RenderWoman.FACTORY);
 		RenderingRegistry.registerEntityRenderingHandler(EntityEntrail.class, RenderEntrail.FACTORY);
 		RenderingRegistry.registerEntityRenderingHandler(EntityPresent.class, RenderPresent.FACTORY);
+		RenderingRegistry.registerEntityRenderingHandler(EntityStranger.class, RenderStranger.FACTORY);
     }
     
     @SideOnly(Side.CLIENT)
     public static void initHackModels() {
         RenderingRegistry.registerEntityRenderingHandler(EntityLuckyEgg.class, new RenderSnowball<EntityLuckyEgg>(Minecraft.getMinecraft().getRenderManager(), ModItems.luckyEgg, Minecraft.getMinecraft().getRenderItem()));
-
+        RenderingRegistry.registerEntityRenderingHandler(EntityDagon.class, new RenderSnowball<EntityDagon>(Minecraft.getMinecraft().getRenderManager(), ModItems.flyingDagon, Minecraft.getMinecraft().getRenderItem()));
     }
 }

@@ -9,6 +9,7 @@ entity.dmonsters.wideman.name=Fallen Leader
 entity.dmonsters.woman.name=Bloody Maiden
 entity.dmonsters.zombieChicken.name=Zombie Chicken
 entity.dmonsters.present.name=Present
+entity.dmonsters.stranger.name=Stranger
 
 tile.dmonsters.rawConcrete.white.name=White Raw Concrete
 tile.dmonsters.rawConcrete.orange.name=Orange Raw Concrete
@@ -67,6 +68,7 @@ item.dmonsters.modItem.name=Nightmare Item
 item.dmonsters.purgePill.name=Poopoo Pill
 item.dmonsters.widemanSpine.name=Wideman Spine
 item.dmonsters.womanHeart.name=Woman Heart
+item.dmonsters.dagon.name=Dagon
 
 item.dmonsters.mobSpawnerItem_mutantSteve.name=Mutant Steve Soul
 item.dmonsters.mobSpawnerItem_baby.name=Unborn Babt Soul
@@ -77,6 +79,7 @@ item.dmonsters.mobSpawnerItem_wideman.name=Wideman Soul
 item.dmonsters.mobSpawnerItem_woman.name=Woman Soul
 item.dmonsters.mobSpawnerItem_zombieChicken.name=Zombie Chicken Soul
 item.dmonsters.mobSpawnerItem_present.name=Packed Present
+item.dmonsters.mobSpawnerItem_stranger.name=Stranger Soul
 
 msg.dmonsters.rawConcrete.error=Concrete must be placed on solid block
 msg.dmonsters.meshFence.error=You can place Mesh Fence only next to other Mesh Fence or Mesh Fence Pole
