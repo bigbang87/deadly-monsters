@@ -79,7 +79,7 @@ public class EntityFreezer extends EntityMob {
     public void onUpdate() {
     	super.onUpdate();
     	spawnParticle();
-    	dealFreezDamage();
+    	//dealFreezDamage();
     }
     
     public void onLivingUpdate() {
@@ -157,7 +157,7 @@ public class EntityFreezer extends EntityMob {
 
     @Override
     protected void initEntityAI() {
-    	this.tasks.addTask(0, new MakeEnviroFreezed(this));
+    	//this.tasks.addTask(0, new MakeEnviroFreezed(this));
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAIFreezerAttack(this, 1.0D, true));
         this.tasks.addTask(5, new EntityAIMoveTowardsRestriction(this, 1.0D));
