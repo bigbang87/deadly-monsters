@@ -1,15 +1,20 @@
 package com.dmonsters.main;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.item.Item;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+
 import org.apache.logging.log4j.Logger;
 
 import com.dmonsters.entityProjectile.EntityLuckyEgg;
+import com.dmonsters.items.Rebar;
 import com.dmonsters.proxy.CommonProxy;
 
 @Mod(modid = MainMod.MODID, name = MainMod.MODNAME, version = MainMod.MODVERSION)
@@ -17,7 +22,7 @@ public class MainMod {
 	
 	public static final String MODID = "dmonsters";
 	public static final String MODNAME = "Deadly Monsters";
-	public static final String MODVERSION = "1.52";
+	public static final String MODVERSION = "1.15";
 	public static final ModCreativeTabs MOD_CREATIVETAB = new ModCreativeTabs("modTab");
 	
 
