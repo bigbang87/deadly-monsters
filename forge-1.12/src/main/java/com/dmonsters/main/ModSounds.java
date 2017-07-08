@@ -2,6 +2,9 @@ package com.dmonsters.main;
 
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
+import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModSounds {
@@ -47,7 +50,6 @@ public class ModSounds {
 	public static SoundEvent BLOCK_SOULEYE_KILL;
 	
 	public static void init() {
-		/*
 		DUMP_MAKE = registerSound("block.dump.make");
 		BLOCK_SOULEYE_KILL = registerSound("block.souleye.kill");
 		STRANGER_IMPACT = registerSound("mob.stranger.impact");
@@ -96,12 +98,67 @@ public class ModSounds {
 		STRANGER_HURT = registerSound("mob.stranger.hurt");
 		STRANGER_AMBIENT = registerSound("mob.stranger.idle");
 		STRANGER_ATTACK = registerSound("mob.stranger.attack");
-		*/
 	}
-	/*
+
 	private static SoundEvent registerSound(String id) {
 		ResourceLocation soundID = new ResourceLocation(MainMod.MODID, id);
-		return GameRegistry.register(new SoundEvent(soundID).setRegistryName(soundID));
+		return new SoundEvent(soundID).setRegistryName(soundID);
 	}
-	*/
+	
+	@Mod.EventBusSubscriber(modid = MainMod.MODID)
+	public static class RegistrationHandler {
+		@SubscribeEvent
+		public static void registerSoundEvents(final RegistryEvent.Register<SoundEvent> event) {
+			event.getRegistry().registerAll(
+					DUMP_MAKE,
+					BLOCK_SOULEYE_KILL,
+					STRANGER_IMPACT,
+					
+					MUTANT_DEATH,
+					MUTANT_HURT,
+					MUTANT_AMBIENT,
+					MUTANT_ATTACK,
+					
+					FREEZER_DEATH,
+					FREEZER_HURT,
+					FREEZER_AMBIENT,
+					FREEZER_ATTACK,
+					
+					CLIMBER_DEATH,
+					CLIMBER_HURT,
+					CLIMBER_AMBIENT,
+					CLIMBER_ATTACK,
+					
+					BABY_DEATH,
+					BABY_HURT,
+					BABY_AMBIENT,
+					BABY_ATTACK,
+					
+					WIDEMAN_DEATH,
+					WIDEMAN_HURT,
+					WIDEMAN_AMBIENT,
+					WIDEMAN_ATTACK,
+					
+					MAIDEN_DEATH,
+					MAIDEN_HURT,
+					MAIDEN_AMBIENT,
+					MAIDEN_ATTACK,
+					
+					ENTRAIL_DEATH,
+					ENTRAIL_HURT,
+					ENTRAIL_AMBIENT,
+					ENTRAIL_ATTACK,
+					
+					PRESENT_DEATH,
+					PRESENT_HURT,
+					PRESENT_AMBIENT,
+					PRESENT_ATTACK,
+					
+					STRANGER_DEATH,
+					STRANGER_HURT,
+					STRANGER_AMBIENT,
+					STRANGER_ATTACK
+			);
+		}
+	}
 }

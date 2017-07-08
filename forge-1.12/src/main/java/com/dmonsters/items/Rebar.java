@@ -26,12 +26,6 @@ public class Rebar extends Item {
     public Rebar() {
         setRegistryName("rebar");
         setUnlocalizedName(MainMod.MODID + ".rebar");
-        //GameRegistry.register(this.setCreativeTab(MainMod.MOD_CREATIVETAB));
-    }
-    
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
     
     @Override

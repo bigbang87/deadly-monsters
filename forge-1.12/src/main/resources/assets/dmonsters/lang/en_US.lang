@@ -1,15 +1,15 @@
 < en_US.lang - English localization file for Deadly Monsters >
 
-entity.dmonsters.mutantSteve.name=Mutant Steve
-entity.dmonsters.baby.name=Unborn Baby
-entity.dmonsters.climber.name=Climber
-entity.dmonsters.entrail.name=Entrail
-entity.dmonsters.freezer.name=Freezer
-entity.dmonsters.wideman.name=Fallen Leader
-entity.dmonsters.woman.name=Bloody Maiden
-entity.dmonsters.zombieChicken.name=Zombie Chicken
-entity.dmonsters.present.name=Present
-entity.dmonsters.stranger.name=Stranger
+entity.mutantSteve.name=Mutant Steve
+entity.baby.name=Unborn Baby
+entity.climber.name=Climber
+entity.entrail.name=Entrail
+entity.freezer.name=Freezer
+entity.wideman.name=Fallen Leader
+entity.woman.name=Bloody Maiden
+entity.zombieChicken.name=Zombie Chicken
+entity.present.name=Present
+entity.stranger.name=Stranger
 
 tile.dmonsters.rawConcrete.white.name=White Raw Concrete
 tile.dmonsters.rawConcrete.orange.name=Orange Raw Concrete

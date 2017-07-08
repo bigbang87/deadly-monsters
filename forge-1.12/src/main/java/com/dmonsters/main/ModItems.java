@@ -53,7 +53,25 @@ public class ModItems {
 			final IForgeRegistry<Item> registry = event.getRegistry();
 			init();
 			registry.register(rebar.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(luckyEgg.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(babyEye.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(womanHeart.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(widemanSpine.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(entrailFlesh.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(purgePill.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(dagon.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(flyingDagon.setCreativeTab(MainMod.MOD_CREATIVETAB));
 			registry.register(modItem.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(mobSpawnerItem_baby.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(mobSpawnerItem_climber.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(mobSpawnerItem_entrail.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(mobSpawnerItem_freezer.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(mobSpawnerItem_mutantSteve.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(mobSpawnerItem_wideman.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(mobSpawnerItem_woman.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(mobSpawnerItem_zombieChicken.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(mobSpawnerItem_present.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(mobSpawnerItem_stranger.setCreativeTab(MainMod.MOD_CREATIVETAB));
 		}
 	}
 
@@ -83,7 +101,6 @@ public class ModItems {
     @SideOnly(Side.CLIENT)
     public static void initModels() {
     	init();
-    	rebar.initModel();
     	luckyEgg.initModel();
     	babyEye.initModel();
     	womanHeart.initModel();

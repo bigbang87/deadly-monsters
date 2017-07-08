@@ -18,8 +18,26 @@ public class RegisterModels {
 	}
     
     private static void registerItemModels() {
-    	registerItemModel(ModItems.modItem);
     	registerItemModel(ModItems.rebar);
+    	registerItemModel(ModItems.luckyEgg);
+    	registerItemModel(ModItems.babyEye);
+    	registerItemModel(ModItems.womanHeart);
+    	registerItemModel(ModItems.widemanSpine);
+    	registerItemModel(ModItems.entrailFlesh);
+    	registerItemModel(ModItems.purgePill);
+    	registerItemModel(ModItems.dagon);
+    	registerItemModel(ModItems.flyingDagon);
+    	registerItemModel(ModItems.modItem);
+    	registerItemModel(ModItems.mobSpawnerItem_baby);
+    	registerItemModel(ModItems.mobSpawnerItem_climber);
+    	registerItemModel(ModItems.mobSpawnerItem_entrail);
+    	registerItemModel(ModItems.mobSpawnerItem_freezer);
+    	registerItemModel(ModItems.mobSpawnerItem_mutantSteve);
+    	registerItemModel(ModItems.mobSpawnerItem_wideman);
+    	registerItemModel(ModItems.mobSpawnerItem_woman);
+    	registerItemModel(ModItems.mobSpawnerItem_zombieChicken);
+    	registerItemModel(ModItems.mobSpawnerItem_present);
+    	registerItemModel(ModItems.mobSpawnerItem_stranger);
     }
     
     private static void registerBlockItemModels() {
