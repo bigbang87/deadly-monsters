@@ -69,6 +69,7 @@ public class ModConfig {
 	public static float mutantSteveSpeedMultiplier = 1;
 	public static int mutantSteveSawnRate = 4;
     public static boolean mutantSteveDisabled = false;
+    public static boolean mutantSteveNoGriefing = false;
 	//wideman
 	public static float fallenLeaderHealthMultiplier = 1;
 	public static float fallenLeaderStrengthMultiplier = 1;
@@ -187,6 +188,7 @@ public class ModConfig {
     private static void initMutantSteveConfig(Configuration cfg) {
         cfg.addCustomCategoryComment(CATEGORY_MUTANT, "Mutant Steve");
         mutantSteveDisabled = cfg.getBoolean("mutantSteveDisabled", CATEGORY_MUTANT, mutantSteveDisabled, "Set to true if you want to disable Mutant Steve");
+        mutantSteveNoGriefing = cfg.getBoolean("mutantSteveNoGriefing", CATEGORY_MUTANT, mutantSteveNoGriefing, "true = no blocks destroying, false = can destroy blocks");
         mutantSteveHealthMultiplier = cfg.getFloat("mutantSteveHealthMultiplier", CATEGORY_MUTANT, 1, 0.01F, 999, "Mutant Steve health multiplier");
         mutantSteveStrengthMultiplier = cfg.getFloat("mutantSteveStrengthMultiplier", CATEGORY_MUTANT, 1, 0.01F, 999, "Mutant Steve strenght multiplier");
         mutantSteveSpeedMultiplier = cfg.getFloat("mutantSteveSpeedMultiplier", CATEGORY_MUTANT, 1, 0.01F, 999, "Mutant Steve speed multiplier");

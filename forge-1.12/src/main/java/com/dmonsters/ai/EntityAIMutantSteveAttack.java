@@ -3,6 +3,7 @@ package com.dmonsters.ai;
 import java.util.Random;
 
 import com.dmonsters.entity.EntityMutantSteve;
+import com.dmonsters.main.ModConfig;
 import com.dmonsters.main.ModSounds;
 
 import net.minecraft.block.Block;
@@ -56,6 +57,8 @@ public class EntityAIMutantSteveAttack extends EntityAIAttackMelee {
         if (ticks == 20 && !this.mutantSteve.isInWater()) {
         	ticks = 0;
         	if (this.attacker.world.getGameRules().getBoolean("mobGriefing")) {
+        		if (ModConfig.mutantSteveNoGriefing)
+        			return;
 	        	DestroyAroundMe(0, 0.25F);
 	        	DestroyAroundMe(1, 0.5F);
 	        	DestroyAroundMe(2, 0.75F);
@@ -80,7 +83,7 @@ public class EntityAIMutantSteveAttack extends EntityAIAttackMelee {
     				continue;
     	    	blockToDestroyPos = new BlockPos(this.attacker.posX + dx, y + yOffset, this.attacker.posZ + dz);
     	    	blockToDestroy = worldin.getBlockState(blockToDestroyPos);
-    	    	if (blockToDestroy.getBlock() != Blocks.AIR) {
+    	    	if (blockToDestroy.getBlock() != Blocks.AIR && blockToDestroy.getBlock() != Blocks.CONCRETE) {
     	        	hardness = blockToDestroy.getBlockHardness(this.attacker.world, blockToDestroyPos);
 					if (hardness < hardnessTreshold) {
 						randomChance = random.nextFloat();

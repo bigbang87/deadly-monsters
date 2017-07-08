@@ -5,7 +5,6 @@ import com.dmonsters.main.ModBlocks;
 import com.dmonsters.main.ModConfig;
 import com.dmonsters.main.ModEntities;
 import com.dmonsters.main.ModItems;
-import com.dmonsters.main.ModRecepies;
 import com.dmonsters.network.PacketHandler;
 
 import net.minecraft.client.Minecraft;
@@ -25,7 +24,6 @@ public class CommonProxy {
     	PacketHandler.init("dmonsters");
     	ModBlocks.init();
     	ModEntities.init();
-    	//ModRecepies.registerRecipes();
     }
 
     public void init(FMLInitializationEvent e) {
