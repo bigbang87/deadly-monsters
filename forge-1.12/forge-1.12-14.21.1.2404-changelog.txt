@@ -1,5 +1,42 @@
 Changelog:
-Build 1.12-14.21.1.2395:
+Build 2404:
+	williewillus: Allow advancement icons to have nbt (#4114)
+	maxanier: Adjust EnumHelper#addCreatureType to EnumType (#4089)
+
+Build 1.12-14.21.1.2403:
+	LexManos:
+		Fix MC-68754, Screen is not resizeable after exiting fullscreen due to
+		LWJGL bug
+	LexManos:
+		Attempt fix, or at least better debugging for RecipeBook accessing
+		unknown recipes.
+
+Build 1.12-14.21.1.2402:
+	mezz: Use Item's custom FontRenderer for tooltips in the Creative Gui (#4101)
+
+Build 1.12-14.21.1.2401:
+	mezz: Fix Recipe Toast crash when granted more than 5000 recipes (#4124)
+
+Build 1.12-14.21.1.2400:
+	mezz:
+		Throw packet encoding exceptions instead of suppressing them, to prevent
+		corrupt packets (#4144)
+
+Build 1.12-14.21.1.2399:
+	LexManos: Quiet down warning for missing translation files.
+
+Build 1.12-14.21.1.2398:
+	LexManos: Update JOpt version on the dedicated server to match client.
+
+Build 1.12-14.21.1.2397:
+	LexManos: Fix log spam when creating dummy blocks.
+	LexManos: Fix override duplication caused by bad comparison.
+	LexManos: Fix getting missing models for overridden Item registry entires
+
+Build 1.12-14.21.1.2396:
+	mezz:
+		Include location of the call when a mod uses System.out or System.err
+		(Fix #4135)
 
 Build 1.12-14.21.1.2394:
 	xalcon: Add isSpawner parameter to the CheckSpawn event (#4075)
