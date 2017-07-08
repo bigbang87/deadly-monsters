@@ -42,9 +42,15 @@ public class RegisterModels {
     
     private static void registerBlockItemModels() {
 		registerBlockItemModel(ModBlocks.strengthenedStone);
+		registerBlockItemModel(ModBlocks.strengthenedCobblestone);
 		registerBlockItemModel(ModBlocks.souleye);
 		registerBlockItemModel(ModBlocks.christmasTree);
 		registerBlockItemModel(ModBlocks.dump);
+		registerBlockItemModel(ModBlocks.barbedWire);
+		registerBlockItemModel(ModBlocks.meshFence);
+		registerBlockItemModel(ModBlocks.meshFencePole);
+		registerBlockItemModel(ModBlocks.presentBlock);
+		registerBlockItemModel(ModBlocks.presentBox);
     }
     
     private static void registerItemModel(Item item) {

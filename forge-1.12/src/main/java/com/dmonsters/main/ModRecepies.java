@@ -8,60 +8,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModRecepies {
 	
-/*		
-	
-	private static void fencing() {
-		ItemStack item;
-		//mesh fence
-		item = new ItemStack(ModBlocks.meshFence, 8);
-		GameRegistry.addRecipe(item, new Object[] {
-				"IRI",
-				"IRI",
-				'I', Items.IRON_INGOT,
-				'R', ModItems.rebar
-		});
-		//mesh fence pole
-		item = new ItemStack(ModBlocks.meshFencePole, 8);
-		GameRegistry.addRecipe(item, new Object[] {
-				"IRI",
-				"IRI",
-				"IRI",
-				'I', Items.IRON_INGOT,
-				'R', ModItems.rebar
-		});	
-	}
-	
-	private static void craftableItems() {
-		ItemStack item;
-		//rebar
-		item = new ItemStack(ModItems.rebar, 16);
-		GameRegistry.addRecipe(item, new Object[] {
-				"I",
-				"I",
-				'I', Items.IRON_INGOT
-		});		
-		//purge pill
-		item = new ItemStack(ModItems.purgePill, 1);
-		GameRegistry.addRecipe(item, new Object[] {
-				"W",
-				"C",
-				"P",
-				'W', Items.WHEAT,
-				'C', new ItemStack(Items.DYE ,1 ,2),
-				'P', Items.PAPER,
-		});
-		//souleye
-		item = new ItemStack(ModBlocks.souleye, 1);
-		GameRegistry.addRecipe(item, new Object[] {
-				"FEF",
-				"FHF",
-				"FSF",
-				'E', ModItems.babyEye,
-				'F', ModItems.entrailFlesh,
-				'S', ModItems.widemanSpine,
-				'H', ModItems.womanHeart
-		});	
-	}
+/*
 	
 	private static void dagon() {
 		ItemStack item;

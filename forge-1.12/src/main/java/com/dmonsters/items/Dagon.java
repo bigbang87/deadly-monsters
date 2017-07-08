@@ -27,13 +27,8 @@ public class Dagon extends Item {
 	public Dagon() {
         setRegistryName("dagon");
         setUnlocalizedName(MainMod.MODID + ".dagon");
-        //GameRegistry.register(this.setCreativeTab(MainMod.MOD_CREATIVETAB));
+        this.setCreativeTab(MainMod.MOD_CREATIVETAB);
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    }
     
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand hand)

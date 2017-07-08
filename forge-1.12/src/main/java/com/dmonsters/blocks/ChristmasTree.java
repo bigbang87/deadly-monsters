@@ -43,8 +43,6 @@ public class ChristmasTree extends Block {
 		super(Material.CACTUS);
         setUnlocalizedName(MainMod.MODID + ".christmas_tree");
         setRegistryName("christmas_tree");
-        //GameRegistry.register(this);
-        //GameRegistry.register(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setTickRandomly(true);
         this.setHardness(2);
@@ -121,11 +119,6 @@ public class ChristmasTree extends Block {
     public int quantityDropped(Random random)
     {
         return 1;
-    }
-	
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
     
 	@Override

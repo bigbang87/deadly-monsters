@@ -26,6 +26,7 @@ public class Rebar extends Item {
     public Rebar() {
         setRegistryName("rebar");
         setUnlocalizedName(MainMod.MODID + ".rebar");
+        this.setCreativeTab(MainMod.MOD_CREATIVETAB);
     }
     
     @Override

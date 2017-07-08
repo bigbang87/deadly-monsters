@@ -2,14 +2,11 @@ package com.dmonsters.main;
 
 import com.dmonsters.blocks.BarbedWire;
 import com.dmonsters.blocks.ChristmasTree;
-import com.dmonsters.blocks.Concrete;
 import com.dmonsters.blocks.Dump;
-import com.dmonsters.blocks.FallingConcrete;
 import com.dmonsters.blocks.MeshFence;
 import com.dmonsters.blocks.MeshFencePole;
 import com.dmonsters.blocks.PresentBlock;
 import com.dmonsters.blocks.PresentBox;
-import com.dmonsters.blocks.RawConcrete;
 import com.dmonsters.blocks.SoulEye;
 import com.dmonsters.blocks.StrengthenedCobblestone;
 import com.dmonsters.blocks.StrengthenedStone;
@@ -28,9 +25,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class ModBlocks {
 	
-	public static Concrete concrete;
-	public static RawConcrete rawConcrete;
-	public static FallingConcrete fallingConcrete;
 	public static StrengthenedStone strengthenedStone;
 	public static StrengthenedCobblestone strengthenedCobblestone;
 	public static BarbedWire barbedWire;
@@ -52,18 +46,30 @@ public class ModBlocks {
 			final IForgeRegistry<Block> registry = event.getRegistry();
 			init();
 			registry.register(strengthenedStone);
+			registry.register(strengthenedCobblestone);
 			registry.register(souleye);
 			registry.register(christmasTree);
 			registry.register(dump);
+			registry.register(barbedWire);
+			registry.register(meshFence);
+			registry.register(meshFencePole);
+			registry.register(presentBlock);
+			registry.register(presentBox);
 		}
 		
 		@SubscribeEvent
 		public static void registerItemBlocks(final RegistryEvent.Register<Item> event) {
 			itemRegistry = event.getRegistry();
 			registerItemBlock(strengthenedStone);
+			registerItemBlock(strengthenedCobblestone);
 			registerItemBlock(souleye);
 			registerItemBlock(christmasTree);
 			registerItemBlock(dump);
+			registerItemBlock(barbedWire);
+			registerItemBlock(meshFence);
+			registerItemBlock(meshFencePole);
+			registerItemBlock(presentBlock);
+			registerItemBlock(presentBox);
 		}
 		
 		private static void registerItemBlock(Block block) {
@@ -71,13 +77,9 @@ public class ModBlocks {
 			final ResourceLocation registryName = block.getRegistryName();
 			itemRegistry.register(itemBlock.setRegistryName(registryName));
 		}
-		
 	}
 
     public static void init() {
-    	concrete = new Concrete();
-    	rawConcrete = new RawConcrete();
-    	fallingConcrete = new FallingConcrete();
     	strengthenedStone = new StrengthenedStone();
     	strengthenedCobblestone = new StrengthenedCobblestone();
     	barbedWire = new BarbedWire();
@@ -88,22 +90,5 @@ public class ModBlocks {
     	presentBlock = new PresentBlock();
     	christmasTree = new ChristmasTree();
     	presentBox = new PresentBox();
-    	
-    }
-    
-    @SideOnly(Side.CLIENT)
-    public static void initModels() {
-    	concrete.initModel();
-    	rawConcrete.initModel();
-    	fallingConcrete.initModel();
-    	strengthenedCobblestone.initModel();
-    	barbedWire.initModel();
-    	meshFence.initModel();
-    	meshFencePole.initModel();
-    	dump.initModel();
-    	souleye.initModel();
-    	presentBlock.initModel();
-    	christmasTree.initModel();
-    	presentBox.initModel();
     }
 }

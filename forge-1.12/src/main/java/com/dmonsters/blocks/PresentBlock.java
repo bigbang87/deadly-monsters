@@ -43,17 +43,10 @@ public class PresentBlock extends Block implements IMetaBlockName {
 		super(Material.IRON);
         setUnlocalizedName(MainMod.MODID + ".presentblock");
         setRegistryName("presentblock");
-        //GameRegistry.register(this);
-        //GameRegistry.register(new ItemBlockMeta(this), getRegistryName());
         this.setHardness(3);
         this.setResistance(50);
         this.setTickRandomly(true);
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    }
     
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
     	Random random = new Random();

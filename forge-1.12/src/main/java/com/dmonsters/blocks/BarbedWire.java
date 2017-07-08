@@ -41,8 +41,6 @@ public class BarbedWire extends Block {
 		super(Material.CACTUS);
         setUnlocalizedName(MainMod.MODID + ".barbedWire");
         setRegistryName("barbedWire");
-        //GameRegistry.register(this);
-        //GameRegistry.register(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(1);
         this.setResistance(1);
@@ -119,11 +117,6 @@ public class BarbedWire extends Block {
     public int quantityDropped(Random random)
     {
         return 1;
-    }
-	
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
     
 	@Override

@@ -29,11 +29,5 @@ public class FlyingDagon extends Item {
     public FlyingDagon() {
         setRegistryName("flyingdagon");
         setUnlocalizedName(MainMod.MODID + ".flyingdagon");
-        //GameRegistry.register(this);
-    }
-    
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
 }

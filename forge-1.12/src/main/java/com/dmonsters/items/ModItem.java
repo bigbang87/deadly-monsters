@@ -29,11 +29,6 @@ public class ModItem extends Item {
     public ModItem() {
         setRegistryName("modItem");
         setUnlocalizedName(MainMod.MODID + ".modItem");
-        //GameRegistry.register(this);
-    }
-    
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        this.setCreativeTab(MainMod.MOD_CREATIVETAB);
     }
 }

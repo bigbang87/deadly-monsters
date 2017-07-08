@@ -44,12 +44,7 @@ public class PurgePill extends Item {
     public PurgePill() {
         setRegistryName("purgePill");
         setUnlocalizedName(MainMod.MODID + ".purgePill");
-        //GameRegistry.register(this.setCreativeTab(MainMod.MOD_CREATIVETAB));
-    }
-    
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        this.setCreativeTab(MainMod.MOD_CREATIVETAB);
     }
     
     @Nullable

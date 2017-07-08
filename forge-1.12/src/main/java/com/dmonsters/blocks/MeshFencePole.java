@@ -51,18 +51,11 @@ public class MeshFencePole extends Block {
 		super(Material.ROCK);
         setUnlocalizedName(MainMod.MODID + ".meshFencePole");
         setRegistryName("meshFencePole");
-       // GameRegistry.register(this);
-        //GameRegistry.register(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(5);
         this.setResistance(5);
         this.setDefaultState(this.blockState.getBaseState().withProperty(NORTH, Boolean.valueOf(false)).withProperty(EAST, Boolean.valueOf(false)).withProperty(SOUTH, Boolean.valueOf(false)).withProperty(WEST, Boolean.valueOf(false)));
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public void initModel() {        
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    }
     
     public void addCollisionBoxToList(IBlockState state, World worldIn, BlockPos pos, AxisAlignedBB entityBox, List<AxisAlignedBB> collidingBoxes, @Nullable Entity entityIn)
     {

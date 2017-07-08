@@ -29,12 +29,7 @@ public class BabyEye extends Item {
     public BabyEye() {
         setRegistryName("babyEye");
         setUnlocalizedName(MainMod.MODID + ".babyEye");
-        //GameRegistry.register(this.setCreativeTab(MainMod.MOD_CREATIVETAB));
-    }
-    
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
+        this.setCreativeTab(MainMod.MOD_CREATIVETAB);
     }
     
     @Override

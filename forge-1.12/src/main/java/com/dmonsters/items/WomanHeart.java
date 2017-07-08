@@ -30,16 +30,11 @@ public class WomanHeart extends Item {
     public WomanHeart() {
         setRegistryName("womanHeart");
         setUnlocalizedName(MainMod.MODID + ".womanHeart");
-        //GameRegistry.register(this.setCreativeTab(MainMod.MOD_CREATIVETAB));
+        this.setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.maxStackSize = 1;
         this.setMaxDamage(11);
     }
-    
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    }
-    
+
     @Override
     public EnumActionResult onItemUse(EntityPlayer playerIn, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
         ItemStack stack = playerIn.getHeldItem(hand);

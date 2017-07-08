@@ -60,8 +60,6 @@ public class PresentBox extends Block {
 		super(Material.CACTUS);
         setUnlocalizedName(MainMod.MODID + ".present_box");
         setRegistryName("present_box");
-        //GameRegistry.register(this);
-        //GameRegistry.register(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(1);
         this.setResistance(50);
@@ -151,11 +149,6 @@ public class PresentBox extends Block {
     public int quantityDropped(Random random)
     {
         return 1;
-    }
-	
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
     
 	@Override

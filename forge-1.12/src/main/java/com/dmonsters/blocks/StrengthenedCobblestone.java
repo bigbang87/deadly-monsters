@@ -34,17 +34,10 @@ public class StrengthenedCobblestone extends Block {
 		super(Material.IRON);
         setUnlocalizedName(MainMod.MODID + ".strengthenedCobblestone");
         setRegistryName("strengthenedCobblestone");
-        //GameRegistry.register(this);
-        //GameRegistry.register(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(10);
         this.setResistance(25);
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    }
     
 	@Override
 	public StrengthenedCobblestone setCreativeTab(CreativeTabs tab) {

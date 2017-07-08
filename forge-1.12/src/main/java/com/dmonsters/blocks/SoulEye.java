@@ -52,19 +52,12 @@ public class SoulEye extends Block {
 		super(Material.IRON);
         setUnlocalizedName(MainMod.MODID + ".souleye");
         setRegistryName("souleye");
-        //GameRegistry.register(this);
-        //GameRegistry.register(new ItemBlock(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(3);
         this.setResistance(3);
         this.setTickRandomly(true);
         this.setDefaultState(this.blockState.getBaseState().withProperty(MODE, EnumMode.SLEEP));
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-        ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName(), "inventory"));
-    }
     
 	@Override
 	public SoulEye setCreativeTab(CreativeTabs tab) {

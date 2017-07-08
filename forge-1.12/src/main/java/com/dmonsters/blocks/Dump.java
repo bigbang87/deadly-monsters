@@ -69,24 +69,11 @@ public class Dump extends Block implements IMetaBlockName {
 		super(Material.CAKE);
         setUnlocalizedName(MainMod.MODID + ".dump");
         setRegistryName("dump");
-        //GameRegistry.register(this);
-        //GameRegistry.register(new ItemBlockMeta(this), getRegistryName());
         setCreativeTab(MainMod.MOD_CREATIVETAB);
         this.setHardness(1);
         this.setResistance(1);
         this.setDefaultState(this.blockState.getBaseState().withProperty(STACKS, 0));
 	}
-	
-    @SideOnly(Side.CLIENT)
-    public void initModel() {
-    	Item blockItem = Item.getItemFromBlock(this);
-    	List<ItemStack> subItems = new ArrayList<ItemStack>();
-    	this.getSubBlocks(blockItem, null, subItems);
-    	for (int i = 0; i < 4; i++) {
-    		ModelLoader.setCustomModelResourceLocation(blockItem, i,
-    		new ModelResourceLocation(this.getRegistryName(), "stacks=" + i));
-    	}
-    }
     
 	@Override
 	public Dump setCreativeTab(CreativeTabs tab) {

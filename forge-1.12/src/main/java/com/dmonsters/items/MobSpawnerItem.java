@@ -45,14 +45,8 @@ public class MobSpawnerItem extends Item
     {
         setRegistryName("mobSpawnerItem_" + name);
         setUnlocalizedName(MainMod.MODID + ".mobSpawnerItem_" + name);
-        //GameRegistry.register(this.setCreativeTab(MainMod.MOD_CREATIVETAB));
+        this.setCreativeTab(MainMod.MOD_CREATIVETAB);
         mobName = name;
-    }
-    
-    @SideOnly(Side.CLIENT)
-    public void initModel()
-    {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName(), "inventory"));
     }
     
     @Override
