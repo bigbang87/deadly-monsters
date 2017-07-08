@@ -60,7 +60,7 @@ public class ModItems {
 			registry.register(entrailFlesh.setCreativeTab(MainMod.MOD_CREATIVETAB));
 			registry.register(purgePill.setCreativeTab(MainMod.MOD_CREATIVETAB));
 			registry.register(dagon.setCreativeTab(MainMod.MOD_CREATIVETAB));
-			registry.register(flyingDagon.setCreativeTab(MainMod.MOD_CREATIVETAB));
+			registry.register(flyingDagon);
 			registry.register(modItem.setCreativeTab(MainMod.MOD_CREATIVETAB));
 			registry.register(mobSpawnerItem_baby.setCreativeTab(MainMod.MOD_CREATIVETAB));
 			registry.register(mobSpawnerItem_climber.setCreativeTab(MainMod.MOD_CREATIVETAB));

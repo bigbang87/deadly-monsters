@@ -7,29 +7,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModRecepies {
-/*	
-	public static void AddCraftingRecepies() {
-		rawConcreteRecepies();
-		barbedWireRecepies();
-		craftableItems();
-		dagon();
-		fencing();
-		christmasTree();
-	}
 	
-	private static void christmasTree() {
-        ResourceLocation resLocation;
-		resLocation = new ResourceLocation(MainMod.MODID + "christmas_tree");
-		ItemStack item = new ItemStack(ModBlocks.christmasTree, 1);
-		GameRegistry.addRecipe(item, new Object[] {
-				" D ",
-				"DSD",
-				" P ",
-				'S', new ItemStack(Blocks.SAPLING, 1, 1),
-				'D', Items.DIAMOND,
-				'P', Items.FLOWER_POT
-		});
-	}
+/*		
 	
 	private static void fencing() {
 		ItemStack item;

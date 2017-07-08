@@ -24,9 +24,8 @@ public class CommonProxy {
     	ModConfig.initConfig(e);
     	PacketHandler.init("dmonsters");
     	ModBlocks.init();
-    	//ModItems.init();
     	ModEntities.init();
-    	//ModRecepies.AddCraftingRecepies();
+    	//ModRecepies.registerRecipes();
     }
 
     public void init(FMLInitializationEvent e) {

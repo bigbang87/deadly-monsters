@@ -53,6 +53,8 @@ public class ModBlocks {
 			init();
 			registry.register(strengthenedStone);
 			registry.register(souleye);
+			registry.register(christmasTree);
+			registry.register(dump);
 		}
 		
 		@SubscribeEvent
@@ -60,6 +62,8 @@ public class ModBlocks {
 			itemRegistry = event.getRegistry();
 			registerItemBlock(strengthenedStone);
 			registerItemBlock(souleye);
+			registerItemBlock(christmasTree);
+			registerItemBlock(dump);
 		}
 		
 		private static void registerItemBlock(Block block) {

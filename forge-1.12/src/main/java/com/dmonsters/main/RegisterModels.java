@@ -43,6 +43,8 @@ public class RegisterModels {
     private static void registerBlockItemModels() {
 		registerBlockItemModel(ModBlocks.strengthenedStone);
 		registerBlockItemModel(ModBlocks.souleye);
+		registerBlockItemModel(ModBlocks.christmasTree);
+		registerBlockItemModel(ModBlocks.dump);
     }
     
     private static void registerItemModel(Item item) {
