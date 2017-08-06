@@ -37,6 +37,7 @@ public class ModItems {
     public static MobSpawnerItem mobSpawnerItem_zombieChicken;
     public static MobSpawnerItem mobSpawnerItem_present;
     public static MobSpawnerItem mobSpawnerItem_stranger;
+    public static MobSpawnerItem mobSpawnerItem_hauntedCow;
 
     public static void init() {
     	rebar = new Rebar();
@@ -59,6 +60,7 @@ public class ModItems {
     	mobSpawnerItem_zombieChicken = new MobSpawnerItem("zombieChicken");
     	mobSpawnerItem_present = new MobSpawnerItem("present");
     	mobSpawnerItem_stranger = new MobSpawnerItem("stranger");
+    	mobSpawnerItem_hauntedCow = new MobSpawnerItem("hauntedCow");
     }
     
     @SideOnly(Side.CLIENT)
@@ -83,5 +85,6 @@ public class ModItems {
     	mobSpawnerItem_zombieChicken.initModel();
     	mobSpawnerItem_present.initModel();
     	mobSpawnerItem_stranger.initModel();
+    	mobSpawnerItem_hauntedCow.initModel();
     }
 }

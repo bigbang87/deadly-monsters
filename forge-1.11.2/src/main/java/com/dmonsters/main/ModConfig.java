@@ -22,6 +22,7 @@ public class ModConfig {
     private static final String CATEGORY_ZOMBIECHICKEN = "Zombie_Chicken";
     private static final String CATEGORY_PRESENT = "Present";
     private static final String CATEGORY_STRANGER = "Stranger";
+    private static final String CATEGORY_HAUNTEDCOW = "Haunted Cow";
 
     //
     //GENERAL
@@ -101,6 +102,12 @@ public class ModConfig {
 	public static float strangerSpeedMultiplier = 1;
 	public static int strangerSawnRate = 20;
     public static boolean strangerDisabled = false;
+	//stranger
+	public static float hauntedCowHealthMultiplier = 1;
+	public static float hauntedCowStrengthMultiplier = 1;
+	public static float hauntedCowSpeedMultiplier = 1;
+	public static int hauntedCowSawnRate = 20;
+    public static boolean hauntedCowDisabled = false;
 
     public static void readConfig() {
         Configuration cfg = CommonProxy.config;
@@ -117,6 +124,7 @@ public class ModConfig {
             initZombieChickenConfig(cfg);
             initPresentConfig(cfg);
             initStrangerConfig(cfg);
+            initHauntedCowConfig(cfg);
         } catch (Exception e1) {
         	MainMod.logger.log(Level.ERROR, "Problem loading config file!", e1);
         } finally {
@@ -238,5 +246,14 @@ public class ModConfig {
         strangerStrengthMultiplier = cfg.getFloat("strangerStrengthMultiplier", CATEGORY_STRANGER, 1, 0.01F, 999, "Stranger strenght multiplier");
         strangerSpeedMultiplier = cfg.getFloat("strangerSpeedMultiplier", CATEGORY_STRANGER, 1, 0.01F, 999, "Stranger speed multiplier");
         strangerSawnRate = cfg.getInt("strangerSawnRate", CATEGORY_STRANGER, strangerSawnRate, 0, 999, "Stranger spawn rate. Default for Zombie is 8.");
+    }
+    
+    private static void initHauntedCowConfig(Configuration cfg) {
+        cfg.addCustomCategoryComment(CATEGORY_HAUNTEDCOW, "Haunted Cow");
+        hauntedCowDisabled = cfg.getBoolean("hauntedCowDisabled", CATEGORY_HAUNTEDCOW, hauntedCowDisabled, "Set to true if you want to disable Haunted Cow");
+        hauntedCowHealthMultiplier = cfg.getFloat("hauntedCowHealthMultiplier", CATEGORY_HAUNTEDCOW, 1, 0.01F, 999, "Haunted Cow health multiplier");
+        hauntedCowStrengthMultiplier = cfg.getFloat("hauntedCowStrengthMultiplier", CATEGORY_HAUNTEDCOW, 1, 0.01F, 999, "Haunted Cow strenght multiplier");
+        hauntedCowSpeedMultiplier = cfg.getFloat("hauntedCowSpeedMultiplier", CATEGORY_HAUNTEDCOW, 1, 0.01F, 999, "Haunted Cow speed multiplier");
+        hauntedCowSawnRate = cfg.getInt("hauntedCowSawnRate", CATEGORY_HAUNTEDCOW, hauntedCowSawnRate, 0, 999, "Haunted Cow spawn rate. Default for Zombie is 8.");
     }
 }
