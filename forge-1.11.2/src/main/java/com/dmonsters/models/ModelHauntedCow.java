@@ -27,7 +27,7 @@ public class ModelHauntedCow extends ModelBase
     
     head = new ModelRenderer(this, 0, 0);
     head.addBox(-4F, -4F, -6F, 8, 8, 6);
-    head.setRotationPoint(0F, 4F, -8F);
+    head.setRotationPoint(0F, 7F, -8F);
     head.setTextureSize(64, 64);
     head.mirror = true;
     setRotation(head, 0F, 0F, 0F);
@@ -62,14 +62,14 @@ public class ModelHauntedCow extends ModelBase
     leg4.mirror = true;
     setRotation(leg4, 0F, 0F, 0F);
     horn1 = new ModelRenderer(this, 31, 0);
-    horn1.addBox(-4F, -8F, -1F, 1, 3, 1);
+    horn1.addBox(-3F, -10F, 4F, 1, 3, 1);
     horn1.setRotationPoint(0F, 3F, -7F);
     horn1.setTextureSize(64, 64);
     horn1.mirror = true;
     setRotation(horn1, 0F, 0F, 0F);
     head.addChild(horn1);
     horn2 = new ModelRenderer(this, 31, 0);
-    horn2.addBox(3F, -5F, -4F, 1, 3, 1);
+    horn2.addBox(2F, -10F, 4F, 1, 3, 1);
     horn2.setRotationPoint(0F, 3F, -7F);
     horn2.setTextureSize(64, 64);
     horn2.mirror = true;
@@ -80,12 +80,11 @@ public class ModelHauntedCow extends ModelBase
     udders.setRotationPoint(0F, 14F, 6F);
     udders.setTextureSize(64, 64);
     udders.mirror = true;
-    setRotation(udders, 1.570796F, 0F, 0F);
+    setRotation(udders, 0F, 0F, 0F);
     bodyInside = new ModelRenderer(this, 18, 42);
-    bodyInside.addBox(-4F, 0F, -4F, 8, 14, 8);
+    bodyInside.addBox(-4F, -4F, -0F, 8, 8, 14);
     bodyInside.setRotationPoint(0F, 8F, -6F);
     bodyInside.setTextureSize(64, 64);
-    bodyInside.mirror = true;
     setRotation(bodyInside, 0F, 0F, 0F);
   }
   
@@ -125,8 +124,7 @@ public class ModelHauntedCow extends ModelBase
   public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
   {
     super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
-    this.head.rotateAngleX = headPitch * 0.017453292F;
-    this.head.rotateAngleY = netHeadYaw * 0.017453292F;
+    this.head.rotateAngleZ += limbSwing * 0.002F * limbSwingAmount;
     this.leg1.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F) * 1.4F * limbSwingAmount;
     this.leg2.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
     this.leg3.rotateAngleX = MathHelper.cos(limbSwing * 0.6662F + (float)Math.PI) * 1.4F * limbSwingAmount;
