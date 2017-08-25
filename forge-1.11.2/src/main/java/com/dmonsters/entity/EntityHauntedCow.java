@@ -67,7 +67,7 @@ public class EntityHauntedCow extends EntityMob
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(35.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.26D * ModConfig.speedMultiplier * ModConfig.hauntedCowSpeedMultiplier);
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(8.0D * ModConfig.strengthMultiplier * ModConfig.hauntedCowStrengthMultiplier);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D * ModConfig.strengthMultiplier * ModConfig.hauntedCowStrengthMultiplier);
         this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(2.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(16.0D * ModConfig.healthMultiplier * ModConfig.hauntedCowHealthMultiplier);
     }
@@ -85,7 +85,7 @@ public class EntityHauntedCow extends EntityMob
 
     protected void applyEntityAI()
     {
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+        this.targetTasks.addTask(0, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
     }
     
     protected SoundEvent getAmbientSound()

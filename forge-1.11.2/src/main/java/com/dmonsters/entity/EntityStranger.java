@@ -194,4 +194,11 @@ public class EntityStranger extends EntityMob {
     protected ResourceLocation getLootTable() {
         return LOOT;
     }
+    
+    /*
+    @Override
+    public boolean getCanSpawnHere() {
+        return super.getCanSpawnHere() && this.getEntityWorld().getLightBrightness(this.getPosition()) < 5;
+    }
+    */
 }

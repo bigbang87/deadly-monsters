@@ -161,20 +161,14 @@ public class EntityWoman extends EntityMob {
     }
 
     @Override
-    protected boolean isValidLightLevel() {
-        return true;
-    }
-
-    @Override
     public int getMaxSpawnedInChunk() {
         return 1;
     }
     
+    /*
     @Override
-    public boolean getCanSpawnHere()
-    {
-    	if (ModConfig.bloodyMaidenSpawnOnTheSurface)
-    		return super.getCanSpawnHere();
-        return super.getCanSpawnHere() && this.posY < 40;
+    public boolean getCanSpawnHere() {
+        return super.getCanSpawnHere() && this.getEntityWorld().getLightBrightness(this.getPosition()) < 5;
     }
+    */
 }

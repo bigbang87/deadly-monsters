@@ -144,12 +144,14 @@ public class EntityMutantSteve extends EntityMob {
     }
 
     @Override
-    protected boolean isValidLightLevel() {
-        return true;
-    }
-
-    @Override
     public int getMaxSpawnedInChunk() {
         return 2;
     }
+    
+    /*
+    @Override
+    public boolean getCanSpawnHere() {
+        return super.getCanSpawnHere() && this.getEntityWorld().getLightBrightness(this.getPosition()) < 5;
+    }
+    */
 }

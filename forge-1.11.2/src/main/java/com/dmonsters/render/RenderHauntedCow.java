@@ -16,7 +16,7 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 public class RenderHauntedCow extends RenderLiving<EntityHauntedCow> {
 
-    private ResourceLocation mobTexture = new ResourceLocation(MainMod.MODID + ":textures/entity/checker.png");
+    private ResourceLocation mobTexture = new ResourceLocation(MainMod.MODID + ":textures/entity/hauntedcow.png");
 
     public static final Factory FACTORY = new Factory();
 

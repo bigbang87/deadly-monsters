@@ -153,20 +153,14 @@ public class EntityEntrail extends EntityMob {
     }
 
     @Override
-    protected boolean isValidLightLevel() {
-        return true;
-    }
-
-    @Override
     public int getMaxSpawnedInChunk() {
         return 1;
     }
 
+    /*
     @Override
-    public boolean getCanSpawnHere()
-    {
-    	if (ModConfig.entrailSpawnOnTheSurface)
-    		return super.getCanSpawnHere();
-        return super.getCanSpawnHere() && this.posY < 50;
+    public boolean getCanSpawnHere() {
+        return super.getCanSpawnHere() && this.getEntityWorld().getLightBrightness(this.getPosition()) < 5;
     }
+    */
 }
