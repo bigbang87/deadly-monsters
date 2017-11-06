@@ -1,0 +1,10 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "dmonsters:christmas_tree"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
+}

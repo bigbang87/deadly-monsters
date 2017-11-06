@@ -55,7 +55,7 @@ import net.minecraft.world.storage.loot.LootTableList;
 
 public class EntityHauntedCow extends EntityMob
 {
-    public static final ResourceLocation LOOT = new ResourceLocation(MainMod.MODID, "hauntedCow");
+    public static final ResourceLocation LOOT = new ResourceLocation(MainMod.MODID, "hauntedcow");
 
     public EntityHauntedCow(World worldIn)
     {
@@ -109,18 +109,26 @@ public class EntityHauntedCow extends EntityMob
     }
     
     @Override
-    @Nullable
-    protected ResourceLocation getLootTable() {
-        return LOOT;
-    }
-    
-    public EnumCreatureAttribute getCreatureAttribute()
-    {
-        return EnumCreatureAttribute.UNDEAD;
+    public boolean attackEntityAsMob(Entity entityIn) {
+    	super.attackEntityAsMob(entityIn);
+		if (ModConfig.hauntedCowDisableTimeChange)
+			return true;
+    	Random random = new Random();
+    	float rndNum = random.nextFloat();
+    	if (rndNum < 0.5f)
+    		return true;
+        entityIn.world.setWorldTime(18000);
+    	return true;
     }
     
     @Override
-    public int getMaxSpawnedInChunk() {
-        return 1;
+    protected boolean isValidLightLevel() {
+        return true;
+    }
+    
+    @Override
+    @Nullable
+    protected ResourceLocation getLootTable() {
+        return LOOT;
     }
 }

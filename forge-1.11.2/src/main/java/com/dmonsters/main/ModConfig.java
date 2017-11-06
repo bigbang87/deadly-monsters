@@ -104,6 +104,7 @@ public class ModConfig {
 	public static float hauntedCowSpeedMultiplier = 1;
 	public static int hauntedCowSawnRate = 4;
     public static boolean hauntedCowDisabled = false;
+    public static boolean hauntedCowDisableTimeChange = false;
 
     public static void readConfig() {
         Configuration cfg = CommonProxy.config;
@@ -247,5 +248,6 @@ public class ModConfig {
         hauntedCowStrengthMultiplier = cfg.getFloat("hauntedCowStrengthMultiplier", CATEGORY_HAUNTEDCOW, 1, 0.01F, 999, "Haunted Cow strenght multiplier");
         hauntedCowSpeedMultiplier = cfg.getFloat("hauntedCowSpeedMultiplier", CATEGORY_HAUNTEDCOW, 1, 0.01F, 999, "Haunted Cow speed multiplier");
         hauntedCowSawnRate = cfg.getInt("hauntedCowSawnRate", CATEGORY_HAUNTEDCOW, hauntedCowSawnRate, 0, 999, "Haunted Cow spawn rate. Default for Zombie is 8.");
+        hauntedCowDisableTimeChange = cfg.getBoolean("disableTimeChange", CATEGORY_HAUNTEDCOW, hauntedCowDisableTimeChange, "Set to true if you want to disable time change event");
     }
 }

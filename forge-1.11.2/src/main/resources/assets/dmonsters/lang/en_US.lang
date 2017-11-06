@@ -86,5 +86,6 @@ msg.dmonsters.meshFence.error=You can place Mesh Fence only next to other Mesh F
 msg.dmonsters.meshFence.tooFarFromPole=Iron Fence must be placed at a max distance of 8 blocks in a straight line
 msg.dmonsters.barbedWire.error=Barbed Wire can be placed only on Iron Fence
 msg.dmonsters.purgePill.error=You need to be fed
+msg.dmonsters.hauntedcow=Use sword or bow! Otherwise the moon will start glow. 
 
 itemGroup.modTab=Deadly Monsters
