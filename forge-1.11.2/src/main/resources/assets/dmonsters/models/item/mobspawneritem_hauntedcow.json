@@ -1,6 +1,6 @@
 {
     "parent": "item/generated",
     "textures": {
-        "layer0": "dmonsters:items/mobSpawnerItem_woman"
+        "layer0": "dmonsters:items/mobspawneritem_hauntedcow"
     }
 }

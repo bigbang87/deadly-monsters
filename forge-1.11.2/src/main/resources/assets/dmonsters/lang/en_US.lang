@@ -80,6 +80,7 @@ item.dmonsters.mobSpawnerItem_woman.name=Woman Soul
 item.dmonsters.mobSpawnerItem_zombieChicken.name=Zombie Chicken Soul
 item.dmonsters.mobSpawnerItem_present.name=Packed Present
 item.dmonsters.mobSpawnerItem_stranger.name=Stranger Soul
+item.dmonsters.mobSpawnerItem_hauntedCow.name=Possesed Cow Soul
 
 msg.dmonsters.rawConcrete.error=Concrete must be placed on solid block
 msg.dmonsters.meshFence.error=You can place Mesh Fence only next to other Mesh Fence or Mesh Fence Pole

@@ -17,6 +17,52 @@
         ]
     },
     
+    "mob.hauntedcow.death":
+    {
+        "category": "hostile",
+        "sounds":
+        [
+            "dmonsters:haunted_cow_death_01",
+            "dmonsters:haunted_cow_death_02",
+            "dmonsters:haunted_cow_death_03"
+        ]
+    },
+    
+    "mob.hauntedcow.hurt":
+    {
+        "category": "hostile",
+        "sounds":
+        [
+            "dmonsters:haunted_cow_hurt_01",
+            "dmonsters:haunted_cow_hurt_02",
+            "dmonsters:haunted_cow_hurt_03"
+        ]
+    },
+    
+    "mob.hauntedcow.ambient":
+    {
+        "category": "hostile",
+        "sounds":
+        [
+            "dmonsters:haunted_cow_ambient_01",
+            "dmonsters:haunted_cow_ambient_02",
+            "dmonsters:haunted_cow_ambient_03",
+            "dmonsters:haunted_cow_ambient_04"
+        ]
+    },
+    
+    "mob.hauntedcow.step":
+    {
+        "category": "hostile",
+        "sounds":
+        [
+            "dmonsters:haunted_cow_step_01",
+            "dmonsters:haunted_cow_step_02",
+            "dmonsters:haunted_cow_step_03",
+            "dmonsters:haunted_cow_step_04"
+        ]
+    },
+    
     "mob.stranger.impact":
     {
         "category": "hostile",

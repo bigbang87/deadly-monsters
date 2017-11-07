@@ -90,27 +90,28 @@ public class EntityHauntedCow extends EntityMob
     
     protected SoundEvent getAmbientSound()
     {
-        return SoundEvents.ENTITY_COW_AMBIENT;
+        return ModSounds.HAUNTEDCOW_AMBINET;
     }
 
     protected SoundEvent getHurtSound()
     {
-        return SoundEvents.ENTITY_COW_HURT;
+        return ModSounds.HAUNTEDCOW_HURT;
     }
 
     protected SoundEvent getDeathSound()
     {
-        return SoundEvents.ENTITY_COW_DEATH;
+        return ModSounds.HAUNTEDCOW_DEATH;
     }
 
     protected void playStepSound(BlockPos pos, Block blockIn)
     {
-        this.playSound(SoundEvents.ENTITY_COW_STEP, 0.15F, 1.0F);
+        this.playSound(ModSounds.HAUNTEDCOW_STEP, 0.15F, 1.0F);
     }
     
     @Override
     public boolean attackEntityAsMob(Entity entityIn) {
     	super.attackEntityAsMob(entityIn);
+    	this.playSound(ModSounds.HAUNTEDCOW_AMBINET, 1, 1);
 		if (ModConfig.hauntedCowDisableTimeChange)
 			return true;
     	Random random = new Random();
