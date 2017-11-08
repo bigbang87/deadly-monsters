@@ -51,6 +51,7 @@ public class EventHandler {
 				Style red = new Style().setColor(TextFormatting.DARK_RED);
 				TextComponentTranslation msg = new TextComponentTranslation("msg.dmonsters.hauntedcow");
 				msg.setStyle(red);
+	            PacketHandler.INSTANCE.sendToAll(new PacketClientFXUpdate(player.getPosition(), PacketClientFXUpdate.Type.TIME_CHANGE));
 				world.setWorldTime(18000);
 				player.sendMessage(msg);
 			}

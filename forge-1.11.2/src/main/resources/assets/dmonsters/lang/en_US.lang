@@ -69,6 +69,7 @@ item.dmonsters.purgePill.name=Poopoo Pill
 item.dmonsters.widemanSpine.name=Wideman Spine
 item.dmonsters.womanHeart.name=Woman Heart
 item.dmonsters.dagon.name=Dagon
+item.dmonsters.sunlightdrop.name=Sunlight Drop
 
 item.dmonsters.mobSpawnerItem_mutantSteve.name=Mutant Steve Soul
 item.dmonsters.mobSpawnerItem_baby.name=Unborn Baby Soul
@@ -87,6 +88,7 @@ msg.dmonsters.meshFence.error=You can place Mesh Fence only next to other Mesh F
 msg.dmonsters.meshFence.tooFarFromPole=Iron Fence must be placed at a max distance of 8 blocks in a straight line
 msg.dmonsters.barbedWire.error=Barbed Wire can be placed only on Iron Fence
 msg.dmonsters.purgePill.error=You need to be fed
-msg.dmonsters.hauntedcow=Use sword or bow! Otherwise the moon will start glow. 
+msg.dmonsters.hauntedcow=Use sword or bow! Otherwise the moon will glow
+msg.dmonsters.hauntedcowTimeDisabled=Changing time is disabled on this server
 
 itemGroup.modTab=Deadly Monsters

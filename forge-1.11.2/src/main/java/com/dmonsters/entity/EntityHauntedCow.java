@@ -7,6 +7,8 @@ import com.dmonsters.ai.EntityAIHauntedCowAttack;
 import com.dmonsters.main.MainMod;
 import com.dmonsters.main.ModConfig;
 import com.dmonsters.main.ModSounds;
+import com.dmonsters.network.PacketClientFXUpdate;
+import com.dmonsters.network.PacketHandler;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -67,9 +69,9 @@ public class EntityHauntedCow extends EntityMob
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(35.0D);
         this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.26D * ModConfig.speedMultiplier * ModConfig.hauntedCowSpeedMultiplier);
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(4.0D * ModConfig.strengthMultiplier * ModConfig.hauntedCowStrengthMultiplier);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(8.0D * ModConfig.strengthMultiplier * ModConfig.hauntedCowStrengthMultiplier);
         this.getEntityAttribute(SharedMonsterAttributes.ARMOR).setBaseValue(2.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(16.0D * ModConfig.healthMultiplier * ModConfig.hauntedCowHealthMultiplier);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(24.0D * ModConfig.healthMultiplier * ModConfig.hauntedCowHealthMultiplier);
     }
     
     protected void initEntityAI()
@@ -118,6 +120,7 @@ public class EntityHauntedCow extends EntityMob
     	float rndNum = random.nextFloat();
     	if (rndNum < 0.5f)
     		return true;
+        PacketHandler.INSTANCE.sendToAll(new PacketClientFXUpdate(entityIn.getPosition(), PacketClientFXUpdate.Type.TIME_CHANGE));
         entityIn.world.setWorldTime(18000);
     	return true;
     }

@@ -14,6 +14,12 @@ public class ModRecepies {
 		dagon();
 		fencing();
 		christmasTree();
+		glowstoneFromSunlight();
+	}
+	
+	private static void glowstoneFromSunlight() {
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.GLOWSTONE_DUST, 4), ModItems.sunlightDrop);
+		
 	}
 	
 	private static void christmasTree() {

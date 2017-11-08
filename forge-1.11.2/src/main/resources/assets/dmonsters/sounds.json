@@ -17,6 +17,24 @@
         ]
     },
     
+    "item.sunlightdrop.use":
+    {
+        "category": "hostile",
+        "sounds":
+        [
+            "dmonsters:sunlightdrop_use"
+        ]
+    },
+    
+    "mob.hauntedcow.timechange":
+    {
+        "category": "hostile",
+        "sounds":
+        [
+            "dmonsters:haunted_cow_time_change"
+        ]
+    },
+    
     "mob.hauntedcow.death":
     {
         "category": "hostile",
