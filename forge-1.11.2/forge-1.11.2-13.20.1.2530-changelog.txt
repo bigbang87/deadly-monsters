@@ -1,5 +1,8 @@
 Changelog:
-Build 2529:
+Build 2530:
+	bs2609: Recalculate chunk heightmap minimum (MC-117412) (#3888)
+
+Build 1.12.2-14.23.0.2529:
 	bs2609: Fix more test mod warnings (#4477)
 
 Build 1.12.2-14.23.0.2528:
