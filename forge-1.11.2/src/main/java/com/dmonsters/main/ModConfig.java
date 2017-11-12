@@ -102,7 +102,7 @@ public class ModConfig {
 	public static float hauntedCowHealthMultiplier = 1;
 	public static float hauntedCowStrengthMultiplier = 1;
 	public static float hauntedCowSpeedMultiplier = 1;
-	public static int hauntedCowSawnRate = 4;
+	public static int hauntedCowSawnRate = 8;
     public static boolean hauntedCowDisabled = false;
     public static boolean hauntedCowDisableTimeChange = false;
 

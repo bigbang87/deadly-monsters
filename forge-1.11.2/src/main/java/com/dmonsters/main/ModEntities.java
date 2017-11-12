@@ -100,29 +100,29 @@ public class ModEntities {
 	        LootTableList.register(EntityEntrail.LOOT);
 	        
 	        //Present
-    		resLocation = new ResourceLocation(MainMod.MODID + ":mutantSteve");
+    		resLocation = new ResourceLocation(MainMod.MODID + ":present");
 	        EntityRegistry.registerModEntity(resLocation, EntityPresent.class, "present", id++, MainMod.instance, 64, 3, true);
 	        if (!ModConfig.presentDisabled)
 	        	EntityRegistry.addSpawn(EntityPresent.class, ModConfig.presentSawnRate, 2, 8, EnumCreatureType.MONSTER, BiomesProvider.getSnowBiomes());
 	        LootTableList.register(EntityPresent.LOOT);
 	        
 	        //Stranger
-    		resLocation = new ResourceLocation(MainMod.MODID + ":mutantSteve");
+    		resLocation = new ResourceLocation(MainMod.MODID + ":stranger");
 	        EntityRegistry.registerModEntity(resLocation, EntityStranger.class, "stranger", id++, MainMod.instance, 64, 3, true);
 	        if (!ModConfig.strangerDisabled)
 	        	EntityRegistry.addSpawn(EntityStranger.class, ModConfig.strangerSawnRate, 2, 8, EnumCreatureType.MONSTER, BiomesProvider.getBiomes());
 	        LootTableList.register(EntityStranger.LOOT);
 	        
 	        //Haunted Cow
-    		resLocation = new ResourceLocation(MainMod.MODID + ":mutantSteve");
-	        EntityRegistry.registerModEntity(resLocation, EntityHauntedCow.class, "hauntedCow", id++, MainMod.instance, 64, 3, true);
+    		resLocation = new ResourceLocation(MainMod.MODID + ":hauntedcow");
+	        EntityRegistry.registerModEntity(resLocation, EntityHauntedCow.class, "hauntedcow", id++, MainMod.instance, 64, 3, true);
 	        if (!ModConfig.hauntedCowDisabled)
 	        	EntityRegistry.addSpawn(EntityHauntedCow.class, ModConfig.hauntedCowSawnRate, 2, 8, EnumCreatureType.CREATURE, BiomesProvider.getBiomes());
 	        LootTableList.register(EntityHauntedCow.LOOT);
     	}
         
         //Lucky Egg
-		resLocation = new ResourceLocation(MainMod.MODID + ":mutantSteve");
+		resLocation = new ResourceLocation(MainMod.MODID + ":luckyEgg");
         EntityRegistry.registerModEntity(resLocation, EntityLuckyEgg.class, "luckyEgg", id++, MainMod.instance, 64, 3, true);
         //Dagon
 		resLocation = new ResourceLocation(MainMod.MODID + ":dagon");
