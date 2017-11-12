@@ -163,18 +163,7 @@ public class EntityBaby extends EntityMob {
     }
 
     @Override
-    protected boolean isValidLightLevel() {
-        return true;
-    }
-
-    @Override
     public int getMaxSpawnedInChunk() {
         return 1;
-    }
-    
-    @Override
-    public boolean getCanSpawnHere()
-    {
-        return super.getCanSpawnHere() && this.posY < 20;
     }
 }

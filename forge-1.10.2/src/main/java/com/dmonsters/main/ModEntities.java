@@ -4,6 +4,7 @@ import com.dmonsters.entity.EntityBaby;
 import com.dmonsters.entity.EntityClimber;
 import com.dmonsters.entity.EntityEntrail;
 import com.dmonsters.entity.EntityFreezer;
+import com.dmonsters.entity.EntityHauntedCow;
 import com.dmonsters.entity.EntityMutantSteve;
 import com.dmonsters.entity.EntityPresent;
 import com.dmonsters.entity.EntityStranger;
@@ -16,6 +17,7 @@ import com.dmonsters.render.RenderBaby;
 import com.dmonsters.render.RenderClimber;
 import com.dmonsters.render.RenderEntrail;
 import com.dmonsters.render.RenderFreezer;
+import com.dmonsters.render.RenderHauntedCow;
 import com.dmonsters.render.RenderMutantSteve;
 import com.dmonsters.render.RenderPresent;
 import com.dmonsters.render.RenderStranger;
@@ -99,6 +101,12 @@ public class ModEntities {
 	        if (!ModConfig.strangerDisabled)
 	        	EntityRegistry.addSpawn(EntityStranger.class, ModConfig.strangerSawnRate, 2, 8, EnumCreatureType.MONSTER, BiomesProvider.getBiomes());
 	        LootTableList.register(EntityStranger.LOOT);
+	        
+	        //Haunted Cow
+	        EntityRegistry.registerModEntity(EntityHauntedCow.class, "hauntedcow", id++, MainMod.instance, 64, 3, true);
+	        if (!ModConfig.hauntedCowDisabled)
+	        	EntityRegistry.addSpawn(EntityHauntedCow.class, ModConfig.hauntedCowSawnRate, 2, 8, EnumCreatureType.CREATURE, BiomesProvider.getBiomes());
+	        LootTableList.register(EntityHauntedCow.LOOT);
     	}
         
         //Lucky Egg
@@ -119,6 +127,7 @@ public class ModEntities {
 		RenderingRegistry.registerEntityRenderingHandler(EntityEntrail.class, RenderEntrail.FACTORY);
 		RenderingRegistry.registerEntityRenderingHandler(EntityPresent.class, RenderPresent.FACTORY);
 		RenderingRegistry.registerEntityRenderingHandler(EntityStranger.class, RenderStranger.FACTORY);
+		RenderingRegistry.registerEntityRenderingHandler(EntityHauntedCow.class, RenderHauntedCow.FACTORY);
     }
     
     @SideOnly(Side.CLIENT)

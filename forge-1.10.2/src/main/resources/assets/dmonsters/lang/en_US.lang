@@ -1,15 +1,15 @@
 < en_US.lang - English localization file for Deadly Monsters >
 
-entity.dmonsters.mutantSteve.name=Mutant Steve
-entity.dmonsters.baby.name=Unborn Baby
-entity.dmonsters.climber.name=Climber
-entity.dmonsters.entrail.name=Entrail
-entity.dmonsters.freezer.name=Freezer
-entity.dmonsters.wideman.name=Fallen Leader
-entity.dmonsters.woman.name=Bloody Maiden
-entity.dmonsters.zombieChicken.name=Zombie Chicken
-entity.dmonsters.present.name=Present
-entity.dmonsters.stranger.name=Stranger
+entity.mutantSteve.name=Mutant Steve
+entity.baby.name=Unborn Baby
+entity.climber.name=Climber
+entity.entrail.name=Entrail
+entity.freezer.name=Freezer
+entity.wideman.name=Fallen Leader
+entity.woman.name=Bloody Maiden
+entity.zombieChicken.name=Zombie Chicken
+entity.present.name=Present
+entity.stranger.name=Stranger
 
 tile.dmonsters.rawConcrete.white.name=White Raw Concrete
 tile.dmonsters.rawConcrete.orange.name=Orange Raw Concrete
@@ -69,9 +69,10 @@ item.dmonsters.purgePill.name=Poopoo Pill
 item.dmonsters.widemanSpine.name=Wideman Spine
 item.dmonsters.womanHeart.name=Woman Heart
 item.dmonsters.dagon.name=Dagon
+item.dmonsters.sunlightdrop.name=Sunlight Drop
 
 item.dmonsters.mobSpawnerItem_mutantSteve.name=Mutant Steve Soul
-item.dmonsters.mobSpawnerItem_baby.name=Unborn Babt Soul
+item.dmonsters.mobSpawnerItem_baby.name=Unborn Baby Soul
 item.dmonsters.mobSpawnerItem_climber.name=Climber Soul
 item.dmonsters.mobSpawnerItem_entrail.name=Entrail Soul
 item.dmonsters.mobSpawnerItem_freezer.name=Freezer Soul
@@ -80,11 +81,14 @@ item.dmonsters.mobSpawnerItem_woman.name=Woman Soul
 item.dmonsters.mobSpawnerItem_zombieChicken.name=Zombie Chicken Soul
 item.dmonsters.mobSpawnerItem_present.name=Packed Present
 item.dmonsters.mobSpawnerItem_stranger.name=Stranger Soul
+item.dmonsters.mobSpawnerItem_hauntedCow.name=Possesed Cow Soul
 
 msg.dmonsters.rawConcrete.error=Concrete must be placed on solid block
 msg.dmonsters.meshFence.error=You can place Mesh Fence only next to other Mesh Fence or Mesh Fence Pole
 msg.dmonsters.meshFence.tooFarFromPole=Iron Fence must be placed at a max distance of 8 blocks in a straight line
 msg.dmonsters.barbedWire.error=Barbed Wire can be placed only on Iron Fence
 msg.dmonsters.purgePill.error=You need to be fed
+msg.dmonsters.hauntedcow=Use sword or bow! Otherwise the moon will glow
+msg.dmonsters.hauntedcowTimeDisabled=Changing time is disabled on this server
 
 itemGroup.modTab=Deadly Monsters

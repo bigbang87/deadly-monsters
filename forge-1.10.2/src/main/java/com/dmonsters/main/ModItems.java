@@ -9,6 +9,7 @@ import com.dmonsters.items.MobSpawnerItem;
 import com.dmonsters.items.ModItem;
 import com.dmonsters.items.PurgePill;
 import com.dmonsters.items.Rebar;
+import com.dmonsters.items.SunlightDrop;
 import com.dmonsters.items.WidemanSpine;
 import com.dmonsters.items.WomanHeart;
 
@@ -26,6 +27,7 @@ public class ModItems {
     public static PurgePill purgePill;
     public static Dagon dagon;
     public static FlyingDagon flyingDagon;
+    public static SunlightDrop sunlightDrop;
     public static ModItem modItem;
     public static MobSpawnerItem mobSpawnerItem_baby;
     public static MobSpawnerItem mobSpawnerItem_climber;
@@ -37,6 +39,7 @@ public class ModItems {
     public static MobSpawnerItem mobSpawnerItem_zombieChicken;
     public static MobSpawnerItem mobSpawnerItem_present;
     public static MobSpawnerItem mobSpawnerItem_stranger;
+    public static MobSpawnerItem mobSpawnerItem_hauntedcow;
 
     public static void init() {
     	rebar = new Rebar();
@@ -48,6 +51,7 @@ public class ModItems {
     	purgePill = new PurgePill();
     	dagon = new Dagon();
     	flyingDagon = new FlyingDagon();
+    	sunlightDrop = new SunlightDrop();
     	modItem = new ModItem();
     	mobSpawnerItem_baby = new MobSpawnerItem("baby");
     	mobSpawnerItem_climber = new MobSpawnerItem("climber");
@@ -59,6 +63,7 @@ public class ModItems {
     	mobSpawnerItem_zombieChicken = new MobSpawnerItem("zombieChicken");
     	mobSpawnerItem_present = new MobSpawnerItem("present");
     	mobSpawnerItem_stranger = new MobSpawnerItem("stranger");
+    	mobSpawnerItem_hauntedcow = new MobSpawnerItem("hauntedCow");
     }
     
     @SideOnly(Side.CLIENT)
@@ -72,6 +77,7 @@ public class ModItems {
     	purgePill.initModel();
     	dagon.initModel();
     	flyingDagon.initModel();
+    	sunlightDrop.initModel();
     	modItem.initModel();
     	mobSpawnerItem_baby.initModel();
     	mobSpawnerItem_climber.initModel();
@@ -83,5 +89,6 @@ public class ModItems {
     	mobSpawnerItem_zombieChicken.initModel();
     	mobSpawnerItem_present.initModel();
     	mobSpawnerItem_stranger.initModel();
+    	mobSpawnerItem_hauntedcow.initModel();
     }
 }

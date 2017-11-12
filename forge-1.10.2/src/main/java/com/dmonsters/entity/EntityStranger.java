@@ -48,14 +48,7 @@ public class EntityStranger extends EntityMob {
     private static final DataParameter<Boolean> ARMS_RAISED = EntityDataManager.createKey(EntityStranger.class, DataSerializers.BOOLEAN);
     private static final DataParameter<Boolean> ATTACKING = EntityDataManager.createKey(EntityStranger.class, DataSerializers.BOOLEAN);
     
-    private final int pushCooldownConst = 40;
-    
     public static final ResourceLocation LOOT = new ResourceLocation(MainMod.MODID, "stranger");
-    private boolean delayedEffectTick;
-    private int delayedTickTimer = 0;
-    private Entity delayedTickEntity;
-    private BlockPos delayedTickPos;
-    private int pushCooldown = 0;
     
     public EntityStranger(World worldIn) {
         super(worldIn);
@@ -92,9 +85,8 @@ public class EntityStranger extends EntityMob {
         if (super.attackEntityAsMob(entityIn)) {
         	this.playSound(ModSounds.STRANGER_ATTACK, 1, 1);
         	if (entityIn instanceof EntityPlayer) {
-        		boolean doubleDamage = pushInGround(entityIn);
-        		if (doubleDamage)
-        			entityIn.attackEntityFrom(DamageSource.generic, 10);
+        		hitPlayer(entityIn);
+        		entityIn.attackEntityFrom(DamageSource.generic, 10);
         	}
             return true;
         } else {
@@ -104,20 +96,6 @@ public class EntityStranger extends EntityMob {
     
     @Override
     public void onLivingUpdate() {
-    	if (!worldObj.isRemote) {
-    		if (delayedEffectTick) {
-	    		if (delayedTickTimer <= 2) {
-	    			delayedTickTimer++;
-	    		} else {
-	    			delayedTickEntity.setPositionAndUpdate(delayedTickPos.getX(), delayedTickPos.getY(), delayedTickPos.getZ());
-	    			delayedEffectTick = false;
-	    			delayedTickTimer = 0;
-	    		}
-    		}
-    		if (pushCooldown < pushCooldownConst) {
-    			pushCooldown++;
-    		}
-    	}
         if (this.worldObj.isDaytime() && !this.worldObj.isRemote) {
             float f = this.getBrightness(1.0F);
             BlockPos blockpos = this.getRidingEntity() instanceof EntityBoat ? (new BlockPos(this.posX, (double)Math.round(this.posY), this.posZ)).up() : new BlockPos(this.posX, (double)Math.round(this.posY), this.posZ);
@@ -128,46 +106,13 @@ public class EntityStranger extends EntityMob {
         super.onLivingUpdate();
     }
     
-    private boolean pushInGround(Entity entityIn) {
+    private void hitPlayer(Entity entityIn) {
     	if (worldObj.isRemote)
-    		return false;
-    	if (pushCooldown != pushCooldownConst)
-    		return false;
-    	else
-    		pushCooldown = 0;
-    	BlockPos playerPos = entityIn.getPosition();
-    	boolean doubleDamage = false;
-    	BlockPos testingPos = playerPos;
-    	float hardness;
-    	Block blockUnder;
-    	IBlockState blockUnderState;
-    	boolean hitHardBlock = false;
-    	
-    	int lowsetIndex = 0;
-    	for (int i = 0; i < 2; i++) {
-    		lowsetIndex--;
-        	testingPos = new BlockPos(playerPos.getX(), playerPos.getY() + lowsetIndex, playerPos.getZ());
-        	blockUnderState = entityIn.worldObj.getBlockState(testingPos);
-        	blockUnder = blockUnderState.getBlock();
-        	hardness = blockUnder.getBlockHardness(null, entityIn.worldObj, testingPos);
-        	if (hardness >= 3)
-        		doubleDamage = true;
-        	if (blockUnder != Blocks.BEDROCK && blockUnder != Blocks.OBSIDIAN) {
-            	if (worldObj.getGameRules().getBoolean("mobGriefing"))
-            		entityIn.worldObj.destroyBlock(testingPos, true);
-        	} else {
-        		hitHardBlock = true;
-        		break;
-        	}
-    	}
-		delayedEffectTick = true;
-		delayedTickEntity = entityIn;
-		if (hitHardBlock)
-			delayedTickPos = new BlockPos(testingPos.getX(), testingPos.getY() + 1, testingPos.getZ());
-		else
-			delayedTickPos = testingPos;
+    		return;
     	this.playSound(ModSounds.STRANGER_IMPACT, 1, 1);
-		return doubleDamage;
+    	Random rnd = new Random();
+    	float rndNum = rnd.nextFloat() + 0.1F;
+    	entityIn.addVelocity(0, rndNum, 0);
     }
     
     @Override
@@ -193,4 +138,11 @@ public class EntityStranger extends EntityMob {
     protected ResourceLocation getLootTable() {
         return LOOT;
     }
+    
+    /*
+    @Override
+    public boolean getCanSpawnHere() {
+        return super.getCanSpawnHere() && this.getEntityWorld().getLightBrightness(this.getPosition()) < 5;
+    }
+    */
 }
