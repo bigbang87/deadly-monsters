@@ -4,6 +4,7 @@ import com.dmonsters.entity.EntityBaby;
 import com.dmonsters.entity.EntityClimber;
 import com.dmonsters.entity.EntityEntrail;
 import com.dmonsters.entity.EntityFreezer;
+import com.dmonsters.entity.EntityHauntedCow;
 import com.dmonsters.entity.EntityMutantSteve;
 import com.dmonsters.entity.EntityPresent;
 import com.dmonsters.entity.EntityStranger;
@@ -138,6 +139,9 @@ public class MobSpawnerItem extends Item
     	case "stranger":
     		 entity = new EntityStranger(worldIn);
     	break;
+		case "hauntedCow":
+   		 	entity = new EntityHauntedCow(worldIn);
+   		 break;
     	}
     	return entity;
     }

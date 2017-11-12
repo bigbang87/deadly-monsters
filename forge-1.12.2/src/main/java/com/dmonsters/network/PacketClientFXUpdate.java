@@ -26,7 +26,9 @@ public class PacketClientFXUpdate implements IMessage {
 	public static enum Type {
 		SOULEYE,
 		DUMP,
-		WOMAN_HEART;		
+		WOMAN_HEART,
+		SUNLIGHT_USE,
+		TIME_CHANGE;		
 	    public static Type fromInteger(int x) {
 	        switch(x) {
 	        case 0:
@@ -35,6 +37,10 @@ public class PacketClientFXUpdate implements IMessage {
 	            return DUMP;
 	        case 2:
 	            return WOMAN_HEART;
+	        case 3:
+	            return SUNLIGHT_USE;
+	        case 4:
+	            return TIME_CHANGE;
 	        }
 	        return null;
 	    }
@@ -84,6 +90,12 @@ public class PacketClientFXUpdate implements IMessage {
         	case WOMAN_HEART:
         		WomanHeart(message, ctx);
         		break;
+        	case SUNLIGHT_USE:
+        		HauntedCowSounds(message, ctx, 0);
+        		break;
+        	case TIME_CHANGE:
+        		HauntedCowSounds(message, ctx, 1);
+        		break;
 			default:
 				break;
         	}
@@ -116,6 +128,38 @@ public class PacketClientFXUpdate implements IMessage {
         	World world = Minecraft.getMinecraft().world;
         	BlockPos pos = message.blockPos;
         	world.playSound(pos.getX(), pos.getY(), pos.getZ(), ModSounds.DUMP_MAKE, SoundCategory.BLOCKS, 1, 1, false);
+        }
+        
+        private void HauntedCowSounds(PacketClientFXUpdate message, MessageContext ctx, int soundType) {
+        	World world = Minecraft.getMinecraft().world;
+        	BlockPos pos = message.blockPos;
+        	switch (soundType) {
+        	case 0:
+            	world.playSound(pos.getX(), pos.getY(), pos.getZ(), ModSounds.SUNLIGHTDROP_USE, SoundCategory.AMBIENT, 1, 1, false);
+            	Random rnd = new Random();
+            	for (int i = 0; i < 32; i++) {
+    				double motionX = rnd.nextGaussian() * 0.001D;
+    				double motionY = Math.abs(rnd.nextGaussian() * 0.08D);
+    				double motionZ = rnd.nextGaussian() * 0.001D;
+    				float randX = rnd.nextFloat() * (rnd.nextBoolean() ? 1 : -1);
+    				float randY = rnd.nextFloat() * (rnd.nextBoolean() ? 1 : -1);
+    				float randZ = rnd.nextFloat() * (rnd.nextBoolean() ? 1 : -1);
+    				world.spawnParticle(EnumParticleTypes.ENCHANTMENT_TABLE,
+    						pos.getX() + randX, 
+    						pos.getY() + 1.5F + randY, 
+    						pos.getZ() + randZ,
+    						motionX,
+    						motionY,
+    						motionZ,
+    						new int[0]);
+            	}
+            	break;
+        	case 1:
+            	world.playSound(pos.getX(), pos.getY(), pos.getZ(), ModSounds.HAUNTEDCOW_TIMECHANGE, SoundCategory.AMBIENT, 1, 1, false);
+        		break;
+			default:
+				break;
+        	}
         }
         
         private void WomanHeart(PacketClientFXUpdate message, MessageContext ctx) {

@@ -1,6 +1,7 @@
 package com.dmonsters.proxy;
 
 import com.dmonsters.entityProjectile.EntityLuckyEgg;
+import com.dmonsters.main.EventHandler;
 import com.dmonsters.main.ModBlocks;
 import com.dmonsters.main.ModConfig;
 import com.dmonsters.main.ModEntities;
@@ -9,6 +10,7 @@ import com.dmonsters.network.PacketHandler;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderSnowball;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -27,6 +29,7 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent e) {
+    	MinecraftForge.EVENT_BUS.register(new EventHandler());
     }
 
     public void postInit(FMLPostInitializationEvent e) {

@@ -57,8 +57,6 @@ public class EntityAIMutantSteveAttack extends EntityAIAttackMelee {
         if (ticks == 20 && !this.mutantSteve.isInWater()) {
         	ticks = 0;
         	if (this.attacker.world.getGameRules().getBoolean("mobGriefing")) {
-        		if (ModConfig.mutantSteveNoGriefing)
-        			return;
 	        	DestroyAroundMe(0, 0.25F);
 	        	DestroyAroundMe(1, 0.5F);
 	        	DestroyAroundMe(2, 0.75F);

@@ -28,6 +28,7 @@ public class RegisterModels {
     	registerItemModel(ModItems.dagon);
     	registerItemModel(ModItems.flyingDagon);
     	registerItemModel(ModItems.modItem);
+    	registerItemModel(ModItems.sunlightDrop);
     	registerItemModel(ModItems.mobSpawnerItem_baby);
     	registerItemModel(ModItems.mobSpawnerItem_climber);
     	registerItemModel(ModItems.mobSpawnerItem_entrail);
@@ -38,6 +39,7 @@ public class RegisterModels {
     	registerItemModel(ModItems.mobSpawnerItem_zombieChicken);
     	registerItemModel(ModItems.mobSpawnerItem_present);
     	registerItemModel(ModItems.mobSpawnerItem_stranger);
+    	registerItemModel(ModItems.mobSpawnerItem_hauntedCow);
     }
     
     private static void registerBlockItemModels() {
