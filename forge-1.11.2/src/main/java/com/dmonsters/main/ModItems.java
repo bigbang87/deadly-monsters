@@ -40,6 +40,7 @@ public class ModItems {
     public static MobSpawnerItem mobSpawnerItem_present;
     public static MobSpawnerItem mobSpawnerItem_stranger;
     public static MobSpawnerItem mobSpawnerItem_hauntedCow;
+    public static MobSpawnerItem mobSpawnerItem_topielec;
 
     public static void init() {
     	rebar = new Rebar();
@@ -64,6 +65,7 @@ public class ModItems {
     	mobSpawnerItem_present = new MobSpawnerItem("present");
     	mobSpawnerItem_stranger = new MobSpawnerItem("stranger");
     	mobSpawnerItem_hauntedCow = new MobSpawnerItem("hauntedCow");
+    	mobSpawnerItem_topielec = new MobSpawnerItem("topielec");
     }
     
     @SideOnly(Side.CLIENT)
@@ -90,5 +92,6 @@ public class ModItems {
     	mobSpawnerItem_present.initModel();
     	mobSpawnerItem_stranger.initModel();
     	mobSpawnerItem_hauntedCow.initModel();
+    	mobSpawnerItem_topielec.initModel();
     }
 }

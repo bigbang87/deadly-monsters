@@ -22,7 +22,7 @@ public class MainMod {
 	
 	public static final String MODID = "dmonsters";
 	public static final String MODNAME = "Deadly Monsters";
-	public static final String MODVERSION = "1.53";
+	public static final String MODVERSION = "1.6";
 	public static final ModCreativeTabs MOD_CREATIVETAB = new ModCreativeTabs("modTab");
 	
 

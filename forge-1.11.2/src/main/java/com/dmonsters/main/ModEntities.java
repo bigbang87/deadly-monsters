@@ -8,6 +8,7 @@ import com.dmonsters.entity.EntityHauntedCow;
 import com.dmonsters.entity.EntityMutantSteve;
 import com.dmonsters.entity.EntityPresent;
 import com.dmonsters.entity.EntityStranger;
+import com.dmonsters.entity.EntityTopielec;
 import com.dmonsters.entity.EntityWideman;
 import com.dmonsters.entity.EntityWoman;
 import com.dmonsters.entity.EntityZombieChicken;
@@ -21,6 +22,7 @@ import com.dmonsters.render.RenderHauntedCow;
 import com.dmonsters.render.RenderMutantSteve;
 import com.dmonsters.render.RenderPresent;
 import com.dmonsters.render.RenderStranger;
+import com.dmonsters.render.RenderTopielec;
 import com.dmonsters.render.RenderWideman;
 import com.dmonsters.render.RenderWoman;
 import com.dmonsters.render.RenderZombieChicken;
@@ -119,6 +121,13 @@ public class ModEntities {
 	        if (!ModConfig.hauntedCowDisabled)
 	        	EntityRegistry.addSpawn(EntityHauntedCow.class, ModConfig.hauntedCowSawnRate, 2, 8, EnumCreatureType.CREATURE, BiomesProvider.getBiomes());
 	        LootTableList.register(EntityHauntedCow.LOOT);
+	        
+	        //Topielec
+    		resLocation = new ResourceLocation(MainMod.MODID + ":topielec");
+	        EntityRegistry.registerModEntity(resLocation, EntityTopielec.class, "topielec", id++, MainMod.instance, 64, 3, true);
+	        //if (!ModConfig.hauntedCowDisabled)
+	        //	EntityRegistry.addSpawn(EntityTopielec.class, ModConfig.hauntedCowSawnRate, 2, 8, EnumCreatureType.CREATURE, BiomesProvider.getBiomes());
+	        LootTableList.register(EntityTopielec.LOOT);
     	}
         
         //Lucky Egg
@@ -142,6 +151,7 @@ public class ModEntities {
 		RenderingRegistry.registerEntityRenderingHandler(EntityPresent.class, RenderPresent.FACTORY);
 		RenderingRegistry.registerEntityRenderingHandler(EntityStranger.class, RenderStranger.FACTORY);
 		RenderingRegistry.registerEntityRenderingHandler(EntityHauntedCow.class, RenderHauntedCow.FACTORY);
+		RenderingRegistry.registerEntityRenderingHandler(EntityTopielec.class, RenderTopielec.FACTORY);
     }
     
     @SideOnly(Side.CLIENT)
