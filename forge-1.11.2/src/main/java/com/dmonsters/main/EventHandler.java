@@ -10,6 +10,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IEntityLivingData;
 import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBow;
@@ -20,11 +21,21 @@ import net.minecraft.util.text.Style;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.EntityEvent;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EventHandler {
+	
+	@SubscribeEvent(priority = EventPriority.NORMAL)
+	public void EntityJoinWorldEvent(EntityEvent e) {
+		Entity spawnedEntity = e.getEntity();
+		if (spawnedEntity instanceof EntitySquid) {
+			System.out.println("Squid Spawning: " + spawnedEntity);
+		}
+	}
 
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public void onPlayerAttack(AttackEntityEvent e) {

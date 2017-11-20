@@ -125,8 +125,6 @@ public class ModEntities {
 	        //Topielec
     		resLocation = new ResourceLocation(MainMod.MODID + ":topielec");
 	        EntityRegistry.registerModEntity(resLocation, EntityTopielec.class, "topielec", id++, MainMod.instance, 64, 3, true);
-	        //if (!ModConfig.hauntedCowDisabled)
-	        //	EntityRegistry.addSpawn(EntityTopielec.class, ModConfig.hauntedCowSawnRate, 2, 8, EnumCreatureType.CREATURE, BiomesProvider.getBiomes());
 	        LootTableList.register(EntityTopielec.LOOT);
     	}
         
