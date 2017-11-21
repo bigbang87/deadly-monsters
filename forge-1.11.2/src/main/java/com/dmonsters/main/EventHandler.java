@@ -3,6 +3,7 @@ package com.dmonsters.main;
 import java.util.Random;
 
 import com.dmonsters.entity.EntityHauntedCow;
+import com.dmonsters.entity.EntityTopielec;
 import com.dmonsters.network.PacketClientFXUpdate;
 import com.dmonsters.network.PacketHandler;
 
@@ -23,6 +24,7 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.EntityEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent.SpecialSpawn;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -30,10 +32,16 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class EventHandler {
 	
 	@SubscribeEvent(priority = EventPriority.NORMAL)
-	public void EntityJoinWorldEvent(EntityEvent e) {
-		Entity spawnedEntity = e.getEntity();
-		if (spawnedEntity instanceof EntitySquid) {
-			System.out.println("Squid Spawning: " + spawnedEntity);
+	public void onEntitySpawn(SpecialSpawn e) {
+		if (ModConfig.topielecDisabled)
+			return;
+		Entity squid = e.getEntity();
+		if (squid instanceof EntitySquid) {
+			Random rnd = new Random();
+			int rndInt = rnd.nextInt(100);
+			if (rndInt < ModConfig.topielecSawnChance) {
+				spawnEntity(squid, new EntityTopielec(squid.getEntityWorld()));
+			}
 		}
 	}
 

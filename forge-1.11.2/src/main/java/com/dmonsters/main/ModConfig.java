@@ -110,7 +110,7 @@ public class ModConfig {
 	public static float topielecHealthMultiplier = 1;
 	public static float topielecStrengthMultiplier = 1;
 	public static float topielecSpeedMultiplier = 1;
-	public static int topielecSawnRate = 100;
+	public static int topielecSawnChance = 25;
     public static boolean topielecDisabled = false;
 
     public static void readConfig() {
@@ -265,6 +265,6 @@ public class ModConfig {
         topielecHealthMultiplier = cfg.getFloat("topielecHealthMultiplier", CATEGORY_TOPIELEC, 1, 0.01F, 999, "Topielec health multiplier");
         topielecStrengthMultiplier = cfg.getFloat("topielecStrengthMultiplier", CATEGORY_TOPIELEC, 1, 0.01F, 999, "Topielec strenght multiplier");
         topielecSpeedMultiplier = cfg.getFloat("topielecSpeedMultiplier", CATEGORY_TOPIELEC, 1, 0.01F, 999, "Topielec speed multiplier");
-        topielecSawnRate = cfg.getInt("topielecSawnRate", CATEGORY_TOPIELEC, topielecSawnRate, 0, 999, "Topielec spawn rate. Default for Zombie is 8.");
+        topielecSawnChance = cfg.getInt("topielecSawnChance", CATEGORY_TOPIELEC, topielecSawnChance, 0, 999, "Precentage Topielec spawn chance, for example 25 means 25%.");
     }
 }
