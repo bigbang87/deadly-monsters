@@ -29,7 +29,6 @@ public class EntityAITopielecAttack extends EntityAIBase {
     }
 
     public boolean shouldExecute() {
-    	System.out.println(this.topielec.getAttackTarget());
     	EntityPlayerMP player = (EntityPlayerMP) this.topielec.getAttackTarget();
     	if (player != null) {
 	    	double distance = this.topielec.getDistance(player.posX, player.posY, player.posZ);
@@ -48,13 +47,14 @@ public class EntityAITopielecAttack extends EntityAIBase {
     	playerEntity.setPositionAndUpdate(myX, myY, myZ);
     	
     	ticks++;
-    	if (ticks > 10)
+    	if (ticks > 40)
     		return;
     	else
     		ticks = 0;
     	BlockPos targetPos = findBestPosition();
-    	System.out.println(targetPos);
+    	//System.out.println(targetPos);
     	float[] normVec = normlizeVector(targetPos.subtract(this.topielec.getPosition()));
+    	//System.out.println(normVec[0] + ", " + myY + ", " + normVec[2]);
     	this.topielec.setMovementVector(normVec[0], normVec[1], normVec[2]);
     }
     
@@ -76,18 +76,28 @@ public class EntityAITopielecAttack extends EntityAIBase {
     	int maxBoundsZ = searchDistance + myPos.getZ();
     	World worldIn = this.topielec.getEntityWorld();
     	int deepestY = myPos.getY();
+    	//System.out.println("START " + myPos);
+    	//System.out.println(deepestY);
     	for (int x = minBoundsX; x < maxBoundsX; x++) {
         	for (int z = minBoundsZ; z < maxBoundsZ; z++) { 
+        		int tempDeepestY = myPos.getY();
             	for (int y = myPos.getY(); y > 0; y--) {
             		BlockPos currPos = new BlockPos(x, y, z);
             		Block block = worldIn.getBlockState(currPos).getBlock();
-            		if (block == Blocks.WATER && y < deepestY) {
-            			deepestY = y;
-            			bestPos = currPos;
+            		//System.out.println(y + " " + block + ", " + currPos);
+            		if (block == Blocks.WATER && y <= tempDeepestY) {
+            			tempDeepestY = y;
+            		} else {
+            			if (tempDeepestY <= deepestY) {
+            				deepestY = tempDeepestY;
+            				bestPos = currPos;
+            			}
+            			break;
             		}
             	}
         	}
     	}
+    	//System.out.println("END: " + bestPos);
     	return new BlockPos(bestPos.getX(), myPos.getY(), bestPos.getZ());
     }
 }
