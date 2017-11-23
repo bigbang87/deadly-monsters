@@ -3,6 +3,7 @@ package com.dmonsters.entity;
 import javax.annotation.Nullable;
 
 import com.dmonsters.ai.EntityAIEntrailAttack;
+import com.dmonsters.ai.EntityAITopielecAttack;
 import com.dmonsters.ai.EntityAITopielecFollowPlayer;
 import com.dmonsters.ai.EntityAITopielecIdle;
 import com.dmonsters.ai.EntityAIWaterMobNearestPlayer;
@@ -38,8 +39,9 @@ public class EntityTopielec extends EntityMob {
     
     @Override
     protected void initEntityAI() {
-        this.tasks.addTask(0, new EntityAITopielecFollowPlayer(this, 0.5F));
-        this.tasks.addTask(1, new EntityAITopielecIdle(this));
+        this.tasks.addTask(0, new EntityAITopielecAttack(this, 0.5F));
+        this.tasks.addTask(1, new EntityAITopielecFollowPlayer(this, 0.5F));
+        this.tasks.addTask(2, new EntityAITopielecIdle(this));
     	this.applyEntityAI();
     }
     
