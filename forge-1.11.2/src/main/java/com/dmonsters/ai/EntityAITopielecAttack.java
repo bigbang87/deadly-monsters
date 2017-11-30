@@ -54,7 +54,7 @@ public class EntityAITopielecAttack extends EntityAIBase {
     	BlockPos targetPos = findBestPosition();
     	//System.out.println(targetPos);
     	float[] normVec = normlizeVector(targetPos.subtract(this.topielec.getPosition()));
-    	//System.out.println(normVec[0] + ", " + myY + ", " + normVec[2]);
+    	System.out.println(normVec[0] + ", " + myY + ", " + normVec[2]);
     	this.topielec.setMovementVector(normVec[0], normVec[1], normVec[2]);
     }
     
@@ -81,8 +81,8 @@ public class EntityAITopielecAttack extends EntityAIBase {
     	for (int x = minBoundsX; x < maxBoundsX; x++) {
         	for (int z = minBoundsZ; z < maxBoundsZ; z++) { 
         		int tempDeepestY = myPos.getY();
-            	for (int y = myPos.getY(); y > 0; y--) {
-            		BlockPos currPos = new BlockPos(x, y, z);
+        		for (int y = myPos.getY(); y > 0; y--) {
+        			BlockPos currPos = new BlockPos(x, y, z);
             		Block block = worldIn.getBlockState(currPos).getBlock();
             		//System.out.println(y + " " + block + ", " + currPos);
             		if (block == Blocks.WATER && y <= tempDeepestY) {
