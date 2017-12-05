@@ -6,7 +6,7 @@ import org.lwjgl.opengl.GL11;
 
 import com.dmonsters.entity.EntityTopielec;
 import com.dmonsters.main.MainMod;
-import com.dmonsters.models.ModelBaby;
+import com.dmonsters.models.ModelTopielec;
 
 import net.minecraft.client.model.ModelSquid;
 import net.minecraft.client.renderer.entity.Render;
@@ -17,12 +17,12 @@ import net.minecraftforge.fml.client.registry.IRenderFactory;
 
 public class RenderTopielec extends RenderLiving<EntityTopielec> {
 
-    private ResourceLocation mobTexture = new ResourceLocation(MainMod.MODID + ":textures/entity/checker.png");
+    private ResourceLocation mobTexture = new ResourceLocation(MainMod.MODID + ":textures/entity/topielec.png");
 
     public static final Factory FACTORY = new Factory();
 
     public RenderTopielec(RenderManager rendermanagerIn) {
-        super(rendermanagerIn, new ModelSquid(), 0.5F);
+        super(rendermanagerIn, new ModelTopielec(), 0.5F);
     }
     
     protected void preRenderCallback(EntityTopielec entity, float f){
