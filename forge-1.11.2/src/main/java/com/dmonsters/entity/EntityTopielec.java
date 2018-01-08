@@ -9,6 +9,7 @@ import com.dmonsters.ai.EntityAITopielecIdle;
 import com.dmonsters.ai.EntityAIWaterMobNearestPlayer;
 import com.dmonsters.main.MainMod;
 import com.dmonsters.main.ModConfig;
+import com.dmonsters.main.ModSounds;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.MoverType;
@@ -19,6 +20,7 @@ import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -39,14 +41,30 @@ public class EntityTopielec extends EntityMob {
     
     @Override
     protected void initEntityAI() {
-        this.tasks.addTask(0, new EntityAITopielecAttack(this, 0.5F));
-        this.tasks.addTask(1, new EntityAITopielecFollowPlayer(this, 0.5F));
-        this.tasks.addTask(2, new EntityAITopielecIdle(this));
+        //this.tasks.addTask(0, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
+        this.tasks.addTask(1, new EntityAITopielecAttack(this, 0.5F));
+        this.tasks.addTask(2, new EntityAITopielecFollowPlayer(this, 0.5F));
+        this.tasks.addTask(3, new EntityAITopielecIdle(this));
     	this.applyEntityAI();
     }
     
     private void applyEntityAI() {
     	this.targetTasks.addTask(0, new EntityAIWaterMobNearestPlayer(this, 20));
+    }
+    
+    protected SoundEvent getAmbientSound()
+    {
+        return ModSounds.TOPIELEC_AMBINET;
+    }
+
+    protected SoundEvent getHurtSound()
+    {
+        return ModSounds.TOPIELEC_HURT;
+    }
+
+    protected SoundEvent getDeathSound()
+    {
+        return ModSounds.TOPIELEC_DEATH;
     }
 
     public boolean canBreatheUnderwater() {

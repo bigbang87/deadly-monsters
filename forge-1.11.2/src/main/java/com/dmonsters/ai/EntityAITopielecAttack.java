@@ -54,7 +54,7 @@ public class EntityAITopielecAttack extends EntityAIBase {
     	BlockPos targetPos = findBestPosition();
     	//System.out.println(targetPos);
     	float[] normVec = normlizeVector(targetPos.subtract(this.topielec.getPosition()));
-    	System.out.println(normVec[0] + ", " + myY + ", " + normVec[2]);
+    	//System.out.println(normVec[0] + ", " + myY + ", " + normVec[2]);
     	this.topielec.setMovementVector(normVec[0], normVec[1], normVec[2]);
     }
     
