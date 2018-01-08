@@ -41,12 +41,12 @@ public class EntityTopielec extends EntityMob {
     protected void initEntityAI() {
         this.tasks.addTask(0, new EntityAITopielecAttack(this, 0.5F));
         this.tasks.addTask(1, new EntityAITopielecFollowPlayer(this, 0.5F));
-        //this.tasks.addTask(2, new EntityAITopielecIdle(this));
+        this.tasks.addTask(2, new EntityAITopielecIdle(this));
     	this.applyEntityAI();
     }
     
     private void applyEntityAI() {
-    	//this.targetTasks.addTask(0, new EntityAIWaterMobNearestPlayer(this, 20));
+    	this.targetTasks.addTask(0, new EntityAIWaterMobNearestPlayer(this, 20));
     }
 
     public boolean canBreatheUnderwater() {

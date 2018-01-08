@@ -80,7 +80,7 @@ public class EntityAIMutantSteveAttack extends EntityAIAttackMelee {
     				continue;
     	    	blockToDestroyPos = new BlockPos(this.attacker.posX + dx, y + yOffset, this.attacker.posZ + dz);
     	    	blockToDestroy = worldin.getBlockState(blockToDestroyPos);
-    	    	if (blockToDestroy.getBlock() != Blocks.AIR) {
+    	    	if (blockToDestroy.getBlock() != Blocks.AIR && blockToDestroy.getBlock() != Blocks.BEDROCK) {
     	        	hardness = blockToDestroy.getBlockHardness(this.attacker.world, blockToDestroyPos);
 					if (hardness < hardnessTreshold) {
 						randomChance = random.nextFloat();
