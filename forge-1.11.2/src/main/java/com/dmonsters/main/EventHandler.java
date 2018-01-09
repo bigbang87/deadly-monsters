@@ -47,32 +47,40 @@ public class EventHandler {
 
 	@SubscribeEvent(priority = EventPriority.NORMAL)
 	public void onPlayerAttack(AttackEntityEvent e) {
-		if (ModConfig.hauntedCowDisabled)
-			return;
+		Entity entity = e.getTarget();
 		if (!e.getEntity().getEntityWorld().isRemote) {
-			Entity entity = e.getTarget();
-			if (entity instanceof EntityCow || entity instanceof EntityHauntedCow) {
-				Random random = new Random();
-				float rndChance = random.nextFloat();
-				if (rndChance < 0.5F)
-					return;
-				World world = entity.getEntityWorld();
-				EntityPlayer player = e.getEntityPlayer();
-				Item itemClass = player.getHeldItemMainhand().getItem();
-				if (itemClass instanceof ItemSword || itemClass instanceof ItemBow)
-					return;
-				entity.setDropItemsWhenDead(false);
-				entity.setDead();
-				spawnEntity(entity, new EntityHauntedCow(world));
-	            PacketHandler.INSTANCE.sendToAll(new PacketClientFXUpdate(entity.getPosition(), PacketClientFXUpdate.Type.SOULEYE));
-				if (ModConfig.hauntedCowDisableTimeChange)
-					return;
-				Style red = new Style().setColor(TextFormatting.DARK_RED);
-				TextComponentTranslation msg = new TextComponentTranslation("msg.dmonsters.hauntedcow");
-				msg.setStyle(red);
-	            PacketHandler.INSTANCE.sendToAll(new PacketClientFXUpdate(player.getPosition(), PacketClientFXUpdate.Type.TIME_CHANGE));
-				world.setWorldTime(18000);
-				player.sendMessage(msg);
+			if (!ModConfig.hauntedCowDisabled) {
+				if (entity instanceof EntityCow || entity instanceof EntityHauntedCow) {
+					Random random = new Random();
+					float rndChance = random.nextFloat();
+					if (rndChance < 0.5F)
+						return;
+					World world = entity.getEntityWorld();
+					EntityPlayer player = e.getEntityPlayer();
+					Item itemClass = player.getHeldItemMainhand().getItem();
+					if (itemClass instanceof ItemSword || itemClass instanceof ItemBow)
+						return;
+					entity.setDropItemsWhenDead(false);
+					entity.setDead();
+					spawnEntity(entity, new EntityHauntedCow(world));
+		            PacketHandler.INSTANCE.sendToAll(new PacketClientFXUpdate(entity.getPosition(), PacketClientFXUpdate.Type.SOULEYE));
+					if (ModConfig.hauntedCowDisableTimeChange)
+						return;
+					Style red = new Style().setColor(TextFormatting.DARK_RED);
+					TextComponentTranslation msg = new TextComponentTranslation("msg.dmonsters.hauntedcow");
+					msg.setStyle(red);
+		            PacketHandler.INSTANCE.sendToAll(new PacketClientFXUpdate(player.getPosition(), PacketClientFXUpdate.Type.TIME_CHANGE));
+					world.setWorldTime(18000);
+					player.sendMessage(msg);
+				}
+			}
+			if (!ModConfig.topielecDisabled) {
+				if (entity instanceof EntityTopielec) {
+					EntityPlayer player = e.getEntityPlayer();
+					Item itemClass = player.getHeldItemMainhand().getItem();
+					if (itemClass instanceof ItemSword)
+						e.setCanceled(true);
+				}
 			}
 		}
 	}
