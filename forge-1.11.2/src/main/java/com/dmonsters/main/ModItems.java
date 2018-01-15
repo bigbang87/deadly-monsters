@@ -4,6 +4,7 @@ import com.dmonsters.items.BabyEye;
 import com.dmonsters.items.Dagon;
 import com.dmonsters.items.EntrailFlesh;
 import com.dmonsters.items.FlyingDagon;
+import com.dmonsters.items.Harpoon;
 import com.dmonsters.items.LuckyEgg;
 import com.dmonsters.items.MobSpawnerItem;
 import com.dmonsters.items.ModItem;
@@ -41,6 +42,10 @@ public class ModItems {
     public static MobSpawnerItem mobSpawnerItem_stranger;
     public static MobSpawnerItem mobSpawnerItem_hauntedCow;
     public static MobSpawnerItem mobSpawnerItem_topielec;
+    public static Harpoon harpoon_stone;
+    public static Harpoon harpoon_iron;
+    public static Harpoon harpoon_diamond;
+    public static Harpoon harpoon_obsidian;
 
     public static void init() {
     	rebar = new Rebar();
@@ -66,6 +71,10 @@ public class ModItems {
     	mobSpawnerItem_stranger = new MobSpawnerItem("stranger");
     	mobSpawnerItem_hauntedCow = new MobSpawnerItem("hauntedCow");
     	mobSpawnerItem_topielec = new MobSpawnerItem("topielec");
+    	harpoon_stone = new Harpoon("stone", 5, 1);
+    	harpoon_iron = new Harpoon("iron", 40, 3);
+    	harpoon_diamond = new Harpoon("diamond", 200, 10);
+    	harpoon_obsidian = new Harpoon("obsidian", -1, 8);
     }
     
     @SideOnly(Side.CLIENT)
@@ -93,5 +102,9 @@ public class ModItems {
     	mobSpawnerItem_stranger.initModel();
     	mobSpawnerItem_hauntedCow.initModel();
     	mobSpawnerItem_topielec.initModel();
+    	harpoon_stone.initModel();
+    	harpoon_iron.initModel();
+    	harpoon_diamond.initModel();
+    	harpoon_obsidian.initModel();
     }
 }

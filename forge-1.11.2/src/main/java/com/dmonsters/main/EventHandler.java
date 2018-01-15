@@ -4,6 +4,7 @@ import java.util.Random;
 
 import com.dmonsters.entity.EntityHauntedCow;
 import com.dmonsters.entity.EntityTopielec;
+import com.dmonsters.items.Harpoon;
 import com.dmonsters.network.PacketClientFXUpdate;
 import com.dmonsters.network.PacketHandler;
 
@@ -78,7 +79,7 @@ public class EventHandler {
 				if (entity instanceof EntityTopielec) {
 					EntityPlayer player = e.getEntityPlayer();
 					Item itemClass = player.getHeldItemMainhand().getItem();
-					if (itemClass instanceof ItemSword)
+					if (itemClass instanceof Harpoon)
 						e.setCanceled(true);
 				}
 			}
