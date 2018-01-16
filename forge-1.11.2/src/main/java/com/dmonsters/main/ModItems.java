@@ -71,8 +71,8 @@ public class ModItems {
     	mobSpawnerItem_stranger = new MobSpawnerItem("stranger");
     	mobSpawnerItem_hauntedCow = new MobSpawnerItem("hauntedCow");
     	mobSpawnerItem_topielec = new MobSpawnerItem("topielec");
-    	harpoon_stone = new Harpoon("stone", 5, 1);
-    	harpoon_iron = new Harpoon("iron", 40, 3);
+    	harpoon_stone = new Harpoon("stone", 10, 3);
+    	harpoon_iron = new Harpoon("iron", 40, 6);
     	harpoon_diamond = new Harpoon("diamond", 200, 10);
     	harpoon_obsidian = new Harpoon("obsidian", -1, 8);
     }

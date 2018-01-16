@@ -20,7 +20,6 @@ public class ModRecepies {
 	
 	private static void glowstoneFromSunlight() {
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.GLOWSTONE_DUST, 2), ModItems.sunlightDrop);
-		
 	}
 	
 	private static void harpoon() {

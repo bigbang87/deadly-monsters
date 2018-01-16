@@ -80,6 +80,8 @@ public class EventHandler {
 					EntityPlayer player = e.getEntityPlayer();
 					Item itemClass = player.getHeldItemMainhand().getItem();
 					if (itemClass instanceof Harpoon)
+						e.setCanceled(false);
+					else
 						e.setCanceled(true);
 				}
 			}
