@@ -23,6 +23,7 @@ public class ModConfig {
     private static final String CATEGORY_PRESENT = "Present";
     private static final String CATEGORY_STRANGER = "Stranger";
     private static final String CATEGORY_HAUNTEDCOW = "Haunted Cow";
+    private static final String CATEGORY_TOPIELEC = "Topielec";
 
     //
     //GENERAL
@@ -105,6 +106,12 @@ public class ModConfig {
 	public static int hauntedCowSawnRate = 8;
     public static boolean hauntedCowDisabled = false;
     public static boolean hauntedCowDisableTimeChange = false;
+	//topielec
+	public static float topielecHealthMultiplier = 1;
+	public static float topielecStrengthMultiplier = 1;
+	public static float topielecSpeedMultiplier = 1;
+	public static int topielecSawnChance = 25;
+    public static boolean topielecDisabled = false;
 
     public static void readConfig() {
         Configuration cfg = CommonProxy.config;
@@ -122,6 +129,7 @@ public class ModConfig {
             initPresentConfig(cfg);
             initStrangerConfig(cfg);
             initHauntedCowConfig(cfg);
+            initTopielecConfig(cfg);
         } catch (Exception e1) {
         	MainMod.logger.log(Level.ERROR, "Problem loading config file!", e1);
         } finally {
@@ -249,5 +257,14 @@ public class ModConfig {
         hauntedCowSpeedMultiplier = cfg.getFloat("hauntedCowSpeedMultiplier", CATEGORY_HAUNTEDCOW, 1, 0.01F, 999, "Haunted Cow speed multiplier");
         hauntedCowSawnRate = cfg.getInt("hauntedCowSawnRate", CATEGORY_HAUNTEDCOW, hauntedCowSawnRate, 0, 999, "Haunted Cow spawn rate. Default for Zombie is 8.");
         hauntedCowDisableTimeChange = cfg.getBoolean("disableTimeChange", CATEGORY_HAUNTEDCOW, hauntedCowDisableTimeChange, "Set to true if you want to disable time change event");
+    }
+    
+    private static void initTopielecConfig(Configuration cfg) {
+        cfg.addCustomCategoryComment(CATEGORY_TOPIELEC, "Topielec");
+        topielecDisabled = cfg.getBoolean("topielecDisabled", CATEGORY_TOPIELEC, topielecDisabled, "Set to true if you want to disable Topielec");
+        topielecHealthMultiplier = cfg.getFloat("topielecHealthMultiplier", CATEGORY_TOPIELEC, 1, 0.01F, 999, "Topielec health multiplier");
+        topielecStrengthMultiplier = cfg.getFloat("topielecStrengthMultiplier", CATEGORY_TOPIELEC, 1, 0.01F, 999, "Topielec strenght multiplier");
+        topielecSpeedMultiplier = cfg.getFloat("topielecSpeedMultiplier", CATEGORY_TOPIELEC, 1, 0.01F, 999, "Topielec speed multiplier");
+        topielecSawnChance = cfg.getInt("topielecSawnChance", CATEGORY_TOPIELEC, topielecSawnChance, 0, 999, "Precentage Topielec spawn chance, for example 25 means 25%.");
     }
 }

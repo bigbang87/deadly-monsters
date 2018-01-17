@@ -8,6 +8,7 @@ import com.dmonsters.entity.EntityHauntedCow;
 import com.dmonsters.entity.EntityMutantSteve;
 import com.dmonsters.entity.EntityPresent;
 import com.dmonsters.entity.EntityStranger;
+import com.dmonsters.entity.EntityTopielec;
 import com.dmonsters.entity.EntityWideman;
 import com.dmonsters.entity.EntityWoman;
 import com.dmonsters.entity.EntityZombieChicken;
@@ -144,6 +145,9 @@ public class MobSpawnerItem extends Item
     	break;
     	case "hauntedCow":
    		 	entity = new EntityHauntedCow(worldIn);
+   		 break;
+    	case "topielec":
+   		 	entity = new EntityTopielec(worldIn);
    		 break;
     	}
     	return entity;
