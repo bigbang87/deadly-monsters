@@ -1,0 +1,28 @@
+{
+  "result":
+  {
+    "item": "dmonsters:harpoon_iron"
+  },
+  "pattern":
+  [
+    "XX",
+    "FX",
+    " S"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key":
+  {
+    "S":
+    {
+      "item": "minecraft:stick"
+    },
+    "X":
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    "F":
+    {
+      "item": "minecraft:flint"
+    }
+  }
+}

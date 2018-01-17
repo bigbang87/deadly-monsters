@@ -4,6 +4,7 @@ import com.dmonsters.items.BabyEye;
 import com.dmonsters.items.Dagon;
 import com.dmonsters.items.EntrailFlesh;
 import com.dmonsters.items.FlyingDagon;
+import com.dmonsters.items.Harpoon;
 import com.dmonsters.items.LuckyEgg;
 import com.dmonsters.items.MobSpawnerItem;
 import com.dmonsters.items.ModItem;
@@ -48,6 +49,11 @@ public class ModItems {
     public static MobSpawnerItem mobSpawnerItem_present;
     public static MobSpawnerItem mobSpawnerItem_stranger;
     public static MobSpawnerItem mobSpawnerItem_hauntedCow;
+    public static MobSpawnerItem mobSpawnerItem_topielec;
+    public static Harpoon harpoon_stone;
+    public static Harpoon harpoon_iron;
+    public static Harpoon harpoon_diamond;
+    public static Harpoon harpoon_obsidian;
     
 	@Mod.EventBusSubscriber(modid = MainMod.MODID)
 	public static class RegistrationHandler {
@@ -77,6 +83,11 @@ public class ModItems {
 			registry.register(mobSpawnerItem_present);
 			registry.register(mobSpawnerItem_stranger);
 			registry.register(mobSpawnerItem_hauntedCow);
+			registry.register(mobSpawnerItem_topielec);
+			registry.register(harpoon_stone);
+			registry.register(harpoon_iron);
+			registry.register(harpoon_diamond);
+			registry.register(harpoon_obsidian);
 		}
 	}
 
@@ -103,5 +114,10 @@ public class ModItems {
     	mobSpawnerItem_present = new MobSpawnerItem("present");
     	mobSpawnerItem_stranger = new MobSpawnerItem("stranger");
     	mobSpawnerItem_hauntedCow = new MobSpawnerItem("hauntedCow");
+    	mobSpawnerItem_topielec = new MobSpawnerItem("topielec");
+    	harpoon_stone = new Harpoon("stone", 10, 3);
+    	harpoon_iron = new Harpoon("iron", 40, 6);
+    	harpoon_diamond = new Harpoon("diamond", 200, 10);
+    	harpoon_obsidian = new Harpoon("obsidian", -1, 8);
     }
 }

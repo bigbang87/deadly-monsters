@@ -35,6 +35,39 @@
         ]
     },
     
+    "mob.topielec.death":
+    {
+        "category": "hostile",
+        "sounds":
+        [
+            "dmonsters:topielec_die_01",
+            "dmonsters:topielec_die_02",
+            "dmonsters:topielec_die_03"
+        ]
+    },
+    
+    "mob.topielec.hurt":
+    {
+        "category": "hostile",
+        "sounds":
+        [
+            "dmonsters:topielec_hurt_01",
+            "dmonsters:topielec_hurt_02",
+            "dmonsters:topielec_hurt_03"
+        ]
+    },
+    
+    "mob.topielec.ambient":
+    {
+        "category": "hostile",
+        "sounds":
+        [
+            "dmonsters:topielec_idle_01",
+            "dmonsters:topielec_idle_02",
+            "dmonsters:topielec_idle_03"
+        ]
+    },
+    
     "mob.hauntedcow.death":
     {
         "category": "hostile",

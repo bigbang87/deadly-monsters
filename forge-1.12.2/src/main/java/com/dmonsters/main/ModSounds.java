@@ -49,6 +49,9 @@ public class ModSounds {
 	public static SoundEvent HAUNTEDCOW_HURT;
 	public static SoundEvent HAUNTEDCOW_AMBINET;
 	public static SoundEvent HAUNTEDCOW_DEATH;
+	public static SoundEvent TOPIELEC_HURT;
+	public static SoundEvent TOPIELEC_AMBINET;
+	public static SoundEvent TOPIELEC_DEATH;
 	
 	public static SoundEvent DUMP_MAKE;	
 	public static SoundEvent BLOCK_SOULEYE_KILL;
@@ -62,6 +65,10 @@ public class ModSounds {
 		
 		SUNLIGHTDROP_USE = registerSound("item.sunlightdrop.use");
 		HAUNTEDCOW_TIMECHANGE = registerSound("mob.hauntedcow.timechange");
+		
+		TOPIELEC_HURT = registerSound("mob.topielec.hurt");
+		TOPIELEC_AMBINET = registerSound("mob.topielec.ambient");
+		TOPIELEC_DEATH = registerSound("mob.topielec.death");
 		
 		HAUNTEDCOW_DEATH = registerSound("mob.hauntedcow.death");
 		HAUNTEDCOW_HURT = registerSound("mob.hauntedcow.hurt");
@@ -112,6 +119,11 @@ public class ModSounds {
 		STRANGER_HURT = registerSound("mob.stranger.hurt");
 		STRANGER_AMBIENT = registerSound("mob.stranger.idle");
 		STRANGER_ATTACK = registerSound("mob.stranger.attack");
+		
+		STRANGER_DEATH = registerSound("mob.stranger.death");
+		STRANGER_HURT = registerSound("mob.stranger.hurt");
+		STRANGER_AMBIENT = registerSound("mob.stranger.idle");
+		STRANGER_ATTACK = registerSound("mob.stranger.attack");
 	}
 
 	private static SoundEvent registerSound(String id) {
@@ -130,6 +142,10 @@ public class ModSounds {
 					
 					SUNLIGHTDROP_USE,
 					HAUNTEDCOW_TIMECHANGE,
+					
+					TOPIELEC_HURT,
+					TOPIELEC_AMBINET,
+					TOPIELEC_DEATH,
 					
 					HAUNTEDCOW_DEATH,
 					HAUNTEDCOW_HURT,

@@ -1,0 +1,28 @@
+{
+  "result":
+  {
+    "item": "dmonsters:harpoon_diamond"
+  },
+  "pattern":
+  [
+    "XX",
+    "FX",
+    " S"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key":
+  {
+    "S":
+    {
+      "item": "minecraft:stick"
+    },
+    "X":
+    {
+      "item": "minecraft:diamond"
+    },
+    "F":
+    {
+      "item": "minecraft:flint"
+    }
+  }
+}

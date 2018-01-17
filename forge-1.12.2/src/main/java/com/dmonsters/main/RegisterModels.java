@@ -40,6 +40,11 @@ public class RegisterModels {
     	registerItemModel(ModItems.mobSpawnerItem_present);
     	registerItemModel(ModItems.mobSpawnerItem_stranger);
     	registerItemModel(ModItems.mobSpawnerItem_hauntedCow);
+    	registerItemModel(ModItems.mobSpawnerItem_topielec);
+    	registerItemModel(ModItems.harpoon_stone);
+    	registerItemModel(ModItems.harpoon_iron);
+    	registerItemModel(ModItems.harpoon_diamond);
+    	registerItemModel(ModItems.harpoon_obsidian);
     }
     
     private static void registerBlockItemModels() {

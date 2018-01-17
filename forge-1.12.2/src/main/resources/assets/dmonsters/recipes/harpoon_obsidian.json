@@ -1,0 +1,28 @@
+{
+  "result":
+  {
+    "item": "dmonsters:harpoon_obsidian"
+  },
+  "pattern":
+  [
+    "XX",
+    "FX",
+    " S"
+  ],
+  "type": "minecraft:crafting_shaped",
+  "key":
+  {
+    "S":
+    {
+      "item": "minecraft:stick"
+    },
+    "X":
+    {
+      "item": "minecraft:obsidian"
+    },
+    "F":
+    {
+      "item": "minecraft:flint"
+    }
+  }
+}
