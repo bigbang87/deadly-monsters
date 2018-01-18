@@ -46,6 +46,7 @@ import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.pathfinding.PathNavigateClimber;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.datafix.DataFixer;
@@ -95,7 +96,7 @@ public class EntityHauntedCow extends EntityMob
         return ModSounds.HAUNTEDCOW_AMBINET;
     }
 
-    protected SoundEvent getHurtSound()
+    protected SoundEvent getHurtSound(DamageSource damageSourceIn)
     {
         return ModSounds.HAUNTEDCOW_HURT;
     }

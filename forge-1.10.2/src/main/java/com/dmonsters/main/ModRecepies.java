@@ -25,45 +25,45 @@ public class ModRecepies {
 	private static void harpoon() {
 		ItemStack item = new ItemStack(ModItems.harpoon_stone, 1);
 		GameRegistry.addRecipe(item, new Object[] {
-				"XX ",
-				"FX ",
-				" S ",
+				"XX",
+				"FX",
+				" S",
 				'S', Items.STICK,
 				'X', Blocks.COBBLESTONE,
 				'F', Items.FLINT
 		});
 		item = new ItemStack(ModItems.harpoon_stone, 1);
 		GameRegistry.addRecipe(item, new Object[] {
-				"XX ",
-				"FX ",
-				" S ",
+				"XX",
+				"FX",
+				" S",
 				'S', Items.STICK,
 				'X', Blocks.STONE,
 				'F', Items.FLINT
 		});
 		item = new ItemStack(ModItems.harpoon_iron, 1);
 		GameRegistry.addRecipe(item, new Object[] {
-				"XX ",
-				"FX ",
-				" S ",
+				"XX",
+				"FX",
+				" S",
 				'S', Items.STICK,
 				'X', Items.IRON_INGOT,
 				'F', Items.FLINT
 		});
 		item = new ItemStack(ModItems.harpoon_diamond, 1);
 		GameRegistry.addRecipe(item, new Object[] {
-				"XX ",
-				"FX ",
-				" S ",
+				"XX",
+				"FX",
+				" S",
 				'S', Items.STICK,
 				'X', Items.DIAMOND,
 				'F', Items.FLINT
 		});
 		item = new ItemStack(ModItems.harpoon_obsidian, 1);
 		GameRegistry.addRecipe(item, new Object[] {
-				"XX ",
-				"FX ",
-				" S ",
+				"XX",
+				"FX",
+				" S",
 				'S', Items.STICK,
 				'X', Blocks.OBSIDIAN,
 				'F', Items.FLINT

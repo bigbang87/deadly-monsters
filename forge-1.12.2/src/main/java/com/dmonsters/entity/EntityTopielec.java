@@ -52,16 +52,19 @@ public class EntityTopielec extends EntityMob {
     	this.targetTasks.addTask(0, new EntityAIWaterMobNearestPlayer(this, 20));
     }
     
+    @Override
     protected SoundEvent getAmbientSound()
     {
         return ModSounds.TOPIELEC_AMBINET;
     }
 
-    protected SoundEvent getHurtSound()
+    @Override
+    protected SoundEvent getHurtSound(DamageSource damageSourceIn)
     {
         return ModSounds.TOPIELEC_HURT;
     }
 
+    @Override
     protected SoundEvent getDeathSound()
     {
         return ModSounds.TOPIELEC_DEATH;
