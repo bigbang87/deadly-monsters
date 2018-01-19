@@ -11,6 +11,7 @@ entity.zombieChicken.name=Zombie Chicken
 entity.present.name=Present
 entity.stranger.name=Stranger
 entity.topielec.name=Topielec
+entity.hauntedcow.name=Haunted Cow
 
 tile.dmonsters.rawConcrete.white.name=White Raw Concrete
 tile.dmonsters.rawConcrete.orange.name=Orange Raw Concrete
