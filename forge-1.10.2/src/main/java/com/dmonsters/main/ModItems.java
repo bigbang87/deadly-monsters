@@ -73,8 +73,8 @@ public class ModItems {
     	mobSpawnerItem_topielec = new MobSpawnerItem("topielec");
     	harpoon_stone = new Harpoon("stone", 10, 3);
     	harpoon_iron = new Harpoon("iron", 40, 6);
-    	harpoon_diamond = new Harpoon("diamond", 200, 10);
-    	harpoon_obsidian = new Harpoon("obsidian", -1, 8);
+    	harpoon_diamond = new Harpoon("diamond", 160, 10);
+    	harpoon_obsidian = new Harpoon("obsidian", 80, 6);
     }
     
     @SideOnly(Side.CLIENT)

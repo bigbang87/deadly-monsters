@@ -76,7 +76,7 @@ public class Harpoon extends Item {
 	        		stack.damageItem(1, playerIn);
 	    			Random rnd = new Random();
 	    			float rndFloat = rnd.nextFloat();
-	    			if (rndFloat < 0.3F) {
+	    			if (rndFloat < 0.25F) {
 	    		    	List<Item> itemsList = createDropTable();	
 	    		    	Item item = getItemToSpawn(itemsList);
 	    		    	playerIn.dropItem(item, 1);
