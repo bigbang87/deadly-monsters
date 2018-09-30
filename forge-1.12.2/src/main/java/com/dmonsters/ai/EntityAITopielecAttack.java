@@ -30,7 +30,7 @@ public class EntityAITopielecAttack extends EntityAIBase {
 
     public boolean shouldExecute() {
     	EntityPlayerMP player = (EntityPlayerMP) this.topielec.getAttackTarget();
-    	if (player != null) {
+    	if (player != null && !player.isCreative() && !player.isRiding()) {
 	    	double distance = this.topielec.getDistance(player.posX, player.posY, player.posZ);
 	    	if (distance < 2d) {
 	        	playerEntity = player;
