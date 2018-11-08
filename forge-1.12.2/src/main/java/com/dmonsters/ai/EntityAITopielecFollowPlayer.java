@@ -28,7 +28,7 @@ public class EntityAITopielecFollowPlayer extends EntityAIBase {
     	BlockPos resultPos = this.topielec.getAttackTarget().getPosition().subtract(this.topielec.getPosition());
     	float[] normVec = normlizeVector(resultPos);
     	this.topielec.setMovementVector(normVec[0], normVec[1], normVec[2]);
-    	float yawRad = (float) Math.atan2(normVec[0], normVec[2]);
+    	float yawRad = (float) Math.atan2(normVec[2], normVec[0]);
     	float yawDeg = (float) ((yawRad > 0 ? yawRad : (2*Math.PI + yawRad)) * 360 / (2*Math.PI));
     	if (yawDeg > 0) {
         	this.topielec.setPositionAndRotation(this.topielec.posX, this.topielec.posY, this.topielec.posZ, yawDeg, yawDeg);
