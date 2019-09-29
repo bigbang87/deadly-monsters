@@ -1,0 +1,10 @@
+{
+	"item.deadlymonsters.mod_item": "Mod Item",
+	"itemGroup.deadlymonsters": "Deadly Monsters",
+	
+	"block.deadlymonsters.test_block": "Test Block",
+	
+	"item.deadlymonsters.test_entity_egg": "Test Entity Egg",
+	
+	"entity.deadlymonsters.test_entity": "Test Entity"
+}

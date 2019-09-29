@@ -1,0 +1,19 @@
+modLoader="javafml"
+loaderVersion="[28,)"
+# A list of mods - how many allowed here is determined by the individual mod loader
+[[mods]] #mandatory
+modId="deadlymonsters"
+version="0.1.0"
+displayName="Deadly Monsters"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/deadly-monsters/"
+credits="Harry Talks for great tutorials"
+authors="Radoslaw Gwarek"
+description='''
+Deadly Monsters description
+'''
+[[dependencies.deadlymonsters]]
+    modId="forge"
+    mandatory=true
+    versionRange="[28,)"
+    ordering="NONE"
+    side="BOTH"
