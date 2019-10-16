@@ -2,6 +2,7 @@ package client.models;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 
+import entities.TestEntity;
 import net.minecraft.client.renderer.entity.model.EntityModel;
 import net.minecraft.client.renderer.entity.model.RendererModel;
 import net.minecraft.entity.Entity;
@@ -117,8 +118,9 @@ public class ModelZombieSteve<T extends Entity> extends EntityModel<T>
   public void setRotationAngles(float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch, float scaleFactor, Entity entityIn)
   {
       //super.setRotationAngles(limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch, scaleFactor, entityIn);
-      //boolean flag = entityIn instanceof TestEntity && ((TestEntity)entityIn).isArmsRaised();
-	  boolean flag = false;
+      boolean flag = entityIn instanceof TestEntity && ((TestEntity)entityIn).isArmsRaised();
+      //System.out.println(flag);
+      
       float f = MathHelper.sin(this.swingProgress * (float)Math.PI);
       float f1 = MathHelper.sin((1.0F - (1.0F - this.swingProgress) * (1.0F - this.swingProgress)) * (float)Math.PI);
       this.rightarm.rotateAngleZ = 0.0F;
